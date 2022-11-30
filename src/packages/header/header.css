@@ -1,0 +1,15 @@
+.csss-header {
+  --section-margin-size: 1rem;
+}
+
+.csss-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.csss-header > section {
+  margin: var(--section-margin-size);
+}

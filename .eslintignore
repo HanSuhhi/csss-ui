@@ -1,0 +1,11 @@
+*.sh
+*.md
+.vscode
+.idea
+coverage
+dist
+/node_modules
+/public
+/docs
+/public
+/src/env.d.ts

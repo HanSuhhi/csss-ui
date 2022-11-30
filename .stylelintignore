@@ -1,0 +1,11 @@
+*.js
+*.ts
+*.jpg
+*.png
+*.eot
+*.ttf
+*.woff
+*.json
+
+/test/
+/dist/

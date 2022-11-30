@@ -1,0 +1,32 @@
+.csss-layout {
+  --header-height-large: 4rem;
+  --header-height-normal: 3rem;
+  --header-height-small: 2rem;
+  --header-height: var(--header-height-normal);
+  --aside-width: 12.5rem;
+}
+
+.csss-layout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template:
+    "header header" var(--header-height)
+    "nav main" auto
+    / var(--aside-width) auto;
+}
+
+.csss-layout__header {
+  grid-area: header;
+}
+
+.csss-layout__aside {
+  grid-area: nav;
+}
+
+.csss-layout__main {
+  grid-area: main;
+}
