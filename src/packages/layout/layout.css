@@ -3,7 +3,15 @@
   --header-height-normal: 3rem;
   --header-height-small: 2rem;
   --header-height: var(--header-height-normal);
-  --aside-width: 12.5rem;
+  --aside-width-large: 14.5rem;
+  --aside-width-normal: 12.5rem;
+  --aside-width-small: 10.5rem;
+  --aside-width: var(--aside-width-normal);
+  --footer-height-large: 4rem;
+  --footer-height-normal: 3rem;
+  --footer-height-small: 2rem;
+  --footer-height: var(--footer-height-normal);
+  --grid-template-areas: "header header" "aside main" "footer footer";
 }
 
 .csss-layout {
@@ -15,8 +23,10 @@
   display: grid;
   grid-template:
     "header header" var(--header-height)
-    "nav main" auto
+    "aside main" auto
+    "aside footer" var(--footer-height)
     / var(--aside-width) auto;
+  grid-template-areas: var(--grid-template-areas);
 }
 
 .csss-layout__header {
@@ -24,9 +34,29 @@
 }
 
 .csss-layout__aside {
-  grid-area: nav;
+  grid-area: aside;
 }
 
 .csss-layout__main {
   grid-area: main;
+}
+
+.csss-layout__footer {
+  grid-area: footer;
+}
+
+.csss-layout-header-footer-aside {
+  --grid-template-areas: "header header" "aside main" "footer footer";
+}
+
+.csss-layout-header-aside {
+  --grid-template-areas: "header header" "aside main" "aside footer";
+}
+
+.csss-layout-footer-aside {
+  --grid-template-areas: "aside header" "aside main" "footer footer";
+}
+
+.csss-layout-aside {
+  --grid-template-areas: "aside header" "aside main" "aside footer";
 }
