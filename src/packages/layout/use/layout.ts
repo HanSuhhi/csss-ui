@@ -1,8 +1,7 @@
-import type { Ref, Slots } from "vue";
-import { reactive, ref, watchEffect } from "vue";
-import { unref, onMounted } from "vue";
+import { forEach } from "lodash-es";
+import type { Ref } from "vue";
+import { ref, unref, watchEffect } from "vue";
 import type { StyleSetter } from "../../tool/styleSetter.tool";
-import { forEach, defer } from "lodash-es";
 
 export function useLayout(styleSetter: StyleSetter | Ref<StyleSetter | undefined>) {
   /**

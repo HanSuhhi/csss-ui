@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "test": "vitest",
+    "coverage": "vitest run --coverage",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "@types/node": "^18.11.9",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
+    "@vitest/coverage-c8": "^0.25.3",
     "@vue/test-utils": "^2.2.4",
     "eslint": "^8.28.0",
     "jsdom": "^20.0.3",

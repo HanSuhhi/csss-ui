@@ -10,7 +10,7 @@ export function useFooter(styleSetter: StyleSetter | Ref<StyleSetter | undefined
     return size;
   };
   watchEffect(() => {
-    unref(styleSetter)?.setCssSizeProps("--footer-height", footerHeightSize.value);
+    unref(styleSetter)?.setStyleSize("footer-height", footerHeightSize.value);
   });
   // 如果没有 footer，则取消其高度
   watchEffect(() => {

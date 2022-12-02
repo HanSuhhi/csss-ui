@@ -6,7 +6,6 @@ const a = ref<CLayoutApi>();
 watchEffect(() => {
   a.value?.setHeaderHeightSize();
   a.value?.setAsideWidthSize("small");
-  a.value?.setFooterHeightSize("large");
   a.value?.setValue({
     "--header-height": 10,
   });

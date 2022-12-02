@@ -8,7 +8,7 @@ import { useLayout } from './use/layout';
 export default defineComponent({
   name: "CLayout",
   setup: (props, { slots, expose }) => {
-    const { element, styleSetter } = useElement();
+    const { element, styleSetter } = useElement("csss-layout");
     const { setHeaderHeightSize } = useHeader(styleSetter, slots.header);
     const { setAsideWidthSize } = useAside(styleSetter, slots.aside);
     const { setFooterHeightSize } = useFooter(styleSetter, slots.footer);

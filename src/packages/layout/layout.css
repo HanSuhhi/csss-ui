@@ -1,16 +1,7 @@
 .csss-layout {
-  --header-height-large: 4rem;
-  --header-height-normal: 3rem;
-  --header-height-small: 2rem;
-  --header-height: var(--header-height-normal);
-  --aside-width-large: 14.5rem;
-  --aside-width-normal: 12.5rem;
-  --aside-width-small: 10.5rem;
-  --aside-width: var(--aside-width-normal);
-  --footer-height-large: 4rem;
-  --footer-height-normal: 3rem;
-  --footer-height-small: 2rem;
-  --footer-height: var(--footer-height-normal);
+  --header-height: 3rem;
+  --aside-width: 12.5rem;
+  --footer-height: 3rem;
   --grid-template-areas: "header header" "aside main" "footer footer";
 }
 
@@ -43,20 +34,4 @@
 
 .csss-layout__footer {
   grid-area: footer;
-}
-
-.csss-layout-header-footer-aside {
-  --grid-template-areas: "header header" "aside main" "footer footer";
-}
-
-.csss-layout-header-aside {
-  --grid-template-areas: "header header" "aside main" "aside footer";
-}
-
-.csss-layout-footer-aside {
-  --grid-template-areas: "aside header" "aside main" "footer footer";
-}
-
-.csss-layout-aside {
-  --grid-template-areas: "aside header" "aside main" "aside footer";
 }

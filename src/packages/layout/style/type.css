@@ -1,0 +1,15 @@
+.csss-layout-header-footer-aside {
+  --grid-template-areas: "header header" "aside main" "footer footer";
+}
+
+.csss-layout-header-aside {
+  --grid-template-areas: "header header" "aside main" "aside footer";
+}
+
+.csss-layout-footer-aside {
+  --grid-template-areas: "aside header" "aside main" "footer footer";
+}
+
+.csss-layout-aside {
+  --grid-template-areas: "aside header" "aside main" "aside footer";
+}

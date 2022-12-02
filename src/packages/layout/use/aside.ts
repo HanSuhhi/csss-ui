@@ -10,7 +10,7 @@ export function useAside(styleSetter: StyleSetter | Ref<StyleSetter | undefined>
     return size;
   };
   watchEffect(() => {
-    unref(styleSetter)?.setCssSizeProps("--aside-width", asideHeightSize.value);
+    unref(styleSetter)?.setStyleSize("aside-width", asideHeightSize.value);
   });
 
   // 如果没有 aside，则取消其宽度
