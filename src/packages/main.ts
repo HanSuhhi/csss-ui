@@ -1,3 +1,3 @@
 import.meta.glob("./**/*.css", {
-  eager: true
+  eager: true,
 });

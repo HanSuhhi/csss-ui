@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue';
 import { useElement } from "../use/element";
-import { useAside } from './use/aside';
-import { useFooter } from './use/footer';
-import { useHeader } from './use/header';
-import { useLayout } from './use/layout';
+import { useAside } from './composables/aside';
+import { useFooter } from './composables/footer';
+import { useHeader } from './composables/header';
+import { useLayout } from './composables/layout';
 
 export default defineComponent({
   name: "CLayout",
