@@ -1,0 +1,6 @@
+.csss-layout {
+  --header-height: 3rem;
+  --aside-width: 12.5rem;
+  --footer-height: 3rem;
+  --grid-template-areas: "header header" "aside main" "footer footer";
+}

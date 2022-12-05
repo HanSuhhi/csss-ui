@@ -1,3 +1,2 @@
-import.meta.glob("./**/*.css", {
-  eager: true,
-});
+/* Auto Generate with `gen:components` */
+ export { default as Layout } from "./layout";

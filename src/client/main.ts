@@ -3,6 +3,6 @@ import "@hansuhhi-don/csss/dist/style.css";
 
 import { createApp } from "vue";
 import App from "./App.vue";
-import "./packages/main";
+import { createCsssUI } from "..";
 
-createApp(App).mount("#app");
+createApp(App).use(createCsssUI()).mount("#app");

@@ -1,9 +1,8 @@
-.csss-layout {
-  --header-height: 3rem;
-  --aside-width: 12.5rem;
-  --footer-height: 3rem;
-  --grid-template-areas: "header header" "aside main" "footer footer";
-}
+@import "./style/config.css";
+@import "./style/aside-width.css";
+@import "./style/footer-height.css";
+@import "./style/header-height.css";
+@import "./style/type.css";
 
 .csss-layout {
   position: absolute;
