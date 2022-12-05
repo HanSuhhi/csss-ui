@@ -5,11 +5,7 @@
 @import "./style/type.css";
 
 .csss-layout {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
   display: grid;
   grid-template:
     "header header" var(--header-height)
@@ -17,6 +13,8 @@
     "aside footer" var(--footer-height)
     / var(--aside-width) auto;
   grid-template-areas: var(--grid-template-areas);
+  width: 100%;
+  height: 100%;
 }
 
 .csss-layout__header {

@@ -5,7 +5,7 @@ const a = ref<CLayoutApi>();
 watchEffect(() => {
   a.value?.setHeaderHeightSize();
   a.value?.setAsideWidthSize("small");
-  a.value?.setValue({
+  a.value?.setStyleValue({
     "--header-height": 10,
   });
   a.value?.setLayoutType("header-aside");
@@ -13,9 +13,10 @@ watchEffect(() => {
 </script>
 
 <template>
+  <h1>hello world</h1>
   <CLayout ref="a">
     <template #header>header</template>
-    <!-- <template #aside>aside</template> -->
+    <template #aside>aside</template>
     <template #default>main </template>
     <template #footer>footer</template>
   </CLayout>

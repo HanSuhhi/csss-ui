@@ -1,4 +1,4 @@
-.csss-layout-header-footer-aside {
+.csss-layout-header-footer {
   --grid-template-areas: "header header" "aside main" "footer footer";
 }
 

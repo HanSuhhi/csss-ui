@@ -14,13 +14,13 @@ export default defineComponent({
     const { setHeaderHeightSize } = useHeader(styleSetter, slots.header);
     const { setAsideWidthSize } = useAside(styleSetter, slots.aside);
     const { setFooterHeightSize } = useFooter(styleSetter, slots.footer);
-    const { setValue, setLayoutType } = useLayout(styleSetter);
+    const { setStyleValue, setLayoutType } = useLayout(styleSetter);
 
     expose({
       setHeaderHeightSize,
       setAsideWidthSize,
       setFooterHeightSize,
-      setValue,
+      setStyleValue,
       setLayoutType
     });
 

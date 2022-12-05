@@ -99,22 +99,19 @@ describe("CLayout.tsx", () => {
         footer: "footer",
       },
     });
-    (wrapper.vm as unknown as CLayoutApi).setValue({
+    (wrapper.vm as unknown as CLayoutApi).setStyleValue({
       "--aside-width": 4,
       "--footer-height": 3,
       "--header-height": 2,
-      "--grid-template-areas": `"aside header" "aside main" "footer footer"`,
     });
     defer(() => {
       const style = wrapper.find("article").element.style;
       const asideWidth = style.getPropertyValue("--aside-width");
       const headerHeight = style.getPropertyValue("--header-height");
       const footerHeight = style.getPropertyValue("--footer-height");
-      const layoutType = style.getPropertyValue("--grid-template-areas");
       expect(asideWidth).toBe("4rem");
       expect(headerHeight).toBe("2rem");
       expect(footerHeight).toBe("3rem");
-      expect(layoutType).toBeTruthy();
     });
   });
 });

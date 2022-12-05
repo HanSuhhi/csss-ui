@@ -18,7 +18,6 @@ interface CLayoutCssCustomProperties {
   "--header-height": number;
   "--aside-width": number;
   "--footer-height": number;
-  "--grid-template-areas": string;
 }
 
 /**
@@ -28,9 +27,9 @@ interface CLayoutApi extends ComponentBase {
   setHeaderHeightSize: (size: CLayoutHeaderHeightSize = "normal") => CLayoutHeaderHeightSize;
   setAsideWidthSize: (size: CLayoutAsideWidthSize = "normal") => CLayoutAsideWidthSize;
   setFooterHeightSize: (size: CLayoutFooterHeightSize = "setFooterHeightSizeal") => CLayoutFooterHeightSize;
-  setLayoutType: (type: CLayoutType = "header-footer-aside") => void;
+  setLayoutType: (type: CLayoutType = "header-footer") => void;
 
-  setValue: (value: Partial<CLayoutCssCustomProperties>) => void;
+  setStyleValue: (value: Partial<CLayoutCssCustomProperties>) => void;
 }
 
 /**
@@ -41,4 +40,4 @@ type CLayoutCssPropsResolver = { [key in keyof CLayoutCssCustomProperties]: (val
 /**
  * @description 布局类型
  */
-type CLayoutType = "header-footer-aside" | "header-aside" | "footer-aside" | "aside";
+type CLayoutType = "header-footer" | "header-aside" | "footer-aside" | "aside";

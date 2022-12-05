@@ -17,12 +17,9 @@ export function useLayout(styleSetter: StyleSetter | Ref<StyleSetter | undefined
     "--footer-height": (value) => {
       unref(styleSetter)?.setRemNumber(value, "--footer-height");
     },
-    "--grid-template-areas": (value) => {
-      unref(styleSetter)?.setString(value, "--grid-template-areas");
-    },
   };
   const styleValueList = ref<Partial<CLayoutCssCustomProperties>>({});
-  const setValue = (list: Partial<CLayoutCssCustomProperties>) => {
+  const setStyleValue = (list: Partial<CLayoutCssCustomProperties>) => {
     styleValueList.value = list;
   };
 
@@ -36,7 +33,7 @@ export function useLayout(styleSetter: StyleSetter | Ref<StyleSetter | undefined
   /**
    * @description 布局类型
    */
-  const layoutType = ref<CLayoutType>("header-footer-aside");
+  const layoutType = ref<CLayoutType>("header-footer");
   const setLayoutType = (type: CLayoutType) => {
     layoutType.value = type;
   };
@@ -45,7 +42,7 @@ export function useLayout(styleSetter: StyleSetter | Ref<StyleSetter | undefined
   });
 
   return {
-    setValue,
+    setStyleValue,
     setLayoutType,
   };
 }
