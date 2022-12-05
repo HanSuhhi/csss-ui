@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",
     "preview": "vite preview",
+    "cz": "cz",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint:eslint": "eslint **/*.{vue,ts,tsx} --fix",
@@ -28,6 +29,8 @@
     "vue": "^3.2.41"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@hansuhhi-don/eslint-config": "^0.3.0",
     "@hansuhhi-don/stylelint-config": "^0.2.0",
     "@types/klaw-sync": "^6.0.1",
@@ -37,8 +40,11 @@
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "@vitest/coverage-c8": "^0.25.3",
     "@vue/test-utils": "^2.2.4",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.28.0",
     "esno": "^0.16.3",
+    "husky": "^8.0.2",
     "jsdom": "^20.0.3",
     "klaw-sync": "^6.0.0",
     "rollup-plugin-delete": "^2.0.0",
