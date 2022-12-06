@@ -9,6 +9,9 @@
   <samp>依赖于 csss 的 vue3.0 组件库</samp>
 </p>
 <p align="center"> <a href="README.md">English</a> | 中文</p>
+<a href='https://www.npmjs.com/package/csss-ui'>
+  <img src='https://img.shields.io/npm/v/csss-ui?color=333&labelColor=555&style=flat-square' alt='version'/>
+</a>
 <p align="center">
   Csss / Headless / Simple / Cool
 </p>

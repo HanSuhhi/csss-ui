@@ -9,6 +9,9 @@
   <samp>A vue3.0 components library based on csss</samp>
 </p>
 <p align="center"> English | <a href="README.zh-CN.md">中文</a></p>
+<a href='https://www.npmjs.com/package/csss-ui'>
+  <img src='https://img.shields.io/npm/v/csss-ui?color=333&labelColor=555&style=flat-square' alt='version'/>
+</a>
 <p align="center">
   Csss / Headless / Simple / Cool
 </p>
