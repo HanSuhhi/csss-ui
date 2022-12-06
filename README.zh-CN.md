@@ -6,19 +6,18 @@
 </h1>
 
 <p align="center">
-  <samp>A vue3.0 components library based on [csss](https://github.com/HanSuhhi/csss)</samp>
+  <samp>依赖于 [csss](https://github.com/HanSuhhi/csss)的 vue3.0 组件库</samp>
 </p>
-![]()
 <p align="center"> <a href="README.md">English</a> | 中文</p>
 <p align="center">
   Csss / Headless / Simple / Cool
 </p>
 
-## Documentation
+## 文档
 
 [hansuhhi.github.io/csss-ui/zh-CN/](https://hansuhhi.github.io/csss-ui/zh-CN/)
 
-## Usage
+## 使用
 
 ```
 # npm
@@ -31,9 +30,9 @@ yarn add csss-ui
 pnpm install csss-ui
 ```
 
-### Install Globally
+### 完全引入
 
-Install globally is a way to save worry and effort.
+使用完整引入是一个省心省力的方式。
 
 ```typescript
 import { createApp } from "vue";
@@ -45,9 +44,9 @@ import "csss-ui/dist/style.css";
 createApp(App).use(createCsssUI());
 ```
 
-### Volar Support
+### Volar 支持
 
-Type is must.Developers need to configurate `compilerOptions.type` in `tsconfig.json` to provide global type support.
+类型支持在多数情况下是必须的，因此开发者需要在 `tsconfig.json` 中配置 `compilerOptions.type` 来提供全局的 `csss-ui` 类型支持。
 
 ```json
 // tsconfig.json
@@ -59,37 +58,37 @@ Type is must.Developers need to configurate `compilerOptions.type` in `tsconfig.
 }
 ```
 
-## Features
+## 特征
 
-The only features that can be summarized at present are the following, which should be added gradually afterwards.
+`csss-ui` 目前能总结的特性只有以下几点，之后应该会逐渐增加。
 
-### Css Custom Properties
+### csss 变量控制
 
-define component style by css custom properties.
+通过原生 / 接口方式操作 css 变量，实现对组件样式的控制。
 
-It's all backed by types.
+这一切都拥有类型的支持。
 
-### Headless
+### headless 无头组件
 
-Easily design your component styles.
+在默认样式的基础上，通过插槽方式暴露子组件，实现样式自定义。
 
-In this regard, `csss-ui` hopes to be more refined.
+在这一方面，`csss-ui` 希望可以更加精进。
 
-### Expose Interface
+### expose 接口支持
 
-With the help of the expose capability of vue3.0, each component provides multiple interfaces for style / logic / state modification.
+借助于 vue3.0 的 expose 能力，每一个组件皆提供多个接口进行样式 / 逻辑 / 状态修改。
 
-It's all backed by types.
+这一切都拥有类型的支持。
 
-## Acknowledgement
+## 鸣谢
 
-> in alphabet order
+> 按照字母顺序排列
 
 - [element-plus](https://github.com/element-plus/element-plus)
 - [headlessui](https://github.com/tailwindlabs/headlessui)
 - [naive-ui](https://github.com/tusen-ai/naive-ui)
 - [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed)
 
-## License
+## 许可
 
 [MIT](./LICENSE) License &copy; 2022 [Hansuhhi Don](https://github.com/HanSuhhi)
