@@ -1,14 +1,18 @@
 {
   "name": "csss-ui",
-  "version": "0.0.0",
+  "version": "0.1.0-beta.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",
-    "build:test": "pnpm build && pnpm publish:test",
     "preview": "vite preview",
     "cz": "git-cz",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && pnpm lint:dist && pnpm release:only",
+    "release:only": "changeset publish --registry=https://registry.npmjs.com/",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
+    "build": "vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",
+    "build:test": "pnpm build && pnpm publish:test",
     "lint:eslint": "eslint **/*.{vue,ts,tsx} --fix",
     "lint:stylelint": "stylelint **/*.{vue,css} --fix",
     "lint:dist": "prettier ./dist/**/*.d.ts --write",
@@ -29,6 +33,7 @@
     "vue": "^3.2.41"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.25.2",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@hansuhhi-don/eslint-config": "^0.3.0",
