@@ -14,7 +14,7 @@ hero:
       link: /en-US/components/quick-start.html
     - theme: alt
       text: View on GitHub
-      link: https://github.com/HanSuhhi/csssUI
+      link: https://github.com/HanSuhhi/csss-ui
 
 features:
   - title: 🔢 Css Custom Properties

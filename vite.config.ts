@@ -26,7 +26,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "CsssUI",
+      name: "csss-ui",
       fileName: (format) => `csss-ui.${format}.js`,
     },
     rollupOptions: {

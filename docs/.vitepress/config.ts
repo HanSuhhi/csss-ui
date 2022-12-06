@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import { defineSideBar } from "./configs/nav";
 
 export default defineConfig({
-  base: "/csssUI/",
+  base: "/csss-ui/",
   title: "csss-ui",
   lastUpdated: true,
   cleanUrls: "with-subfolders",
@@ -12,7 +12,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/HanSuhhi/csssUI",
+        link: "https://github.com/HanSuhhi/csss-ui",
       },
     ],
     localeLinks: {

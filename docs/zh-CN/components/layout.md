@@ -5,6 +5,19 @@
 它使用起来会很便捷的，如果你习惯使用[插槽](https://cn.vuejs.org/guide/components/slots.html#slots)的话。
 
 页面布局时使用它多是一件美事。
+<code-group>123
+<code-block title="YARN" active>
+
+// some code
+
+</code-block>
+
+<code-block title="NPM">
+
+// some code
+
+</code-block>
+</code-group>
 
 :::warning
 布局组件依赖于`display: grid`，即 grid 布局，请先确认浏览器功能对此是否兼容。

@@ -14,7 +14,7 @@ hero:
       link: /zh-CN/components/quick-start.html
     - theme: alt
       text: 了解更多
-      link: https://github.com/HanSuhhi/csssUI
+      link: https://github.com/HanSuhhi/csss-ui
 
 features:
   - title: 🔢 Css 变量控制
