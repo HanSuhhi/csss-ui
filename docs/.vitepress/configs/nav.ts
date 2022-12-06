@@ -19,6 +19,10 @@ const defineSideBarItem = (language: Language): DefaultTheme.Sidebar => {
             text: (<LanguageStruct>["QuickStart", "快速开始"])[language],
             link: definePath(language, "/components/quick-start"),
           },
+          {
+            text: (<LanguageStruct>["Description", "说明"])[language],
+            link: definePath(language, "/components/desc"),
+          },
         ],
       },
       {

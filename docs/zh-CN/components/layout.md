@@ -136,7 +136,20 @@
 | `--aside-width`   |  `number`  |  12.5   | aside 插槽宽度  | `rem` |
 | `--footer-height` |  `number`  |    3    | footer 插槽高度 | `rem` |
 
-## css 变量
+## 接口汇总
+
+> 接口 type `CLayoutApi`
+
+`Layout` 所有接口列表：
+
+| name                  | value type                                                          |     default     | description     |
+| --------------------- | :------------------------------------------------------------------ | :-------------: | :-------------- |
+| `setHeaderHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | header 插槽高度 |
+| `setAsideWidthSize`   | `small` \| `normal` \| `large`                                      |    `normal`     | aside 插槽宽度  |
+| `setFooterHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | footer 插槽高度 |
+| `setLayoutType`       | `header-footer`<br> `header-aside` <br> `footer-aside` <br> `aside` | `header-footer` | 布局类型        |
+
+## css 变量汇总
 
 :::tip
 
