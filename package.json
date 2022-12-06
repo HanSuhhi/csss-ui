@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",
+    "build:test": "pnpm build && pnpm publish:test",
     "preview": "vite preview",
     "commit": "git-cz",
     "test": "vitest",

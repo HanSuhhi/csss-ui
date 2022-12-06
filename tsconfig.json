@@ -17,8 +17,7 @@
     },
     "declaration": true,
     "declarationDir": "dist/types",
-    "outDir": "dist",
-    "types": ["dist/global"]
+    "outDir": "dist"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "docs/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

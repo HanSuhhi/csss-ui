@@ -23,7 +23,7 @@ function writeStyleEntries() {
   totalStyle.map((file) => {
     const paths = file.split("\\").slice(-2);
     const path = `./${paths[0]}`;
-    template += `\n export { default as ${titleize(paths[0])} } from "${path}";`;
+    template += `\n export * from "${path}";`;
   });
 
   fs.writeFileSync(styleEntryFileName, template);

@@ -1,9 +1,9 @@
 import type { App } from "vue";
-import Layout from "./CLayout";
+import CLayout from "./CLayout";
 
-Layout.install = (app: App) => {
-  app.component(Layout.name, Layout);
+CLayout.install = (app: App) => {
+  app.component(CLayout.name, CLayout);
 };
 
-export { Layout };
-export default Layout;
+export { CLayout };
+export default CLayout;

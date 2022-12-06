@@ -57,7 +57,7 @@ function addAllComponents() {
   });
 }
 
-addAllComponents();
+// addAllComponents();
 
 /**
  * @description add volar
