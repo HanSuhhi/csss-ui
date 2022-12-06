@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: Csss-UI
+title: csss-ui
 titleTemplate: A vue3.0 components library based on csss /
 
 hero:
-  name: Csss-UI
+  name: csss-ui
   text: A vue3.0 components library based on csss /
   tagline: Csss / Headless / Simple / Cool
   actions:

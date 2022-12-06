@@ -4,6 +4,7 @@ import { defineSideBar } from "./configs/nav";
 export default defineConfig({
   base: "/csss-ui/",
   title: "csss-ui",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   lastUpdated: true,
   cleanUrls: "with-subfolders",
   themeConfig: {
