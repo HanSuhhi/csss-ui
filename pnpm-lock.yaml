@@ -17,10 +17,12 @@ specifiers:
   cz-conventional-changelog: ^3.3.0
   eslint: ^8.28.0
   esno: ^0.16.3
+  flexsearch: ^0.7.31
   husky: ^8.0.2
   jsdom: ^20.0.3
   klaw-sync: ^6.0.0
   lodash-es: ^4.17.21
+  markdown-it: ^13.0.1
   prettier: ^2.8.0
   rollup-plugin-delete: ^2.0.0
   stylelint: ^14.15.0
@@ -30,6 +32,7 @@ specifiers:
   vite-plugin-dts: ^1.7.1
   vite-plugin-vitepress-demo: 2.0.0-alpha.7
   vitepress: 1.0.0-alpha.30
+  vitepress-plugin-search: 1.0.4-alpha.15
   vitest: ^0.25.3
   vue: ^3.2.41
   vue-tsc: ^1.0.9
@@ -56,9 +59,11 @@ devDependencies:
   cz-conventional-changelog: 3.3.0
   eslint: 8.28.0
   esno: 0.16.3
+  flexsearch: 0.7.31
   husky: 8.0.2
   jsdom: 20.0.3
   klaw-sync: 6.0.0
+  markdown-it: 13.0.1
   prettier: 2.8.0
   rollup-plugin-delete: 2.0.0
   stylelint: 14.15.0
@@ -67,6 +72,7 @@ devDependencies:
   vite-plugin-dts: 1.7.1_vite@3.2.4
   vite-plugin-vitepress-demo: 2.0.0-alpha.7_rjeuipjvpupfowt3j5nieluhoi
   vitepress: 1.0.0-alpha.30_@types+node@18.11.9
+  vitepress-plugin-search: 1.0.4-alpha.15_jp5a5raj7q7iri32xpyjpjzgva
   vitest: 0.25.3_jsdom@20.0.3
   vue-tsc: 1.0.9_typescript@4.9.3
 
@@ -1051,6 +1057,10 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
+  /@types/flexsearch/0.7.3:
+    resolution: {integrity: sha512-HXwADeHEP4exXkCIwy2n1+i0f1ilP1ETQOH5KDOugjkTFZPntWo0Gr8stZOaebkxsdx+k0X/K6obU/+it07ocg==}
+    dev: true
+
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
@@ -1072,6 +1082,10 @@ packages:
       '@types/node': 18.11.9
     dev: true
 
+  /@types/linkify-it/3.0.2:
+    resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
+    dev: true
+
   /@types/lodash-es/4.17.6:
     resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
     dependencies:
@@ -1082,10 +1096,21 @@ packages:
     resolution: {integrity: sha512-5iJ3FBJBvQHQ8sFhEhJfjUP+G+LalhavTkYyrAYqz5MEJG+erSv0k9KJLb6q7++17Lafk1scaTIFXcMJlwK8Mw==}
     dev: true
 
+  /@types/markdown-it/12.2.3:
+    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
+    dependencies:
+      '@types/linkify-it': 3.0.2
+      '@types/mdurl': 1.0.2
+    dev: true
+
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/mdurl/1.0.2:
+    resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -3271,6 +3296,10 @@ packages:
 
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
+    dev: true
+
+  /flexsearch/0.7.31:
+    resolution: {integrity: sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==}
     dev: true
 
   /for-in/1.0.2:
@@ -6838,6 +6867,24 @@ packages:
       rollup: 2.79.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitepress-plugin-search/1.0.4-alpha.15_jp5a5raj7q7iri32xpyjpjzgva:
+    resolution: {integrity: sha512-Ef/VkhTVYlECVI0H9Ck6745UNPfYFppAqnlxVSMJXdxP2vjOZ5TYNczlTTQ2p9dh16MFw/IurbL1/GrG4nXdNw==}
+    engines: {node: ^14.13.1 || ^16.7.0 || >=18}
+    peerDependencies:
+      flexsearch: ^0.7.31
+      vite: 2 || 3
+      vitepress: ^1.0.0-alpha.13
+      vue: '3'
+    dependencies:
+      '@types/flexsearch': 0.7.3
+      '@types/markdown-it': 12.2.3
+      flexsearch: 0.7.31
+      markdown-it: 13.0.1
+      vite: 3.2.4_@types+node@18.11.9
+      vitepress: 1.0.0-alpha.30_@types+node@18.11.9
+      vue: 3.2.45
     dev: true
 
   /vitepress/1.0.0-alpha.30_@types+node@18.11.9:
