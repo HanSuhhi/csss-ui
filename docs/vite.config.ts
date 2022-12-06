@@ -5,7 +5,7 @@ import VitePluginVitepressDemo from "vite-plugin-vitepress-demo";
 export default defineConfig({
   plugins: [
     VitePluginVitepressDemo({
-      glob: resolve(__dirname, "**/*.vue"),
+      glob: "./**/*.vue",
     }),
   ],
   resolve: {
