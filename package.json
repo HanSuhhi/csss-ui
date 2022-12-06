@@ -11,7 +11,7 @@
     "test:coverage": "vitest run --coverage",
     "lint:eslint": "eslint **/*.{vue,ts,tsx} --fix",
     "lint:stylelint": "stylelint **/*.{vue,css} --fix",
-    "lint:dist": "prettier .\\dist\\**/*.d.ts --write",
+    "lint:dist": "prettier ./dist/**/*.d.ts --write",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
