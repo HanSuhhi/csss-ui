@@ -6,7 +6,7 @@
 </h1>
 
 <p align="center">
-  <samp>依赖于 [csss](https://github.com/HanSuhhi/csss)的 vue3.0 组件库</samp>
+  <samp>依赖于 csss 的 vue3.0 组件库</samp>
 </p>
 <p align="center"> <a href="README.md">English</a> | 中文</p>
 <p align="center">

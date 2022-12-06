@@ -6,17 +6,16 @@
 </h1>
 
 <p align="center">
-  <samp>A vue3.0 components library based on [csss](https://github.com/HanSuhhi/csss)</samp>
+  <samp>A vue3.0 components library based on csss</samp>
 </p>
-![]()
-<p align="center"> <a href="README.md">English</a> | 中文</p>
+<p align="center"> English | <a href="README.zh-CN.md">中文</a></p>
 <p align="center">
   Csss / Headless / Simple / Cool
 </p>
 
 ## Documentation
 
-[hansuhhi.github.io/csss-ui/zh-CN/](https://hansuhhi.github.io/csss-ui/zh-CN/)
+[hansuhhi.github.io/csss-ui/zh-CN/](https://hansuhhi.github.io/csss-ui/en-US/)
 
 ## Usage
 
