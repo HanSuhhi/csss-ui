@@ -33,6 +33,13 @@ interface CLayoutApi extends ComponentBase {
 }
 
 /**
+ * @description useCsssLayout props
+ */
+type UseCsssLayoutProps = {
+  [key in keyof CLayoutApi]?: Parameters<CLayoutApi[key]>;
+};
+
+/**
  * @description css 变量设置方法
  */
 type CLayoutCssPropsResolver = { [key in keyof CLayoutCssCustomProperties]: (value: any) => void };

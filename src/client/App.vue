@@ -1,20 +1,15 @@
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
+import { useCsssLayout } from "../packages/layout/composables/csssLayout";
 
-const a = ref<CLayoutApi>();
-watchEffect(() => {
-  a.value?.setHeaderHeightSize();
-  a.value?.setAsideWidthSize("small");
-  a.value?.setStyleValue({
-    "--header-height": 10,
-  });
-  a.value?.setLayoutType("header-aside");
+const { COMP: Layout } = useCsssLayout({
+  setAsideWidthSize: ["small"],
+  setStyleValue: [{ "--header-height": 10 }],
+  setLayoutType: ["header-aside"],
 });
 </script>
 
 <template>
-  <h1>hello world</h1>
-  <CLayout ref="a">
+  <CLayout ref="Layout">
     <template #header>header</template>
     <template #aside>aside</template>
     <template #default>main </template>

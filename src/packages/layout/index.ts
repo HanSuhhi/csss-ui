@@ -7,3 +7,4 @@ CLayout.install = (app: App) => {
 
 export { CLayout };
 export default CLayout;
+export { useCsssLayout } from "./composables/csssLayout";
