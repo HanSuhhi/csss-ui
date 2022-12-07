@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { useCsssLayout } from "csss-ui/csss-ui.es.js";
 
-const Large = ref<CLayoutApi>();
-const Normal = ref<CLayoutApi>();
-const Small = ref<CLayoutApi>();
-
-onMounted(() => {
-  Large.value?.setAsideWidthSize("large");
-  Normal.value?.setAsideWidthSize("normal");
-  Small.value?.setAsideWidthSize("small");
+const { COMP: Large } = useCsssLayout({
+  setAsideWidthSize: ["large"],
+});
+const { COMP: Normal } = useCsssLayout({
+  setAsideWidthSize: ["normal"],
+});
+const { COMP: Small } = useCsssLayout({
+  setAsideWidthSize: ["small"],
 });
 </script>
 
@@ -17,12 +17,12 @@ onMounted(() => {
     main
     <template #aside>large</template>
   </CLayout>
-  <hr>
+  <hr />
   <CLayout ref="Normal" class="left-right">
     main
     <template #aside>normal</template>
   </CLayout>
-  <hr>
+  <hr />
   <CLayout ref="Small" class="left-right">
     main
     <template #aside>small</template>

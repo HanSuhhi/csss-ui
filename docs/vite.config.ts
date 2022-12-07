@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "csss-ui/": `${resolve(__dirname, "../dist")}/`,
+      "csss-ui": resolve(__dirname, "../dist"),
     },
   },
 });

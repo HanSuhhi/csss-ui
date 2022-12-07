@@ -61,18 +61,21 @@ const warningOrSuccess = computed(() => {
 
 ### 改造
 
-`csss-ui` 希望可以给出一个自己的方案，比如在需要修改 `type` 时：
+`csss-ui` 希望可以给出一个自己的方案，通过组合式 API 完成组件的样式初始化。
+
+而在一些动态场景下，比如在需要修改 `type` 时，再结合组件实例进行修改即可。
 
 ```vue
 <script setup lang="ts">
-import { ref } from "vue";
+import { useCsssButton } from "csss-ui";
 
-const Button = ref<CButtonApi>();
-
-const warning = () => {
+const {COMP: Button} = useCsssButton({
+  size: "small",
+  round: true,
   ...
-  Button.value.type = "warning";
-}
+});
+
+const warning = () => Button.value.type = "warning";
 </script>
 
 <template>
@@ -146,22 +149,17 @@ const warning = () => {
 
 ```vue
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
+import { useCsssLayout } from "csss-ui";
 
-const a = ref<CLayoutApi>();
-watchEffect(() => {
-  a.value?.setHeaderHeightSize();
-  a.value?.setAsideWidthSize("small");
-  a.value?.setStyleValue({
-    "--header-height": 10,
-  });
-  a.value?.setLayoutType("header-aside");
+const { COMP: Layout } = useCsssLayout({
+  setAsideWidthSize: ["small"],
+  setStyleValue: [{ "--header-height": 10 }],
+  setLayoutType: ["header-aside"],
 });
 </script>
 
 <template>
-  <h1>hello world</h1>
-  <CLayout ref="a">
+  <CLayout ref="Layout">
     <template #header>header</template>
     <template #aside>aside</template>
     <template #default>main </template>

@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { useCsssLayout } from "csss-ui/csss-ui.es.js";
 
-const Large = ref<CLayoutApi>();
-const Normal = ref<CLayoutApi>();
-const Small = ref<CLayoutApi>();
-
-onMounted(() => {
-  Large.value?.setHeaderHeightSize("large");
-  Normal.value?.setHeaderHeightSize("normal");
-  Small.value?.setHeaderHeightSize("small");
+const { COMP: Large } = useCsssLayout({
+  setHeaderHeightSize: ["large"],
+});
+const { COMP: Normal } = useCsssLayout({
+  setHeaderHeightSize: ["normal"],
+});
+const { COMP: Small } = useCsssLayout({
+  setHeaderHeightSize: ["small"],
 });
 </script>
 
@@ -17,12 +17,12 @@ onMounted(() => {
     main
     <template #header>large</template>
   </CLayout>
-  <hr>
+  <hr />
   <CLayout ref="Normal" class="up-down">
     main
     <template #header>normal</template>
   </CLayout>
-  <hr>
+  <hr />
   <CLayout ref="Small" class="up-down">
     main
     <template #header>small</template>

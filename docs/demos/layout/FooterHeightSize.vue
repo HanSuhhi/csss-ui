@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { useCsssLayout } from "csss-ui/csss-ui.es.js";
 
-const Large = ref<CLayoutApi>();
-const Normal = ref<CLayoutApi>();
-const Small = ref<CLayoutApi>();
-
-onMounted(() => {
-  Large.value?.setFooterHeightSize("large");
-  Normal.value?.setFooterHeightSize("normal");
-  Small.value?.setFooterHeightSize("small");
+const { COMP: Large } = useCsssLayout({
+  setFooterHeightSize: ["large"],
+});
+const { COMP: Normal } = useCsssLayout({
+  setFooterHeightSize: ["normal"],
+});
+const { COMP: Small } = useCsssLayout({
+  setFooterHeightSize: ["small"],
 });
 </script>
 
@@ -17,12 +17,12 @@ onMounted(() => {
     main
     <template #footer>large</template>
   </CLayout>
-  <hr>
+  <hr />
   <CLayout ref="Normal" class="up-down">
     main
     <template #footer>normal</template>
   </CLayout>
-  <hr>
+  <hr />
   <CLayout ref="Small" class="up-down">
     main
     <template #footer>small</template>

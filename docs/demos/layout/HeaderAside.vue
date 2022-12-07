@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { useCsssLayout } from "csss-ui/csss-ui.es.js";
 
-const Layout = ref<CLayoutApi>();
-
-onMounted(() => Layout.value?.setLayoutType("header-footer"));
+const { COMP: Layout } = useCsssLayout({
+  setLayoutType: ["header-aside"],
+});
 </script>
 
 <template>
