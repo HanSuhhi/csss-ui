@@ -10,6 +10,31 @@
 布局组件依赖于`display: grid`，即 grid 布局，请先确认浏览器功能对此是否兼容。
 :::
 
+## 开始
+
+开发者可以使用通过 `useCsssLayout` 来初始化一个 `Layout` 组件。（[组合式 API](#组合式-api)）
+
+```vue
+<script setup lang="ts">
+import { useCsssLayout } from "csss-ui";
+
+const { COMP: Layout } = useCsssLayout({
+  setAsideWidthSize: ["small"],
+  setStyleValue: [{ "--header-height": 10 }],
+  setLayoutType: ["header-aside"],
+});
+</script>
+
+<template>
+  <CLayout ref="Layout">
+    <template #header>header</template>
+    <template #aside>aside</template>
+    <template #default>main </template>
+    <template #footer>footer</template>
+  </CLayout>
+</template>
+```
+
 ## 常用布局
 
 这里会展示一些最基础的组件功能。无需任何嵌套元素或额外逻辑，只需要一层`<template>`即可完成布局。
@@ -148,6 +173,76 @@
 | `setAsideWidthSize`   | `small` \| `normal` \| `large`                                      |    `normal`     | aside 插槽宽度  |
 | `setFooterHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | footer 插槽高度 |
 | `setLayoutType`       | `header-footer`<br> `header-aside` <br> `footer-aside` <br> `aside` | `header-footer` | 布局类型        |
+
+### 组合式 API
+
+开发者可以使用通过 `useCsssLayout` 来初始化一个 `Layout` 组件。
+
+一般情况下，`csss—ui` 都建议开发者使用这种方法。
+
+::: tip `useCsssLayout` 函数说明
+
+**参数**
+
+- type: Object
+  - key: 接口名称
+  - value: 接口参数列表
+
+**返回值**
+
+- type: Object
+
+  - COMP: `Ref`组件实例，需要与 template 中的组件绑定
+
+:::
+
+> 示例
+
+```vue
+<script setup lang="ts">
+import { useCsssLayout } from "csss-ui";
+
+const { COMP: Layout } = useCsssLayout({
+  setAsideWidthSize: ["small"],
+});
+</script>
+
+<template>
+  <CLayout ref="Layout">
+    main
+    <template #aside>aside</template>
+  </CLayout>
+</template>
+```
+
+可能在某些情况下，开发者希望通过其他方式实现同样效果。因为实现基于`expose`，所以同样的方式可以通过这样来完成：
+
+```vue
+<script setup lang="ts">
+import { onMounted } from "vue";
+
+const Layout = ref<CLayoutApi>();
+
+onMounted(() => {
+  Layout.value.setAsideWidthSize("small");
+});
+</script>
+
+<template>
+  <CLayout ref="Layout">
+    main
+    <template #aside>aside</template>
+  </CLayout>
+</template>
+```
+
+其中，`CLayoutApi` 类型支持可参考 [Volar 支持](./quick-start.md#volar-支持)
+
+### 选项式 API
+
+选项式 API 可参考：
+
+<demo src="../../demos/layout/Optional.vue" raw/>
 
 ## css 变量汇总
 
