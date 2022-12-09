@@ -1,3 +1,5 @@
+import "@hansuhhi-don/csss/dist/style.css";
+
 import type { App } from "vue";
 import * as components from "./packages/main";
 import { forEach } from "lodash-es";

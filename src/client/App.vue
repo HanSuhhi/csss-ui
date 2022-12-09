@@ -10,9 +10,25 @@ const { COMP: Layout } = useCsssLayout({
 
 <template>
   <CLayout ref="Layout">
-    <template #header>header</template>
-    <template #aside>aside</template>
-    <template #default>main </template>
+    <p>main</p>
+    <p>main</p>
+    <p>main</p>
+
+    <template #header>
+      <CTabs>
+        <template #list="{ num }">
+          <p>tab 1{{ num }}</p>
+          <p>tab 2</p>
+        </template>
+        <template #panel0>
+          <p>1</p>
+        </template>
+        <template #panel1>
+          <h1>2</h1>
+        </template>
+      </CTabs>
+    </template>
+    <template #aside />
     <template #footer>footer</template>
   </CLayout>
 </template>

@@ -19,6 +19,6 @@
     "declarationDir": "dist/types",
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/template/C{{properCase name}}.tsx.hbs", "src/template/composables/{{camelCase name}}.ts.hbs", "src/template/composables/{{camelCase name}}.ts.HBS", "src/template/composables/{{camelCase name}}.ts.hbs", "src/template/{{camelCase name}}Type.d.ts.hbs", "src/scripts/plopfile.js", "src/scripts/plopfile.js", "src/scripts/plopfile.js", "src/scripts/plopfile.js", "src/template/C{{upperCase name}}.tsx.hbs", "src/template/{{dashCase name}}Type.d.ts.hbs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

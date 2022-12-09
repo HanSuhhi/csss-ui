@@ -1,0 +1,10 @@
+.csss-tabs {
+  --list-width: 99%;
+
+  /* 搭配 width，可选 center，left，right */
+  --list-position: "flex-end";
+  --list-direction: row;
+  --list-justify-content: flex-start;
+  --list-text-transform: uppercase;
+  --list-active-scale: 1.1;
+}

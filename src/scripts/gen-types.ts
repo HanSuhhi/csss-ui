@@ -80,7 +80,7 @@ declare module '@vue/runtime-core' {
       const componentName = titleize(dir.split("\\").pop() || "");
       const order = `C${componentName}: typeof import("csss-ui")["${componentName}"]`;
       template += `\n${order}`;
-      apis.push(`import "./packages/${componentName.toLowerCase()}/${componentName.toLocaleLowerCase()}Type"`);
+      apis.push(`\nimport "./packages/${componentName.toLowerCase()}/${componentName.toLocaleLowerCase()}Type"`);
     });
   template += `
     }

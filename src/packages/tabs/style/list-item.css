@@ -1,0 +1,19 @@
+.csss-tabs__list__item {
+  margin-top: var(--small);
+  padding: var(--mini) var(--normal);
+  color: var(--white);
+  text-transform: var(--list-text-transform);
+  background-color: var(--main-color-bright-2);
+  cursor: pointer;
+  transition: all var(--moment) ease-in-out;
+}
+
+.csss-tabs__list__item:hover {
+  background-color: var(--main-color-bright-1);
+}
+
+.csss-tabs__list__item[data-active] {
+  background-color: var(--main-color);
+  transform: scale(var(--list-active-scale));
+  transform-origin: 100% 100%;
+}
