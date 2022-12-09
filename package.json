@@ -1,6 +1,6 @@
 {
   "name": "csss-ui",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.0",
   "description": "A vue3.0 components library based on csss",
   "main": "./dist/csss-ui.umd.js",
   "module": "./dist/csss-ui.es.js",
@@ -26,9 +26,11 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
+    "gen": "esno src/scripts/gen-pkg.ts --name",
     "gen:components": "esno src/scripts/gen-components.ts",
     "gen:types": "esno src/scripts/gen-types",
-    "publish:test": "npm publish --registry http://localhost:4873/"
+    "publish:test": "npm publish --registry http://localhost:4873/",
+    "publish:tag": "git push --tags"
   },
   "engines": {
     "node": ">=16.17.0"
@@ -47,11 +49,13 @@
     "@hansuhhi-don/stylelint-config": "^0.2.0",
     "@types/klaw-sync": "^6.0.1",
     "@types/lodash-es": "^4.17.6",
+    "@types/minimist": "^1.2.2",
     "@types/node": "^18.11.9",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "@vitest/coverage-c8": "^0.25.3",
     "@vue/test-utils": "^2.2.4",
+    "chalk": "^5.1.2",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.28.0",
@@ -61,6 +65,9 @@
     "jsdom": "^20.0.3",
     "klaw-sync": "^6.0.0",
     "markdown-it": "^13.0.1",
+    "minimist": "^1.2.7",
+    "node-plop": "^0.31.0",
+    "plop": "2.7.4",
     "prettier": "^2.8.0",
     "rollup-plugin-delete": "^2.0.0",
     "stylelint": "^14.15.0",

@@ -1,0 +1,10 @@
+import type { App } from "vue";
+import C{{properCase name}} from './index.vue';
+
+C{{properCase name}}.install = (app: App) => {
+  app.component(C{{properCase name}}.name, C{{properCase name}});
+};
+
+export { C{{properCase name}} };
+export default C{{properCase name}};
+export { useCsss{{properCase name}} } from "./composables/csss{{properCase name}}";

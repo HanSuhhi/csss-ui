@@ -1,5 +1,11 @@
 # csss-ui
 
+## 0.1.1-beta.0
+
+### Patch Changes
+
+- add layout composition API
+
 ## 0.1.0-beta.1
 
 ### Patch Changes

@@ -1,0 +1,10 @@
+import { shallowMount } from "@vue/test-utils";
+import { describe, expect, it } from "vitest";
+import C{{properCase name}} from "../C{{properCase name}}";
+
+describe("C{{properCase name}}.tsx", () => {
+  it("render", () => {
+    const wrapper = shallowMount(C{{properCase name}});
+    expect(wrapper.classes()).toContain("csss-{{dashCase name}}");
+  });
+});

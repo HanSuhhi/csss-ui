@@ -1,0 +1,15 @@
+import type { Ref } from "vue";
+import { ref } from "vue";
+import type { StyleSetter } from "@/packages/tool/styleSetter.tool";
+
+export function useLayout(styleSetter: StyleSetter | Ref<StyleSetter | undefined>) {
+
+  const styleValueList = ref<Partial<C{{properCase name}}CustomProperties>>({});
+  const setStyleValue = (list: Partial<C{{properCase name}}CustomProperties>) => {
+    styleValueList.value = list;
+  };
+
+  return {
+    setStyleValue,
+  };
+}

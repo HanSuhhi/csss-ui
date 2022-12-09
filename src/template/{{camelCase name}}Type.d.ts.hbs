@@ -1,0 +1,25 @@
+/**
+* @description 布局可供修改的 css 变量的可选值
+*/
+interface C{{properCase name}}CustomProperties {
+
+}
+
+/**
+* @description API
+*/
+interface C{{properCase name}}Api extends ComponentBase {
+  setStyleValue: (value: Partial<C{{properCase name}}CustomProperties>) => void;
+}
+
+/**
+* @description useCsssLayout props
+*/
+type UseCsss{{ properCase name }}Props = {
+  [key in keyof C{{properCase name}}Api]?: Parameters<C{{properCase name}}Api[key]>;
+};
+
+/**
+* @description css 变量设置方法
+*/
+type C{{properCase name}}CssPropsResolver = { [key in keyof C{{properCase name}}CustomProperties]: (value: any) => void };

@@ -1,0 +1,21 @@
+import "./{{dashCase name}}.css";
+
+import { defineComponent } from 'vue';
+import { useElement } from "../composables/element";
+
+export default defineComponent({
+  name: "C{{properCase name}}",
+  setup: (props, { slots, expose }) => {
+    const { element, styleSetter } = useElement("csss-{{dashCase name}}");
+
+    expose({
+    });
+
+    return () => {
+      return (
+        <article ref={element} class="csss-{{dashCase name}}">
+        </article>
+      );
+    };
+  },
+});
