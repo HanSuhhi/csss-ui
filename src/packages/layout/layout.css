@@ -8,10 +8,10 @@
   position: relative;
   display: grid;
   grid-template:
-    "header header" var(--header-height)
+    "header header"
     "aside main" auto
-    "aside footer" var(--footer-height)
-    / var(--aside-width) auto;
+    "aside footer"
+    / minmax(min-content, var(--aside-width));
   grid-template-areas: var(--grid-template-areas);
   width: 100%;
   height: 100%;
@@ -19,10 +19,12 @@
 
 .csss-layout__header {
   grid-area: header;
+  min-height: var(--header-height);
 }
 
 .csss-layout__aside {
   grid-area: aside;
+  width: auto;
 }
 
 .csss-layout__main {
@@ -31,4 +33,5 @@
 
 .csss-layout__footer {
   grid-area: footer;
+  min-height: var(--footer-height);
 }

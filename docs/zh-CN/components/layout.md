@@ -119,6 +119,14 @@ const { COMP: Layout } = useCsssLayout({
 
 <demo src="../../demos/layout/AsideWidthSize.vue" />
 
+:::warning
+由于宽度实现是通过 `grid-template-columns: minmax(min-content, var(--aside-width))` 实现。`aside插槽` 的设定宽度只是最小宽度值，实际宽度会随子元素宽度的增加而增加。
+
+**请注意控制子组件 / 元素的宽度。**
+
+@TODO：提供锁定模式和非锁定模式。
+:::
+
 ### setFooterHeightSize
 
 设置 `footer插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
