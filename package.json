@@ -18,7 +18,7 @@
     "release:only": "changeset publish --registry=https://registry.npmjs.com/ && git push tags",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "build": "pnpm gen:components && vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",
+    "build": "vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",
     "build:test": "pnpm build && pnpm publish:test",
     "lint:eslint": "eslint **/*.{vue,ts,tsx} --fix",
     "lint:stylelint": "stylelint **/*.{vue,css} --fix",
