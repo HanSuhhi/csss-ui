@@ -1,1 +1,0 @@
-import{h as a,_ as s,o as n,k as r,l as e,r as c,b as t}from"../app.96ee59e8.js";const i=a({mounted(){this.$refs.Layout.setAsideWidthSize("small")}});function d(p,_,f,u,l,m){const o=c("CLayout");return n(),r(o,{ref:"Layout"},{aside:e(()=>[t("aside")]),default:e(()=>[t(" main ")]),_:1},512)}const x=s(i,[["render",d]]);export{x as default};
