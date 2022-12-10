@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as a}from"./app.6c70b99e.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"zh-CN/components/tabs.md","lastUpdated":1670656967000}'),s={name:"zh-CN/components/tabs.md"};function o(n,r,c,p,d,_){return e(),a("div")}const f=t(s,[["render",o]]);export{i as __pageData,f as default};
