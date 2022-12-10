@@ -9,16 +9,16 @@
   <samp>A vue3.0 components library based on csss</samp>
 </p>
 <p align="center"> English | <a href="README.zh-CN.md">中文</a></p>
-<a href='https://www.npmjs.com/package/csss-ui'>
-  <img src='https://img.shields.io/npm/v/csss-ui?color=333&labelColor=555&style=flat-square' alt='version'/>
-</a>
+<p align="center">
+  <img alt="npm" src="https://img.shields.io/npm/v/csss-ui"><img alt="GitHub" src="https://img.shields.io/github/license/hansuhhi/csss-ui"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/csss-ui"><img alt="npm" src="https://img.shields.io/npm/dt/csss-ui">
+</p>
 <p align="center">
   Csss / Headless / Simple / Cool
 </p>
 
 ## Documentation
 
-[hansuhhi.github.io/csss-ui/en-US/](https://hansuhhi.github.io/csss-ui/en-US/)
+[https://csssui.art/en-US](https://https://csssui.art/en-US/)
 
 ## Usage
 

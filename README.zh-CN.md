@@ -9,16 +9,16 @@
   <samp>依赖于 csss 的 vue3.0 组件库</samp>
 </p>
 <p align="center"> <a href="README.md">English</a> | 中文</p>
-<a href='https://www.npmjs.com/package/csss-ui'>
-  <img src='https://img.shields.io/npm/v/csss-ui?color=333&labelColor=555&style=flat-square' alt='version'/>
-</a>
+<p align="center">
+  <img alt="npm" src="https://img.shields.io/npm/v/csss-ui"><img alt="GitHub" src="https://img.shields.io/github/license/hansuhhi/csss-ui"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/csss-ui"><img alt="npm" src="https://img.shields.io/npm/dt/csss-ui">
+</p>
 <p align="center">
   Csss / Headless / Simple / Cool
 </p>
 
 ## 文档
 
-[hansuhhi.github.io/csss-ui/zh-CN/](https://hansuhhi.github.io/csss-ui/zh-CN/)
+[csssui.art/zh-CN](https://csssui.art/zh-CN/)
 
 ## 使用
 
