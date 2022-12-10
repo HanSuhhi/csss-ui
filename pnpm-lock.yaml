@@ -4,7 +4,7 @@ specifiers:
   '@changesets/cli': ^2.25.2
   '@commitlint/cli': ^17.3.0
   '@commitlint/config-conventional': ^17.3.0
-  '@hansuhhi-don/csss': ^0.0.0
+  '@hansuhhi-don/csss': 0.0.1-beta.2
   '@hansuhhi-don/eslint-config': ^0.3.0
   '@hansuhhi-don/stylelint-config': ^0.2.0
   '@types/klaw-sync': ^6.0.1
@@ -44,7 +44,7 @@ specifiers:
   vue-tsc: ^1.0.9
 
 dependencies:
-  '@hansuhhi-don/csss': 0.0.0
+  '@hansuhhi-don/csss': 0.0.1-beta.2
   lodash-es: 4.17.21
   titleize: 3.0.0
   vue: 3.2.45
@@ -1003,8 +1003,8 @@ packages:
       - supports-color
     dev: true
 
-  /@hansuhhi-don/csss/0.0.0:
-    resolution: {integrity: sha512-e16yJtOWZ+IXCDk0EpzJvJjuU2WQzxLRkgz8PoUJ1uz6KvfcpF0EOmfncva7sOnoEXaX932AHfDSCRzBPhZ5oA==}
+  /@hansuhhi-don/csss/0.0.1-beta.2:
+    resolution: {integrity: sha512-CLUrwQwQocUBIBVKVkREQ98C0v2ZxYNgVF+eSF+AJ3ChEXPUyikfOGBuJyCwuIDYax9inZXdjnen3A5teBB6VA==}
     dependencies:
       vue: 3.2.45
     dev: false
