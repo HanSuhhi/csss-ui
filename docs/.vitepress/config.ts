@@ -2,10 +2,9 @@ import { defineConfig } from "vitepress";
 import { defineSideBar } from "./configs/nav";
 
 export default defineConfig({
-  base: "/csss-ui/",
   title: "csss-ui",
   head: [
-    ["link", { rel: "icon", href: "/csss-ui/favicon.ico" }],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
     ["meta", { name: "google-site-verification", content: "GiSgTFTRrp0djjWwu4O-vSj9CI_Fh6y9ULlMXuJ8hCo" }],
   ],
   lastUpdated: true,
