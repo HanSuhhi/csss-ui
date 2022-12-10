@@ -4,7 +4,10 @@ import { defineSideBar } from "./configs/nav";
 export default defineConfig({
   base: "/csss-ui/",
   title: "csss-ui",
-  head: [["link", { rel: "icon", href: "/csss-ui/favicon.ico" }]],
+  head: [
+    ["link", { rel: "icon", href: "/csss-ui/favicon.ico" }],
+    ["meta", { name: "google-site-verification", content: "GiSgTFTRrp0djjWwu4O-vSj9CI_Fh6y9ULlMXuJ8hCo" }],
+  ],
   lastUpdated: true,
   cleanUrls: "with-subfolders",
   themeConfig: {
