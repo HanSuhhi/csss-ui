@@ -18,7 +18,7 @@
 
 ## Documentation
 
-[hansuhhi.github.io/csss-ui/zh-CN/](https://hansuhhi.github.io/csss-ui/en-US/)
+[hansuhhi.github.io/csss-ui/en-US/](https://hansuhhi.github.io/csss-ui/en-US/)
 
 ## Usage
 
