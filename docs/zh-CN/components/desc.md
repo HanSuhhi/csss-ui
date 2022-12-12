@@ -2,7 +2,7 @@
 
 这里用来解释一些 `csss-ui` 的一些特性。
 
-## expose
+## 接口
 
 > expose 用于声明当组件实例被父组件通过模板引用访问时暴露的公共属性。 ——[Vue](https://cn.vuejs.org/api/options-state.html#expose)
 
@@ -180,10 +180,52 @@ const { COMP: Layout } = useCsssLayout({
 
 在文档的多处实例中，包括[前文](#改造)，都是基于组合式函数的实现。
 
+以 [CLayout](./layout.md) 为例，一个基本的使用方法是这样的：
+
+```vue
+<script setup lang="ts">
+import { useCsssTabs } from "csss-ui";
+
+const { COMP: Tabs } = useCsssTabs({
+  setAsideWidthSize: ["small"],
+});
+</script>
+
+<template>
+  <CTabs ref="Tabs">
+    main
+    <template #aside>aside</template>
+  </CTabs>
+</template>
+```
+
+当然，可能在某些情况下，开发者希望通过其他方式实现同样效果。因为实现基于`expose`，所以同样的方式可以通过这样来完成：
+
+```vue
+<script setup lang="ts">
+import { onMounted } from "vue";
+
+const Tabs = ref<CTabsApi>();
+
+onMounted(() => {
+  Tabs.value.setAsideWidthSize("small");
+});
+</script>
+
+<template>
+  <CTabs ref="Tabs">
+    main
+    <template #aside>aside</template>
+  </CTabs>
+</template>
+```
+
+其中，相关的类型支持可参考 [Volar 支持](./quick-start.md#volar-支持)
+
 ## 选项式 API
 
 开发者也可以自定义组件实例进行绑定，这在选项式 API 中同样使用。
 
-> 示例
+选项式 API 可参考：
 
 <demo src="../../demos/layout/Optional.vue" raw/>

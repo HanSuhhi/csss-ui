@@ -1,35 +1,83 @@
-import { warn } from "@/packages/tool/console.tool";
-import { ref, unref, watchEffect } from "vue";
+import { forEach } from "lodash-es";
+import type { Slot } from "vue";
+import { computed, ref, unref, watchEffect } from "vue";
+import { haveAttribute } from "../../../tool/elementAttribute.tool";
 
-const checkListChildren = (el: HTMLElement): HTMLElement[] => {
+/**
+ * 1. check if the child element is exists.
+ * 2. check if the child element has the `data-disabled` attribute.
+ */
+const checkListChildren = (el: HTMLElement): CheckListChildrenResult => {
   const listChildren = Array.from(unref(el)?.children) as HTMLElement[];
-  if (!listChildren) warn(`Tabs: list 缺少子元素`);
-  return listChildren;
+  return listChildren.map((el) => {
+    return [!haveAttribute(el.children[0], "data-disabled")[0] ? "normal" : "disabled", el];
+  });
 };
 
-export const useTabsList = () => {
-  const TabsList = ref<HTMLElement>();
+export const useTabsList = (list?: Slot) => {
   /**
    * @description number of list
    */
-  const listNum = ref();
+  const children = ref<CheckListChildrenResult>();
+  const total = ref(0);
+  const setTotal = () => {
+    total.value = children.value?.length || 0;
+  };
+
   /**
    * @description active num
    */
-  const active = ref(0);
-  /**
-   * @description func that change active
-   */
-  const activeClick = (index: number) => {
+  const active = ref();
+  const isActive = (index: number) => index === active.value;
+  const changeActive = (index: number) => {
+    if (checkIftheIndexIsDisabled(index)) return;
+    active.value = index;
+  };
+  const setDefaultActive = () => {
+    if (!disabledIndexs.value.length || disabledIndexs.value[0] !== 0) active.value = 0;
+    let index = 0;
+    for (const _index of disabledIndexs.value) {
+      if (index === _index) index++;
+      else break;
+    }
     active.value = index;
   };
 
+  /**
+   * @description TabsList
+   */
+  const TabsList = ref<HTMLElement>();
+
+  /**
+   * @description disabled index list
+   */
+  const disabledIndexs = ref<number[]>([]);
+  const setDisabledIndexs = () => {
+    disabledIndexs.value = [];
+    forEach(children.value, ([is, ele], index) => {
+      if (is === "disabled") {
+        disabledIndexs.value.push(index);
+        ele.setAttribute("data-disabled", "");
+        ele.classList.remove("csss-tabs__list__item__hover");
+      }
+    });
+  };
+  const checkIftheIndexIsDisabled = (index: number) => {
+    return disabledIndexs.value.includes(index);
+  };
+
+  /**
+   * @description classes
+   */
+  const classes = ["csss-tabs__list__item", "csss-tabs__list__item__hover"];
+
   watchEffect(() => {
-    const el = unref(TabsList);
-    if (!el) return;
-    const listChildren = checkListChildren(el);
-    listNum.value = listChildren.length;
+    if (!TabsList.value) return;
+    children.value = checkListChildren(TabsList.value);
+    setDisabledIndexs();
+    setTotal();
+    setDefaultActive();
   });
 
-  return { TabsList, listNum, active, activeClick };
+  return { total, active, TabsList, isActive, changeActive, classes };
 };

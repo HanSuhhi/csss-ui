@@ -1,43 +1,65 @@
 import "./tabs.css";
 
-import { computed, defineComponent, readonly, watchEffect, onMounted } from 'vue';
+import { lintAttribute } from "@/tool/elementAttribute.tool";
+import type { VNodeNormalizedChildren } from 'vue';
+import { defineComponent, readonly } from 'vue';
 import { useElement } from "../composables/element";
 import { useTabsList } from "./composables/tabsList";
-import { range } from "lodash-es";
+import { useTabsPanel } from './composables/tabsPanel';
 
 export default defineComponent({
   name: "CTabs",
   setup: (props, { slots, expose }) => {
-    const { element, styleSetter } = useElement("csss-tabs");
-    const { TabsList, listNum, active, activeClick } = useTabsList();
-
-    const panels = computed(() => range(listNum.value).map(index => `panel${index}`));
-
-
+    const { element, getVnodeIndex } = useElement("csss-tabs");
+    const { TabsList, total, active, classes: listClasses, isActive, changeActive } = useTabsList(slots.list);
+    const { panels, classes: panelClasses } = useTabsPanel(total);
 
     expose({
-      listNum: readonly(listNum)
+      total: readonly(total),
+      active: active,
+      panels: readonly(panels)
     });
 
     return () => {
       return (
         <article ref={element} class="csss-tabs">
-          {slots.list &&
+          {
+            slots.list &&
             <section class="csss-tabs__list" ref={TabsList}>
               {slots.list?.({
-                num: readonly(listNum)
-              }).map((el, index) => (
-                <div data-active={active.value === index ? "" : null} onClick={activeClick.bind(this, index)} class="csss-tabs__list__item">
-                  {el}
-                </div>
-              ))}
+                listTotal: readonly(total),
+                active: readonly(active)
+              })
+                // filter comment vnode
+                .filter((el) => el.type.toString() !== 'Symbol(Comment)')
+                .map(el => {
+                  if (el.type.toString() === 'Symbol(Fragment)') {
+                    return el.children;
+                  }
+                  return [el];
+                })
+                .map((el, index, arr) => {
+                  const indexBase = getVnodeIndex(index, arr as VNodeNormalizedChildren[][]);
+                  return (el as VNodeNormalizedChildren[]).map((e, i) => {
+                    return (
+                      <div
+                        onClick={changeActive.bind(this, indexBase + i)}
+                        data-active={lintAttribute(isActive(indexBase + i))}
+                        class={listClasses}>
+                        {e}
+                      </div>
+                    );
+                  });
+                })}
             </section>
           }
           <section class="csss-tabs__panels">
             {panels.value.map((panel, index) => {
               return slots[panel] &&
-                <section data-active={active.value === index ? "" : null} class={[`csss-tabs__panel`]}>
-                  {slots[panel]?.()}
+                <section data-active={lintAttribute(active.value === index)} class={panelClasses()}>
+                  {slots[panel]?.({
+                    active: readonly(active)
+                  })}
                 </section>;
             })}
           </section>

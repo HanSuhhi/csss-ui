@@ -1,7 +1,7 @@
+import type { StyleSetter } from "@/tool/styleSetter.tool";
 import { forEach } from "lodash-es";
 import type { Ref } from "vue";
 import { ref, unref, watchEffect } from "vue";
-import type { StyleSetter } from "@/packages/tool/styleSetter.tool";
 
 export function useLayout(styleSetter: StyleSetter | Ref<StyleSetter | undefined>) {
   /**

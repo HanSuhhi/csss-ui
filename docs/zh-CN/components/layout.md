@@ -14,32 +14,86 @@
 
 开发者可以使用通过 `useCsssLayout` 来初始化一个 `Layout` 组件。（[组合式 API](#组合式-api)）
 
-```vue
-<script setup lang="ts">
-import { useCsssLayout } from "csss-ui";
+<layout-demo />
 
-const { COMP: Layout } = useCsssLayout({
-  setAsideWidthSize: ["small"],
-  setStyleValue: [{ "--header-height": 10 }],
-  setLayoutType: ["header-aside"],
+<demo src="../../demos/layout/demo.vue" raw />
+
+## 组合式 API
+
+开发者可以使用通过 `useCsssLayout` 来初始化一个 `Layout` 组件。
+
+一般情况下，`csss—ui` 都建议开发者使用这种方法。
+
+::: tip 使用示例
+
+```typescript
+const { ...返回值 } = useCsssLayout({
+  [接口名]: [接口参数],
+  ...
 });
-</script>
-
-<template>
-  <CLayout ref="Layout">
-    <template #header>header</template>
-    <template #aside>aside</template>
-    <template #default>main </template>
-    <template #footer>footer</template>
-  </CLayout>
-</template>
 ```
 
-## 常用布局
+:::
 
-这里会展示一些最基础的组件功能。无需任何嵌套元素或额外逻辑，只需要一层`<template>`即可完成布局。
+### 接口
 
-在一些比较简单的布局场景下，它可以很好地发挥实力。当然，复杂场景我希望它也可以胜任。
+`Layout` 所有接口列表：
+
+| name                  | value type                                                          |     default     | description                     |
+| --------------------- | :------------------------------------------------------------------ | :-------------: | :------------------------------ |
+| `setHeaderHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | [header 高度](#header-高度)     |
+| `setAsideWidthSize`   | `small` \| `normal` \| `large`                                      |    `normal`     | [aside 宽度](#aside-宽度)       |
+| `setFooterHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | [footer 高度](#footer-高度)     |
+| `setLayoutType`       | `header-footer`<br> `header-aside` <br> `footer-aside` <br> `aside` | `header-footer` | [布局类型](#布局类型)           |
+| `setStyleValue`       | `Object`                                                            |      `{}`       | [设置 css 变量](#设置-css-变量) |
+
+### 返回值
+
+| name   | value type | default | description                            |
+| ------ | :--------- | :-----: | :------------------------------------- |
+| `COMP` | `Ref`      |  null   | 组件实例，需要与 template 中的组件绑定 |
+
+以下是
+
+## header 高度
+
+设置 `header插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
+
+如果对于 `header插槽` 高度有具体要求，可使用 [setStyleValue](#setstylevalue) 来设置详细高度。
+
+<demo src="../../demos/layout/HeaderHeightSize.vue" />
+
+## aside 宽度
+
+设置 `aside插槽` 宽度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
+
+如果对于 `aside插槽` 宽度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细宽度。
+
+<demo src="../../demos/layout/AsideWidthSize.vue" />
+
+:::warning
+由于宽度实现是通过 `grid-template-columns: minmax(min-content, var(--aside-width))` 实现。`aside插槽` 的设定宽度只是最小宽度值，实际宽度会随子元素宽度的增加而增加。
+
+**请注意控制子组件 / 元素的宽度。**
+
+@TODO：提供锁定模式和非锁定模式。
+:::
+
+## footer 高度
+
+设置 `footer插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
+
+如果对于 `footer插槽` 高度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细高度。
+
+<demo src="../../demos/layout/FooterHeightSize.vue" />
+
+## 布局类型
+
+:::tip
+对于一些简单布局而言，此接口并无实质意义。应考虑增减相关插槽以实现布局目的。
+:::
+
+设置布局类型，可选值有 `header-footer` ， `header-aside` ， `footer-aside` ， `aside`。
 
 ### 左右布局
 
@@ -97,57 +151,7 @@ const { COMP: Layout } = useCsssLayout({
 
 <demo src="../../demos/layout/Aside.vue" />
 
-## 接口
-
-> Layout 布局组件接口类型为`CLayoutApi`
-
-借助于 vue3.0 `expose` 能力，可以通过组件暴露的接口来定义组件样式、逻辑与状态。具体使用参考@TODO
-
-### setHeaderHeightSize
-
-设置 `header插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
-
-如果对于 `header插槽` 高度有具体要求，可使用 [setStyleValue](#setstylevalue) 来设置详细高度。
-
-<demo src="../../demos/layout/HeaderHeightSize.vue" />
-
-### setAsideWidthSize
-
-设置 `aside插槽` 宽度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
-
-如果对于 `aside插槽` 宽度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细宽度。
-
-<demo src="../../demos/layout/AsideWidthSize.vue" />
-
-:::warning
-由于宽度实现是通过 `grid-template-columns: minmax(min-content, var(--aside-width))` 实现。`aside插槽` 的设定宽度只是最小宽度值，实际宽度会随子元素宽度的增加而增加。
-
-**请注意控制子组件 / 元素的宽度。**
-
-@TODO：提供锁定模式和非锁定模式。
-:::
-
-### setFooterHeightSize
-
-设置 `footer插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
-
-如果对于 `footer插槽` 高度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细高度。
-
-<demo src="../../demos/layout/FooterHeightSize.vue" />
-
-### setLayoutType
-
-:::tip
-对于一些简单布局而言，此接口并无实质意义。应考虑增减相关插槽以实现布局目的。
-:::
-
-设置布局类型，可选值有 `header-footer` ， `header-aside` ， `footer-aside` ， `aside`。
-
-如果已经参考过[常用布局](#常用布局)中的[首侧布局](#首侧布局)，[尾侧布局](#尾侧布局)和[侧布局](#侧布局)的话，相信你应该已经对该接口有了一些了解。
-
-事实上，这些布局已经是它的全部能力。
-
-### setStyleValue
+## 设置 css 变量
 
 :::warning
 
@@ -169,90 +173,7 @@ const { COMP: Layout } = useCsssLayout({
 | `--aside-width`   |  `number`  |  12.5   | aside 插槽宽度  | `rem` |
 | `--footer-height` |  `number`  |    3    | footer 插槽高度 | `rem` |
 
-## 接口汇总
-
-> 接口 type `CLayoutApi`
-
-`Layout` 所有接口列表：
-
-| name                  | value type                                                          |     default     | description     |
-| --------------------- | :------------------------------------------------------------------ | :-------------: | :-------------- |
-| `setHeaderHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | header 插槽高度 |
-| `setAsideWidthSize`   | `small` \| `normal` \| `large`                                      |    `normal`     | aside 插槽宽度  |
-| `setFooterHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | footer 插槽高度 |
-| `setLayoutType`       | `header-footer`<br> `header-aside` <br> `footer-aside` <br> `aside` | `header-footer` | 布局类型        |
-
-### 组合式 API
-
-开发者可以使用通过 `useCsssLayout` 来初始化一个 `Layout` 组件。
-
-一般情况下，`csss—ui` 都建议开发者使用这种方法。
-
-::: tip `useCsssLayout` 函数说明
-
-**参数**
-
-- type: Object
-  - key: 接口名称
-  - value: 接口参数列表
-
-**返回值**
-
-- type: Object
-
-  - COMP: `Ref`组件实例，需要与 template 中的组件绑定
-
-:::
-
-> 示例
-
-```vue
-<script setup lang="ts">
-import { useCsssLayout } from "csss-ui";
-
-const { COMP: Layout } = useCsssLayout({
-  setAsideWidthSize: ["small"],
-});
-</script>
-
-<template>
-  <CLayout ref="Layout">
-    main
-    <template #aside>aside</template>
-  </CLayout>
-</template>
-```
-
-可能在某些情况下，开发者希望通过其他方式实现同样效果。因为实现基于`expose`，所以同样的方式可以通过这样来完成：
-
-```vue
-<script setup lang="ts">
-import { onMounted } from "vue";
-
-const Layout = ref<CLayoutApi>();
-
-onMounted(() => {
-  Layout.value.setAsideWidthSize("small");
-});
-</script>
-
-<template>
-  <CLayout ref="Layout">
-    main
-    <template #aside>aside</template>
-  </CLayout>
-</template>
-```
-
-其中，`CLayoutApi` 类型支持可参考 [Volar 支持](./quick-start.md#volar-支持)
-
-### 选项式 API
-
-选项式 API 可参考：
-
-<demo src="../../demos/layout/Optional.vue" raw/>
-
-## css 变量汇总
+### css 变量汇总
 
 :::tip
 

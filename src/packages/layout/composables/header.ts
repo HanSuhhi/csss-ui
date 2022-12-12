@@ -1,7 +1,7 @@
+import type { StyleSetter } from "@/tool/styleSetter.tool";
 import { defer } from "lodash-es";
 import type { Ref, Slot } from "vue";
 import { ref, unref, watchEffect } from "vue";
-import type { StyleSetter } from "../../tool/styleSetter.tool";
 
 export function useHeader(styleSetter: StyleSetter | Ref<StyleSetter | undefined>, header?: Slot) {
   /**

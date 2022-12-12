@@ -13,6 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "csss-ui": resolve(__dirname, "../dist"),
+      "@": resolve(__dirname, "./"),
     },
   },
 });

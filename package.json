@@ -45,7 +45,7 @@
     "@changesets/cli": "^2.25.2",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
-    "@hansuhhi-don/eslint-config": "^0.3.0",
+    "@hansuhhi-don/eslint-config": "^0.3.2",
     "@hansuhhi-don/stylelint-config": "^0.2.0",
     "@types/klaw-sync": "^6.0.1",
     "@types/lodash-es": "^4.17.6",

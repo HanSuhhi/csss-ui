@@ -1,7 +1,7 @@
 import type { Ref, Slot } from "vue";
-import type { StyleSetter } from "../../tool/styleSetter.tool";
 import { ref, unref, watchEffect } from "vue";
 import { defer } from "lodash-es";
+import type { StyleSetter } from "@/tool/styleSetter.tool";
 
 export function useFooter(styleSetter: StyleSetter | Ref<StyleSetter | undefined>, footer?: Slot) {
   const footerHeightSize = ref<CLayoutFooterHeightSize>("normal");

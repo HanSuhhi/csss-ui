@@ -32,6 +32,10 @@ const defineSideBarItem = (language: Language): DefaultTheme.Sidebar => {
             text: (<LanguageStruct>["Layout", "布局 Layout"])[language],
             link: definePath(language, "/components/layout"),
           },
+          {
+            text: (<LanguageStruct>["Tabs", "选项卡 Tabs"])[language],
+            link: definePath(language, "/components/tabs"),
+          },
         ],
       },
     ],

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCsssLayout } from "../packages/layout/composables/csssLayout";
+import { useCsssTabs } from "../packages/tabs/composables/csssTabs";
 
 const { COMP: Layout } = useCsssLayout({
   setAsideWidthSize: ["small"],
@@ -7,24 +8,33 @@ const { COMP: Layout } = useCsssLayout({
   setFooterHeightSize: ["large"],
   setLayoutType: ["header-aside"],
 });
+
+const {
+  COMP: Tabs,
+  total,
+  panels,
+  active,
+} = useCsssTabs({
+  active: 1,
+});
 </script>
 
 <template>
   <CLayout ref="Layout">
-    <CTabs>
-      <template #list="{ num }">
-        <p>tab 1{{ num }}</p>
-        <p>tab 2</p>
+    <CTabs ref="Tabs">
+      <template #list>
+        <p v-for="index in 3" :key="index">tab{{ index }}</p>
+        <p>
+          <span>tab 1</span>
+          {{ active }}
+        </p>
       </template>
-      <template #panel0>
-        <p>1</p>
-      </template>
-      <template #panel1>
-        <h1>2</h1>
+      <template v-for="panel in panels" :key="panel" #[panel]>
+        <p>{{ panel }}</p>
       </template>
     </CTabs>
 
-    <template #header> 1 </template>
+    <template #header> {{ total }}</template>
 
     <template #aside />
     <template #footer>footer</template>
