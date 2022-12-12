@@ -1,6 +1,6 @@
 {
   "name": "csss-ui",
-  "version": "0.1.1-beta.0",
+  "version": "0.2.0-beta.1",
   "description": "A vue3.0 components library based on csss",
   "main": "./dist/csss-ui.umd.js",
   "module": "./dist/csss-ui.es.js",
@@ -15,7 +15,7 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build && pnpm release:only",
-    "release:only": "changeset publish --registry=https://registry.npmjs.com/ && git push tags",
+    "release:only": "changeset publish --registry=https://registry.npmjs.com/ && git push --tags",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "build": "vite build && vue-tsc --noEmit && pnpm gen:types && pnpm lint:dist ",

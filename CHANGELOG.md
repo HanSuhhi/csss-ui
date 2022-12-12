@@ -1,5 +1,11 @@
 # csss-ui
 
+## 0.2.0-beta.1
+
+### Minor Changes
+
+- add tabs component
+
 ## 0.1.1-beta.0
 
 ### Patch Changes

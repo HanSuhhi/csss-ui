@@ -18,7 +18,7 @@
 
 ## Documentation
 
-[https://csssui.art/en-US](https://https://csssui.art/en-US/)
+[csssui.art](https://csssui.art/en-US/)
 
 ## Usage
 
@@ -41,7 +41,7 @@ Install globally is a way to save worry and effort.
 import { createApp } from "vue";
 import App from "./App.vue";
 import { createCsssUI } from "csss-ui";
-// 引入 css
+// import css
 import "csss-ui/dist/style.css";
 
 createApp(App).use(createCsssUI());
