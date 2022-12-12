@@ -46,7 +46,7 @@ export default defineComponent({
                       <div
                         onClick={changeActive.bind(this, indexBase + i)}
                         data-active={lintAttribute(isActive(indexBase + i))}
-                        class={listClasses}>
+                        class={listClasses.value}>
                         {e}
                       </div>
                     );

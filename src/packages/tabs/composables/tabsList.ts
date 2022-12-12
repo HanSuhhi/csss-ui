@@ -69,8 +69,8 @@ export const useTabsList = (list?: Slot) => {
   /**
    * @description need list style
    */
-  const needClassListStyle = ref(false);
-  const classes = computed(() => needClassListStyle.value && ["csss-tabs__list__item", "csss-tabs__list__item__hover"]);
+  const needClassListStyle = ref(true);
+  const classes = computed(() => (needClassListStyle.value ? ["csss-tabs__list__item", "csss-tabs__list__item__hover"] : []));
   const needDefaultListStyle: CTabsApi["needDefaultListStyle"] = (need) => {
     needClassListStyle.value = need;
   };
