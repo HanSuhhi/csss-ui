@@ -11,13 +11,14 @@ export default defineComponent({
   name: "CTabs",
   setup: (props, { slots, expose }) => {
     const { element, getVnodeIndex } = useElement("csss-tabs");
-    const { TabsList, total, active, classes: listClasses, isActive, changeActive } = useTabsList(slots.list);
+    const { TabsList, total, active, classes: listClasses, isActive, changeActive, needDefaultListStyle } = useTabsList(slots.list);
     const { panels, classes: panelClasses } = useTabsPanel(total);
 
     expose({
       total: readonly(total),
       active: active,
-      panels: readonly(panels)
+      panels: readonly(panels),
+      needDefaultListStyle
     });
 
     return () => {

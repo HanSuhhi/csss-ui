@@ -10,6 +10,7 @@ interface CTabsApi extends ComponentBase {
   total: Readonly<number>;
   panels: Readonly<string[]>;
   active: Ref<number>;
+  needDefaultListStyle: (need: boolean) => void;
   setStyleValue: (value: Partial<CTabsCustomProperties>) => void;
 }
 

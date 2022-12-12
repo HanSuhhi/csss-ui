@@ -67,9 +67,13 @@ export const useTabsList = (list?: Slot) => {
   };
 
   /**
-   * @description classes
+   * @description need list style
    */
-  const classes = ["csss-tabs__list__item", "csss-tabs__list__item__hover"];
+  const needClassListStyle = ref(false);
+  const classes = computed(() => needClassListStyle.value && ["csss-tabs__list__item", "csss-tabs__list__item__hover"]);
+  const needDefaultListStyle: CTabsApi["needDefaultListStyle"] = (need) => {
+    needClassListStyle.value = need;
+  };
 
   watchEffect(() => {
     if (!TabsList.value) return;
@@ -79,5 +83,5 @@ export const useTabsList = (list?: Slot) => {
     setDefaultActive();
   });
 
-  return { total, active, TabsList, isActive, changeActive, classes };
+  return { total, active, TabsList, isActive, changeActive, classes, needDefaultListStyle };
 };

@@ -16,6 +16,7 @@ const {
   active,
 } = useCsssTabs({
   active: 1,
+  needDefaultListStyle: [false],
 });
 </script>
 
@@ -23,11 +24,7 @@ const {
   <CLayout ref="Layout">
     <CTabs ref="Tabs">
       <template #list>
-        <p v-for="index in 3" :key="index">tab{{ index }}</p>
-        <p>
-          <span>tab 1</span>
-          {{ active }}
-        </p>
+        <p v-for="index in 3" :key="index" class="tab">tab{{ index }}</p>
       </template>
       <template v-for="panel in panels" :key="panel" #[panel]>
         <p>{{ panel }}</p>
@@ -40,3 +37,11 @@ const {
     <template #footer>footer</template>
   </CLayout>
 </template>
+
+<style scoped>
+.tab {
+  margin: 0 4px;
+  padding: 20px;
+  background-color: red;
+}
+</style>
