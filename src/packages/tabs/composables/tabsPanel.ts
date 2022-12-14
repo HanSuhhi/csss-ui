@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { range } from "lodash-es";
 
 export const useTabsPanel = (total: Ref<number>) => {
@@ -9,9 +9,13 @@ export const useTabsPanel = (total: Ref<number>) => {
   const panels = computed(() => range(total.value).map((index) => `panel-${index}`));
 
   /**
-   * @description classes
+   * @description style
    */
-  const classes = () => [`csss-tabs__panel`];
+  const needClassPanelStyle = ref(true);
+  const needDefaultPanelStyle: CTabsApi["needDefaultPanelStyle"] = (need) => {
+    needClassPanelStyle.value = need;
+  };
+  const classes = computed(() => [`csss-tabs__panel__control`, needClassPanelStyle.value ? "csss-tabs__panel" : ""]);
 
-  return { panels, classes };
+  return { panels, classes, needDefaultPanelStyle };
 };

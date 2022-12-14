@@ -2,11 +2,11 @@
 layout: home
 
 title: csss-ui
-titleTemplate: A vue3.0 components library based on csss /
+titleTemplate: A vue3.0 headless components library /
 
 hero:
   name: csss-ui
-  text: A vue3.0 components library based on csss /
+  text: A vue3.0 headless components library /
   tagline: 依赖于 csss 的 vue3.0 组件库
   actions:
     - theme: brand

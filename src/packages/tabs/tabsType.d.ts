@@ -11,16 +11,17 @@ interface CTabsApi extends ComponentBase {
   panels: Readonly<string[]>;
   active: Ref<number>;
   needDefaultListStyle: (need: boolean) => void;
+  needDefaultPanelStyle: (need: boolean) => void;
+  setActive: (index: number) => void;
+  setTabsClasses: (classes: Classes, options?: ClassesOptions) => void;
   setStyleValue: (value: Partial<CTabsCustomProperties>) => void;
 }
-
-type a = Omit<CTabsApi, "total">;
 
 /**
  * @description useCsssLayout props
  */
 type UseCsssTabsProps = {
-  [key in keyof Omit<CTabsApi, "total" | "panels">]?: Parameters<CTabsApi[key]> | CTabsApi[key];
+  [key in keyof Omit<CTabsApi, "total" | "panels" | "active">]?: Parameters<CTabsApi[key]> | CTabsApi[key];
 };
 /**
  * @description css 变量设置方法

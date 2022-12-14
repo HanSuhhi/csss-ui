@@ -2,7 +2,7 @@
 import { useCsssTabs } from "csss-ui/csss-ui.es.js";
 
 const { COMP: Tabs, panels } = useCsssTabs({
-  active: 1,
+  setActive: [1],
 });
 </script>
 

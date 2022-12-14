@@ -1,5 +1,5 @@
 .csss-tabs {
-  --list-width: 99%;
+  --list-width: 98%;
 
   /* 搭配 width，可选 center，left，right */
   --list-position: "flex-end";

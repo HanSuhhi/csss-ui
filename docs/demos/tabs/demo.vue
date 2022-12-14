@@ -7,10 +7,10 @@ const { COMP: Tabs, total, panels } = useCsssTabs();
 <template>
   <CTabs ref="Tabs">
     <template #list="{ listTotal, active }">
-      <p>tab 1</p>
-      <p>tab 2</p>
-      <p data-disabled>disabled</p>
-      <p>tab 4</p>
+      <span>tab 1</span>
+      <span>tab 2</span>
+      <span data-disabled>disabled</span>
+      <span>tab 4</span>
     </template>
     <template v-for="(panel, index) in panels" :key="panel" #[panel]>
       <p>{{ index }}</p>

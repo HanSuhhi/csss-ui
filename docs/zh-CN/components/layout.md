@@ -39,7 +39,7 @@ const { ...返回值 } = useCsssLayout({
 
 `Layout` 所有接口列表：
 
-| name                  | value type                                                          |     default     | description                     |
+| name                  | param type                                                          |     default     | description                     |
 | --------------------- | :------------------------------------------------------------------ | :-------------: | :------------------------------ |
 | `setHeaderHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | [header 高度](#header-高度)     |
 | `setAsideWidthSize`   | `small` \| `normal` \| `large`                                      |    `normal`     | [aside 宽度](#aside-宽度)       |

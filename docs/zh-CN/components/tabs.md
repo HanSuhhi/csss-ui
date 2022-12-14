@@ -71,9 +71,18 @@ const { ...返回值 } = useCsssTabs({
 
 `Tabs` 所有接口列表：
 
-| name     | value type | default | description               |
-| -------- | :--------- | :-----: | :------------------------ |
-| `active` | `number`   |    0    | [默认选中项](#默认选中项) |
+| name                    | param type                                              | description                                     |
+| ----------------------- | :------------------------------------------------------ | :---------------------------------------------- |
+| `setActive`             | 1: `number`                                             | [默认选中项](#默认选中项)                       |
+| `needDefaultListStyle`  | 1: `boolean`                                            | [`list 插槽` 默认样式](#list-默认样式)          |
+| `needDefaultPanelStyle` | 1: `boolean`                                            | [`panel 插槽` 默认样式](#panel-默认样式)        |
+| `setTabsClasses`        | 1: `string[]`<br > 2: [`ClassesOption`](#classesoption) | [`设置组件根元素 class`](#设置组件根元素-class) |
+
+#### ClassesOption
+
+| key       | tpye      | description             |
+| --------- | --------- | ----------------------- |
+| baseClass | `boolean` | 是否需要基本 class 样式 |
 
 ### 返回值
 
@@ -82,10 +91,28 @@ const { ...返回值 } = useCsssTabs({
 | `COMP`   | `Ref`      |  null   | 组件实例，需要与 template 中的组件绑定 |
 | `total`  | `number`   |    0    | 选项卡总数（包含 disabled）            |
 | `panels` | `string[]` |   []    | 选项卡内容插槽名数组，用于渲染 panels  |
-| `active` | `number`   |    0    | 返回当前选中项，支持直接修改           |
+| `active` | `number`   |    0    | 返回当前选中项                         |
 
 ## 默认选中项
 
 组件支持提供默认的选中值。
 
 <demo src="../../demos/tabs/DefaultActive.vue" />
+
+## `list` 默认样式
+
+如果取消默认样式，则 `list 插槽` 样式将完全由开发者提供的元素组件提供，组件仅提供相关逻辑能力。
+
+<demo src="../../demos/tabs/NoDefaultListStyle.vue" />
+
+## `panel` 默认样式
+
+如果取消默认样式，则 `panel 插槽` 样式将完全由开发者提供的元素组件提供，组件仅提供相关逻辑能力。
+
+<demo src="../../demos/tabs/NoDefaultPanelStyle.vue" />
+
+## 设置组件根元素 class
+
+用来设置根元素的 class，这在想要实现自己的组件布局时或者提供一些组件全局的 css 变量时很有用。
+
+<demo src="../../demos/tabs/RootClass.vue" />

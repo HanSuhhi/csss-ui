@@ -2,8 +2,7 @@
   <c-tabs>
     <template #list>
       <span v-for="index in 2" :key="index"> tab {{ index }} </span>
-      <p>tab 3</p>
-      <b>tab 4</b>
+      <b>tab 3</b>
     </template>
   </c-tabs>
 </template>
@@ -13,12 +12,8 @@ span {
   color: var(--red);
 }
 
-span {
-  font-size: 1rem;
-}
-
-p {
-  color: var(--gray);
+span:nth-child(2) {
+  color: var(--purple);
 }
 
 b {

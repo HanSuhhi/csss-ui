@@ -36,11 +36,11 @@ export default defineConfig({
   locales: {
     "en-US": {
       lang: "en-US",
-      description: "A vue3.0 components library based on csss /",
+      description: "A vue3.0 headless components library /",
     },
     "zh-CN": {
       lang: "zh-CN",
-      description: "依赖于 csss 的 vue3.0 组件库 /",
+      description: "一个 vue3.0 的无头组件库 /",
     },
   },
 });

@@ -1,16 +1,28 @@
 /**
- * @description 常用基本尺寸
+ * @description base size
  */
 type BaseSize = "large" | "normal" | "small";
 
 /**
- * @description css 元属性
+ * @description css custom properties
  */
 type CssCustomProperty = [key: string, value: string];
 
 /**
- * @description 组件基本方法
+ * @description component basic functions
  */
 interface ComponentBase {
   setStyleValue: (cssCustomProperties: Array<CssCustomProperty>) => void;
 }
+
+/**
+ * @description classes
+ */
+type Classes = string[];
+
+/**
+ * @description  class operations
+ */
+type ClassesOptions = {
+  baseClass: boolean;
+};

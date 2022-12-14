@@ -1,10 +1,12 @@
 @import "./style/config.css";
-@import "./style/list-item.css";
+@import "./style/list.css";
+@import "./style/panel.css";
+@import "./style/control.css";
 
 .csss-tabs {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .csss-tabs__list {
@@ -12,14 +14,11 @@
   display: flex;
   flex-direction: var(--list-direction);
   justify-content: var(--list-justify-content);
-  width: var(--list-width);
+
+  /* width: var(--list-width);
+  margin-left: calc(100% - var(--list-width)); */
 }
 
 .csss-tabs__panels {
   width: 100%;
-  background-color: var(--main-color);
-}
-
-.csss-tabs__panel:not([data-active]) {
-  display: none;
 }

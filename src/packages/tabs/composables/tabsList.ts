@@ -1,5 +1,4 @@
-import { forEach } from "lodash-es";
-import type { Slot } from "vue";
+import { forEach, isUndefined } from "lodash-es";
 import { computed, ref, unref, watchEffect } from "vue";
 import { haveAttribute } from "../../../tool/elementAttribute.tool";
 
@@ -14,7 +13,7 @@ const checkListChildren = (el: HTMLElement): CheckListChildrenResult => {
   });
 };
 
-export const useTabsList = (list?: Slot) => {
+export const useTabsList = () => {
   /**
    * @description number of list
    */
@@ -28,13 +27,20 @@ export const useTabsList = (list?: Slot) => {
    * @description active num
    */
   const active = ref();
-  const isActive = (index: number) => index === active.value;
-  const changeActive = (index: number) => {
+  const isActive = (index: number) => {
+    return index === active.value;
+  };
+  const setActive: CTabsApi["setActive"] = (index) => {
     if (checkIftheIndexIsDisabled(index)) return;
     active.value = index;
+    forEach(TabsList.value?.children, (el, _index) => {
+      if (index === _index) el.children[0].setAttribute("data-active", "");
+      else el.children[0].removeAttribute("data-active");
+    });
   };
   const setDefaultActive = () => {
-    if (!disabledIndexs.value.length || disabledIndexs.value[0] !== 0) active.value = 0;
+    if (!isUndefined(active.value)) return;
+    if (!disabledIndexs.value.length || disabledIndexs.value[0] !== 0) return (active.value = 0);
     let index = 0;
     for (const _index of disabledIndexs.value) {
       if (index === _index) index++;
@@ -83,5 +89,5 @@ export const useTabsList = (list?: Slot) => {
     setDefaultActive();
   });
 
-  return { total, active, TabsList, isActive, changeActive, classes, needDefaultListStyle };
+  return { total, active, TabsList, isActive, setActive, classes, needDefaultListStyle };
 };

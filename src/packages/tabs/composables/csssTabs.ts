@@ -1,5 +1,5 @@
-import { ref, watch, computed, watchEffect, readonly, nextTick } from "vue";
-import { forEach, range, map, delay, defer } from "lodash-es";
+import { forEach } from "lodash-es";
+import { computed, ref, watch } from "vue";
 
 /**
  * @description use csss tabs composable
@@ -12,7 +12,7 @@ export const useCsssTabs = (props?: UseCsssTabsProps) => {
       return COMP.value?.active;
     },
     set(index: number) {
-      COMP.value!.active = index;
+      COMP.value?.setActive(index);
     },
   });
   const panels = computed(() => COMP.value?.panels);
@@ -22,11 +22,18 @@ export const useCsssTabs = (props?: UseCsssTabsProps) => {
    */
   const init = watch(COMP, (el) => {
     forEach(props, (value, key) => {
-      if (key === "active") return nextTick(() => (active.value = value));
-      if (value) (el as any)![key].apply(null, value);
+      if (value) {
+        console.log("(el as any)![key]: ", (el as any)![key]);
+        (el as any)![key].apply(null, value);
+      }
     });
     init();
   });
 
-  return { COMP, total, active, panels };
+  /**
+   * @description set tabs class
+   */
+  const setTabsClasses: CTabsApi["setTabsClasses"] = (classes, options) => COMP.value?.setTabsClasses(classes, options);
+
+  return { COMP, total, active, panels, setTabsClasses };
 };
