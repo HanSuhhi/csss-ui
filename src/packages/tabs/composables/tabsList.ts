@@ -1,10 +1,10 @@
+import { useTemplateClasses } from "@/packages/composables/templateClasses";
 import { forEach, isUndefined } from "lodash-es";
 import { computed, ref, unref, watchEffect } from "vue";
 import { haveAttribute } from "../../../tool/elementAttribute.tool";
 
 /**
- * 1. check if the child element is exists.
- * 2. check if the child element has the `data-disabled` attribute.
+   check if the child element has the `data-disabled` attribute.
  */
 const checkListChildren = (el: HTMLElement): CheckListChildrenResult => {
   const listChildren = Array.from(unref(el)?.children) as HTMLElement[];
@@ -73,7 +73,12 @@ export const useTabsList = () => {
   };
 
   /**
-   * @description need list style
+   * @description list style
+   */
+  const { setExtraClasses, classes: templateClasses } = useTemplateClasses(["csss-tabs__list"]);
+
+  /**
+   * @description list item list style
    */
   const needClassListStyle = ref(true);
   const classes = computed(() => (needClassListStyle.value ? ["csss-tabs__list__item", "csss-tabs__list__item__hover"] : []));
@@ -89,5 +94,5 @@ export const useTabsList = () => {
     setDefaultActive();
   });
 
-  return { total, active, TabsList, isActive, setActive, classes, needDefaultListStyle };
+  return { total, active, TabsList, isActive, setActive, classes, needDefaultListStyle, setExtraClasses, templateClasses };
 };

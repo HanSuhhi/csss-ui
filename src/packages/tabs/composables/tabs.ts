@@ -1,7 +1,7 @@
 import type { StyleSetter } from "@/tool/styleSetter.tool";
-import { union } from "lodash-es";
 import type { Ref } from "vue";
-import { ref, computed } from "vue";
+import { ref } from "vue";
+import { useTemplateClasses } from "@/packages/composables/templateClasses";
 
 export function useTabs(styleSetter: StyleSetter | Ref<StyleSetter | undefined>) {
   const styleValueList = ref<Partial<CTabsCustomProperties>>({});
@@ -12,16 +12,7 @@ export function useTabs(styleSetter: StyleSetter | Ref<StyleSetter | undefined>)
   /**
    * @description tabs class
    */
-  const baseClasses = ref<Classes>(["csss-tabs"]);
-  const extraClasses = ref<Classes>([]);
-  const setExtraClasses: CTabsApi["setTabsClasses"] = (classes, options) => {
-    extraClasses.value = classes;
-    if (options) {
-      const { baseClass } = options;
-      baseClasses.value = [baseClass ? "csss-tabs" : ""];
-    }
-  };
-  const classes = computed(() => union(baseClasses.value, extraClasses.value));
+  const { setExtraClasses, classes } = useTemplateClasses(["csss-tabs"]);
 
   return {
     setStyleValue,

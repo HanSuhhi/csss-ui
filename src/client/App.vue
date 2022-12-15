@@ -15,9 +15,6 @@ const {
   panels,
 } = useCsssTabs({
   setActive: [2],
-  setTabsClasses: [["layout"]],
-  // needDefaultListStyle: [false],
-  // needDefaultPanelStyle: [false],
 });
 </script>
 
@@ -40,9 +37,5 @@ const {
 <style scoped>
 .tab {
   margin: 0 4px;
-}
-
-.layout {
-  flex-direction: column-reverse;
 }
 </style>

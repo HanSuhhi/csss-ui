@@ -13,7 +13,9 @@ interface CTabsApi extends ComponentBase {
   needDefaultListStyle: (need: boolean) => void;
   needDefaultPanelStyle: (need: boolean) => void;
   setActive: (index: number) => void;
-  setTabsClasses: (classes: Classes, options?: ClassesOptions) => void;
+  setTabsClasses: setTemplateClasses;
+  setListClasses: setTemplateClasses;
+  setPanelClasses: setTemplateClasses;
   setStyleValue: (value: Partial<CTabsCustomProperties>) => void;
 }
 

@@ -23,7 +23,6 @@ export const useCsssTabs = (props?: UseCsssTabsProps) => {
   const init = watch(COMP, (el) => {
     forEach(props, (value, key) => {
       if (value) {
-        console.log("(el as any)![key]: ", (el as any)![key]);
         (el as any)![key].apply(null, value);
       }
     });
@@ -31,9 +30,14 @@ export const useCsssTabs = (props?: UseCsssTabsProps) => {
   });
 
   /**
-   * @description set tabs class
+   * @description set tabs classes
    */
   const setTabsClasses: CTabsApi["setTabsClasses"] = (classes, options) => COMP.value?.setTabsClasses(classes, options);
 
-  return { COMP, total, active, panels, setTabsClasses };
+  /**
+   * @description set tabs list classes
+   */
+  const setTabsListClasses: CTabsApi["setListClasses"] = (classes, options) => COMP.value?.setListClasses(classes, options);
+
+  return { COMP, total, active, panels, setTabsClasses, setTabsListClasses };
 };

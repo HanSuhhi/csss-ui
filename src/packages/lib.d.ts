@@ -26,3 +26,8 @@ type Classes = string[];
 type ClassesOptions = {
   baseClass: boolean;
 };
+
+/**
+ * @description set template classes
+ */
+type setTemplateClasses = (classes: Classes, options?: ClassesOptions) => void;

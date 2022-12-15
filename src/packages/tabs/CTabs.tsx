@@ -13,8 +13,8 @@ export default defineComponent({
   setup: (props, { slots, expose }) => {
     const { element, getVnodeIndex, styleSetter } = useElement("csss-tabs");
     const { classes: tabsClasses, setExtraClasses: setTabsClasses } = useTabs(styleSetter);
-    const { TabsList, total, active, classes: listClasses, isActive, setActive, needDefaultListStyle } = useTabsList();
-    const { panels, classes: panelClasses, needDefaultPanelStyle } = useTabsPanel(total);
+    const { setExtraClasses: setListClasses, templateClasses: listTemplateClasses, TabsList, total, active, classes: listClasses, isActive, setActive, needDefaultListStyle } = useTabsList();
+    const { setExtraClasses: setPanelClasses, templateClasses: panelTemplateClasses, panels, classes: panelClasses, needDefaultPanelStyle } = useTabsPanel(total);
 
     expose({
       total: readonly(total),
@@ -23,7 +23,9 @@ export default defineComponent({
       needDefaultListStyle,
       needDefaultPanelStyle,
       setActive,
-      setTabsClasses
+      setTabsClasses,
+      setListClasses,
+      setPanelClasses
     });
 
     return () => {
@@ -32,7 +34,7 @@ export default defineComponent({
           {slots.default?.()}
           {
             slots.list &&
-            <section class="csss-tabs__list" ref={TabsList}>
+            <section class={listTemplateClasses.value} ref={TabsList}>
               {slots.list?.({
                 listTotal: readonly(total),
                 active: readonly(active)
@@ -55,7 +57,7 @@ export default defineComponent({
                 })}
             </section>
           }
-          <section class="csss-tabs__panels">
+          <section class={panelTemplateClasses.value}>
             {panels.value.map((panel, index) => {
               return slots[panel] &&
                 <section data-active={lintAttribute(active.value === index)} class={panelClasses.value}>

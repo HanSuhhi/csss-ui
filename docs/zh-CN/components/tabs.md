@@ -71,12 +71,13 @@ const { ...返回值 } = useCsssTabs({
 
 `Tabs` 所有接口列表：
 
-| name                    | param type                                              | description                                     |
-| ----------------------- | :------------------------------------------------------ | :---------------------------------------------- |
-| `setActive`             | 1: `number`                                             | [默认选中项](#默认选中项)                       |
-| `needDefaultListStyle`  | 1: `boolean`                                            | [`list 插槽` 默认样式](#list-默认样式)          |
-| `needDefaultPanelStyle` | 1: `boolean`                                            | [`panel 插槽` 默认样式](#panel-默认样式)        |
-| `setTabsClasses`        | 1: `string[]`<br > 2: [`ClassesOption`](#classesoption) | [`设置组件根元素 class`](#设置组件根元素-class) |
+| name                    | param type                                              | description                                         |
+| ----------------------- | :------------------------------------------------------ | :-------------------------------------------------- |
+| `setActive`             | 1: `number`                                             | [默认选中项](#默认选中项)                           |
+| `needDefaultListStyle`  | 1: `boolean`                                            | [`list 插槽` 默认样式](#list-默认样式)              |
+| `needDefaultPanelStyle` | 1: `boolean`                                            | [`panel 插槽` 默认样式](#panel-默认样式)            |
+| `setTabsClasses`        | 1: `string[]`<br > 2: [`ClassesOption`](#classesoption) | [`设置组件根元素 class`](#设置组件根元素-class)     |
+| `setListClasses`        | 1: `string[]`<br > 2: [`ClassesOption`](#classesoption) | [`设置 list 根元素 class`](#设置-list-根元素-class) |
 
 #### ClassesOption
 
@@ -116,3 +117,15 @@ const { ...返回值 } = useCsssTabs({
 用来设置根元素的 class，这在想要实现自己的组件布局时或者提供一些组件全局的 css 变量时很有用。
 
 <demo src="../../demos/tabs/RootClass.vue" />
+
+## 设置 `list` 根元素 class
+
+用来设置 `list 插槽` 的根元素 class，用来设置 `list 插槽` 的布局时效果不错。
+
+<demo src="../../demos/tabs/ListClass.vue" />
+
+## 设置 `panel` 根元素 class
+
+用来设置 `panel 插槽` 的根元素 class，用来设置 `panel 插槽` 的布局时效果也不错。
+
+<demo src="../../demos/tabs/PanelClass.vue" />
