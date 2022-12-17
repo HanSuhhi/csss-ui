@@ -26,11 +26,11 @@ export const useTabsList = () => {
   /**
    * @description active num
    */
-  const active = ref();
+  const active = ref(0);
   const isActive = (index: number) => {
     return index === active.value;
   };
-  const setActive: CTabsApi["setActive"] = (index) => {
+  const setActive = (index: number) => {
     if (checkIftheIndexIsDisabled(index)) return;
     active.value = index;
     forEach(TabsList.value?.children, (el, _index) => {
@@ -68,23 +68,14 @@ export const useTabsList = () => {
       }
     });
   };
-  const checkIftheIndexIsDisabled = (index: number) => {
-    return disabledIndexs.value.includes(index);
-  };
+  const checkIftheIndexIsDisabled = (index: number) => disabledIndexs.value.includes(index);
 
-  /**
-   * @description list style
-   */
-  const { setExtraClasses, classes: templateClasses } = useTemplateClasses(["csss-tabs__list"]);
 
   /**
    * @description list item list style
    */
-  const needClassListStyle = ref(true);
-  const classes = computed(() => (needClassListStyle.value ? ["csss-tabs__list__item", "csss-tabs__list__item__hover"] : []));
-  const needDefaultListStyle: CTabsApi["needDefaultListStyle"] = (need) => {
-    needClassListStyle.value = need;
-  };
+  const { classList: itemClassList } = useTemplateClasses(["csss-tabs__list__item", "csss-tabs__list__item__hover"]);
+
 
   watchEffect(() => {
     if (!TabsList.value) return;
@@ -94,5 +85,8 @@ export const useTabsList = () => {
     setDefaultActive();
   });
 
-  return { total, active, TabsList, isActive, setActive, classes, needDefaultListStyle, setExtraClasses, templateClasses };
+  return {
+    total, active, TabsList, isActive, setActive, itemClassList,
+    ...useTemplateClasses(["csss-tabs__list"])
+  };
 };

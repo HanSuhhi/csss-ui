@@ -9,14 +9,8 @@ export function useTabs(styleSetter: StyleSetter | Ref<StyleSetter | undefined>)
     styleValueList.value = list;
   };
 
-  /**
-   * @description tabs class
-   */
-  const { setExtraClasses, classes } = useTemplateClasses(["csss-tabs"]);
-
   return {
     setStyleValue,
-    classes,
-    setExtraClasses,
+    ...useTemplateClasses(["csss-tabs"])
   };
 }

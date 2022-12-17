@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useCsssLayout } from "../packages/layout/composables/csssLayout";
 import { useCsssTabs } from "../packages/tabs/composables/csssTabs";
+import { onMounted } from 'vue';
+import { read } from 'fs';
 
 const { COMP: Layout } = useCsssLayout({
   setAsideWidthSize: ["small"],
@@ -11,11 +13,22 @@ const { COMP: Layout } = useCsssLayout({
 
 const {
   COMP: Tabs,
-  total,
-  panels,
+  state,
+  readonly
 } = useCsssTabs({
-  setActive: [2],
+  state: {
+    active: 1,
+    listClassList: ["", "a"],
+    panelClassList: ["as", "b"],
+    needTransition: true,
+  }
 });
+
+setTimeout(() => {
+  console.log(readonly.value?.total);
+  state.value!.active = 0;
+}, 1000);
+
 </script>
 
 <template>
@@ -24,11 +37,14 @@ const {
       <template #list>
         <span v-for="index in 3" :key="index" class="tab">tab{{ index }}</span>
       </template>
-      <template v-for="panel in panels" :key="panel" #[panel]>
+      <template v-for="panel in readonly?.panels" :key="panel" #[panel]>
         <p>{{ panel }}</p>
       </template>
     </CTabs>
-    <template #header> {{ total }}</template>
+    <template #header>
+      {{ readonly?.total }}
+    </template>
+
     <template #aside />
     <template #footer>footer</template>
   </CLayout>

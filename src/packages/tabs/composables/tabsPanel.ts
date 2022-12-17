@@ -1,9 +1,9 @@
-import type { Ref } from "vue";
-import { computed, ref } from "vue";
 import { range } from "lodash-es";
+import type { Ref } from "vue";
+import { computed } from "vue";
 import { useTemplateClasses } from "../../composables/templateClasses";
 
-export const useTabsPanel = (total: Ref<number>) => {
+export const useTabsPanel = (total: Ref<number>, active: Ref<number>) => {
   /**
    * @description panels
    */
@@ -12,16 +12,11 @@ export const useTabsPanel = (total: Ref<number>) => {
   /**
    * @description style
    */
-  const needClassPanelStyle = ref(true);
-  const needDefaultPanelStyle: CTabsApi["needDefaultPanelStyle"] = (need) => {
-    needClassPanelStyle.value = need;
+  const { classList: panelClassList } = useTemplateClasses(["csss-tabs__panel"]);
+
+
+  return {
+    panels, panelClassList,
+    ...useTemplateClasses(["csss-tabs__panels"]),
   };
-  const classes = computed(() => [`csss-tabs__panel__control`, needClassPanelStyle.value ? "csss-tabs__panel" : ""]);
-
-  /**
-   * @description panel style
-   */
-  const { setExtraClasses, classes: templateClasses } = useTemplateClasses(["csss-tabs__panels"]);
-
-  return { panels, classes, needDefaultPanelStyle, setExtraClasses, templateClasses };
 };

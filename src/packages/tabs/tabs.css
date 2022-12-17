@@ -1,7 +1,6 @@
 @import "./style/config.css";
 @import "./style/list.css";
 @import "./style/panel.css";
-@import "./style/control.css";
 
 .csss-tabs {
   display: flex;

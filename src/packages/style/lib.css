@@ -1,0 +1,6 @@
+:root {
+  --ani-time: var(--moment);
+  --ani-opacity-none: 0;
+  --ani-opacity-little: 0.2;
+  --ani-opacity-full: 1;
+}

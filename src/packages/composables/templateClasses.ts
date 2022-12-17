@@ -2,16 +2,26 @@ import { union } from "lodash-es";
 import { computed, ref } from "vue";
 
 export const useTemplateClasses = (defaultClasses: Classes) => {
+  // private
   const baseClasses = ref<Classes>(defaultClasses);
   const extraClasses = ref<Classes>([]);
-  const setExtraClasses: setTemplateClasses = (classes, options) => {
-    extraClasses.value = classes;
-    if (options) {
-      const { baseClass } = options;
-      baseClasses.value = [baseClass ? "csss-tabs" : ""];
-    }
-  };
-  const classes = computed(() => union(baseClasses.value, extraClasses.value));
 
-  return { setExtraClasses, classes };
+  // public
+  const classList = computed({
+    get: () => union(baseClasses.value, extraClasses.value),
+    set: (_extraClasses) => {
+      const needBaseClass = Boolean(_extraClasses[0]);
+      // default class
+      if (!needBaseClass) {
+        baseClasses.value = defaultClasses;
+        extraClasses.value = _extraClasses.splice(_extraClasses.length - 1);
+      }
+      else {
+        baseClasses.value = [];
+        extraClasses.value = _extraClasses;
+      }
+    }
+  });
+
+  return { classList };
 };

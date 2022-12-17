@@ -2,39 +2,61 @@ import "./tabs.css";
 
 import { lintAttribute } from "@/tool/elementAttribute.tool";
 import type { VNodeNormalizedChildren } from 'vue';
-import { defineComponent, readonly } from 'vue';
+import { ref } from 'vue';
+import { defineComponent, readonly, Transition, reactive } from 'vue';
 import { useElement } from "../composables/element";
+import { useTabs } from "./composables/tabs";
 import { useTabsList } from "./composables/tabsList";
 import { useTabsPanel } from './composables/tabsPanel';
-import { useTabs } from "./composables/tabs";
+import { useNeedToggleTransition } from "./composables/transition";
 
 export default defineComponent({
   name: "CTabs",
   setup: (props, { slots, expose }) => {
     const { element, getVnodeIndex, styleSetter } = useElement("csss-tabs");
-    const { classes: tabsClasses, setExtraClasses: setTabsClasses } = useTabs(styleSetter);
-    const { setExtraClasses: setListClasses, templateClasses: listTemplateClasses, TabsList, total, active, classes: listClasses, isActive, setActive, needDefaultListStyle } = useTabsList();
-    const { setExtraClasses: setPanelClasses, templateClasses: panelTemplateClasses, panels, classes: panelClasses, needDefaultPanelStyle } = useTabsPanel(total);
-
-    expose({
-      total: readonly(total),
-      active: readonly(active),
-      panels: readonly(panels),
-      needDefaultListStyle,
-      needDefaultPanelStyle,
+    const { classList: tabsClassList } = useTabs(styleSetter);
+    const {
+      classList: listClassList,
+      itemClassList: listItemClassList,
+      TabsList,
+      total,
+      active,
+      isActive,
       setActive,
-      setTabsClasses,
-      setListClasses,
-      setPanelClasses
-    });
+    } = useTabsList();
+    const {
+      classList: panelClassList,
+      panelClassList: panelItemClassList,
+      panels,
+    } = useTabsPanel(total, active);
+
+    const { transitionName, needTransition, setPanel } = useNeedToggleTransition(active);
+
+    const exposeVals: CTabsApi = {
+      readonly: reactive({
+        total: readonly(total),
+        panels: readonly(panels),
+      }),
+      state: reactive({
+        active,
+        tabsClassList,
+        listClassList,
+        listItemClassList,
+        panelClassList,
+        panelItemClassList,
+        needTransition
+      })
+    };
+
+    expose(exposeVals);
 
     return () => {
       return (
-        <article ref={element} class={tabsClasses.value}>
+        <article ref={element} class={tabsClassList.value}>
           {slots.default?.()}
           {
             slots.list &&
-            <section class={listTemplateClasses.value} ref={TabsList}>
+            <section class={listClassList.value} ref={TabsList}>
               {slots.list?.({
                 listTotal: readonly(total),
                 active: readonly(active)
@@ -47,9 +69,13 @@ export default defineComponent({
                   return (el as VNodeNormalizedChildren[]).map((e, i) => {
                     return (
                       <div
-                        onClick={setActive.bind(this, indexBase + i, e)}
+                        onClick={() => {
+                          const _index = indexBase + i;
+                          setPanel.call(this, _index);
+                          setActive.call(this, _index);
+                        }}
                         data-active={lintAttribute(isActive(indexBase + i))}
-                        class={listClasses.value}>
+                        class={listItemClassList.value}>
                         {e}
                       </div>
                     );
@@ -57,17 +83,19 @@ export default defineComponent({
                 })}
             </section>
           }
-          <section class={panelTemplateClasses.value}>
+          <section class={panelClassList.value}>
             {panels.value.map((panel, index) => {
-              return slots[panel] &&
-                <section data-active={lintAttribute(active.value === index)} class={panelClasses.value}>
-                  {slots[panel]?.({
-                    active: readonly(active)
-                  })}
-                </section>;
+              return slots[panel] && active.value === index &&
+                <Transition name={transitionName.value} mode="out-in">
+                  <section key={index} class={panelItemClassList.value}>
+                    {slots[panel]?.({
+                      active: readonly(active)
+                    })}
+                  </section>
+                </Transition>;
             })}
           </section>
-        </article>
+        </article >
       );
     };
   },

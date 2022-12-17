@@ -1,34 +1,38 @@
 /**
  * @description 布局可供修改的 css 变量的可选值
  */
-interface CTabsCustomProperties {}
+interface CTabsCustomProperties { }
 
 /**
  * @description API
  */
-interface CTabsApi extends ComponentBase {
-  total: Readonly<number>;
-  panels: Readonly<string[]>;
-  active: Ref<number>;
-  needDefaultListStyle: (need: boolean) => void;
-  needDefaultPanelStyle: (need: boolean) => void;
-  setActive: (index: number) => void;
-  setTabsClasses: setTemplateClasses;
-  setListClasses: setTemplateClasses;
-  setPanelClasses: setTemplateClasses;
-  setStyleValue: (value: Partial<CTabsCustomProperties>) => void;
+interface CTabsApi {
+  readonly: import("vue").UnwrapNestedRefs<{
+    total: Readonly<import("vue").Ref<number>>;
+    panels: Readonly<import("vue").Ref<readonly string[]>>;
+  }>;
+  state: import("vue").UnwrapNestedRefs<{
+    active: number;
+    tabsClassList: string[];
+    listClassList: string[];
+    listItemClassList: string[];
+    panelClassList: string[];
+    panelItemClassList: string[];
+    needTransition: boolean;
+  }>
+
+  // setStyleValue: (value: Partial<CTabsCustomProperties>) => void;
 }
 
 /**
  * @description useCsssLayout props
  */
-type UseCsssTabsProps = {
-  [key in keyof Omit<CTabsApi, "total" | "panels" | "active">]?: Parameters<CTabsApi[key]> | CTabsApi[key];
-};
+type UseCsssTabsProps = Omit<{ [key in keyof CTabsApi]?: Partial<import("vue").UnwrapRef<Omit<CTabsApi[key], "total" | "panels">>> }, "readonly">
+
 /**
  * @description css 变量设置方法
  */
-type CTabsCssPropsResolver = { [key in keyof CTabsCustomProperties]: (value: any) => void };
+type CTabsCssPropsResolver = Record<keyof CTabsCustomProperties, (value: any) => void>;
 
 type listStatus = "normal" | "disabled" | "null";
 

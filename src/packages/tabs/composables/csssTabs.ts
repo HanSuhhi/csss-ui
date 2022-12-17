@@ -1,43 +1,27 @@
 import { forEach } from "lodash-es";
-import { computed, ref, watch } from "vue";
+import type { UnwrapRef } from 'vue';
+import { computed, ref, watch, reactive } from 'vue';
 
 /**
  * @description use csss tabs composable
  */
 export const useCsssTabs = (props?: UseCsssTabsProps) => {
   const COMP = ref<CTabsApi>();
-  const total = computed(() => COMP.value?.total);
-  const active = computed({
-    get() {
-      return COMP.value?.active;
-    },
-    set(index: number) {
-      COMP.value?.setActive(index);
-    },
-  });
-  const panels = computed(() => COMP.value?.panels);
+  const state = computed(() => COMP.value?.state);
+  const readonly = computed(() => COMP.value?.readonly);
 
   /**
    * @description init function
    */
   const init = watch(COMP, (el) => {
-    forEach(props, (value, key) => {
-      if (value) {
-        (el as any)![key].apply(null, value);
-      }
+    if (!props) return;
+    forEach(props, (_props, type) => {
+      forEach(_props, (value, key) => {
+        (el as any)[type][key] = value;
+      });
     });
     init();
   });
 
-  /**
-   * @description set tabs classes
-   */
-  const setTabsClasses: CTabsApi["setTabsClasses"] = (classes, options) => COMP.value?.setTabsClasses(classes, options);
-
-  /**
-   * @description set tabs list classes
-   */
-  const setTabsListClasses: CTabsApi["setListClasses"] = (classes, options) => COMP.value?.setListClasses(classes, options);
-
-  return { COMP, total, active, panels, setTabsClasses, setTabsListClasses };
+  return { COMP, state, readonly };
 };

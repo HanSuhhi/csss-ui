@@ -7,4 +7,5 @@
   --list-justify-content: flex-start;
   --list-text-transform: uppercase;
   --list-active-scale: 1.1;
+  --ani-time: var(--moment);
 }
