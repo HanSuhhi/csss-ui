@@ -1,0 +1,1 @@
+import{_ as n,o as _,k as a,l as e,r as s,b as o}from"../app.15310426.js";const c={};function r(p,f){const t=s("CLayout");return _(),a(t,{class:"up-down-2"},{footer:e(()=>[o("footer")]),default:e(()=>[o(" main ")]),_:1})}const u=n(c,[["render",r]]);export{u as default};
