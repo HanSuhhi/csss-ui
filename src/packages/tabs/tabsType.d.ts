@@ -13,12 +13,17 @@ interface CTabsApi {
   }>;
   state: import("vue").UnwrapNestedRefs<{
     active: number;
-    tabsClassList: string[];
-    listClassList: string[];
-    listItemClassList: string[];
-    panelClassList: string[];
-    panelItemClassList: string[];
+  }>;
+  style: import("vue").UnwrapNestedRefs<{
     needTransition: boolean;
+    classList?: Partial<{
+      tabs: string[];
+      list: string[];
+      listItem: string[];
+      panel: string[];
+      panelItem: string[];
+    }>,
+    property?: {}
   }>
 
   // setStyleValue: (value: Partial<CTabsCustomProperties>) => void;

@@ -13,20 +13,18 @@ const { COMP: Layout } = useCsssLayout({
 
 const {
   COMP: Tabs,
-  state,
   read
 } = useCsssTabs({
   state: {
     active: 1,
-    needTransition: true,
+  },
+  style: {
+    needTransition: false,
+    classList: {
+      tabs: ["", "hello"]
+    },
   }
 });
-
-setTimeout(() => {
-  console.log(read.value?.total);
-  state.value!.active = 0;
-}, 1000);
-
 </script>
 
 <template>

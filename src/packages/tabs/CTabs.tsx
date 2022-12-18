@@ -38,12 +38,16 @@ export default defineComponent({
       }),
       state: reactive({
         active,
-        tabsClassList,
-        listClassList,
-        listItemClassList,
-        panelClassList,
-        panelItemClassList,
-        needTransition
+      }),
+      style: reactive({
+        needTransition,
+        classList: {
+          tabs: tabsClassList,
+          list: listClassList,
+          listItem: listItemClassList,
+          panel: panelClassList,
+          panelItem: panelItemClassList,
+        }
       })
     };
 
