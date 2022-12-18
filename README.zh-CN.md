@@ -2,7 +2,7 @@
   <img width="144px" src="https://hansuhhi.github.io/csss-ui/favicon.ico" />
 </p>
 <h1 align="center">
-  <samp>csss-ui<sup>[![Version Badge][npm-version-svg]][package-url]</sup></samp>
+  <samp>csss-ui</samp>
 </h1>
 
 <p align="center">
