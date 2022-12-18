@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useCsssTabs } from "csss-ui/csss-ui.es.js";
 
-const { COMP: Tabs, state, read } = useCsssTabs({
-  state: {
-    tabsClassList: ["", "reverse"]
+const { COMP: Tabs, style, read } = useCsssTabs({
+  style: {
+    classList: {
+      tabs: ["", "reverse"]
+    }
   }
 });
 
 const toggle = () => {
-  state.value.tabsClassList = state.value.tabsClassList.length === 1 ? ["", "reverse"] : ["reverse"];
+  style.value.classList.tabs = style.value.classList.tabs.length === 1 ? ["", "reverse"] : ["reverse"];
 };
 
 </script>

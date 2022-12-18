@@ -50,6 +50,10 @@ vue 插槽支持[动态插槽名](https://cn.vuejs.org/guide/components/slots.ht
 使用 [组合式 API](#组合式-api) 需要将 `COMP` 与 组件实例进行绑定。
 :::
 
+### default 插槽
+
+考虑到特殊场景下会有更多的元素参与到 tabs 布局，因此 tabs 布局也会显示 `default 插槽内容`。
+
 ## 组合式 API
 
 开发者可以使用通过 `useCsssTabs` 来初始化一个 `Tabs` 组件。
@@ -75,21 +79,33 @@ const { ...返回值 } = useCsssTabs({
 
 ### 初始化
 
-函数初始化时接受一个包含 `state` 和 `style` 的对象作为参数。
+函数初始化时接受一个包含 `state` 、 `style` 的对象作为参数。
 
 #### state
 
+| name   | param type | description       |
+| ------ | :--------- | :---------------- |
+| active | `number`   | [选中项](#选中项) |
+
+#### style
+
+style 除了一些基础状态，还包括两个子对象，分别是代表 class 设置的 `classList` 和 定义 css 变量的 `property`。
+
+| name           | param type | description                   |
+| -------------- | :--------- | :---------------------------- |
+| needTransition | `boolean`  | [是否需要切换动画](#切换动画) |
+
+##### classList
+
 | name               | param type | description                                                                              |
 | ------------------ | :--------- | :--------------------------------------------------------------------------------------- |
-| active             | `number`   | [选中项](#选中项)                                                                        |
-| needTransition     | `boolean`  | [是否需要切换动画](#切换动画)                                                            |
 | tabsClassList      | `string[]` | 设置[根元素 class](#根元素-class)，第一个元素为 `""` 时，表示保留原 class                |
 | listClassList      | `string[]` | 设置 [list 根元素 class](#list-根元素-class)，第一个元素为 `""` 时，表示保留原 class     |
 | panelClassList     | `string[]` | 设置 [panels 根元素 class](#panel-根元素-class)，第一个元素为 `""` 时，表示保留原 class  |
 | listItemClassList  | `string[]` | 设置 [list 子元素的 class](#list-子元素-class)，第一个元素为 `""` 时，表示保留原 class   |
 | panelItemClassList | `string[]` | 设置 [panel 子元素的 class](#panel-子元素-class)，第一个元素为 `""` 时，表示保留原 class |
 
-#### style
+##### property
 
 TODO
 
@@ -98,14 +114,9 @@ TODO
 | name    | description                            |
 | ------- | -------------------------------------- |
 | `COMP`  | 组件实例，需要与 template 中的组件绑定 |
-| `state` | [组件状态](#state-组件状态)            |
 | `read`  | [组件只读属性](#read-组件只读属性)     |
-
-#### state 组件状态
-
-开发者可根据实际需要随时修改组件状态。
-
-同[state](#state)
+| `state` | [组件状态](#state-组件状态)            |
+| `style` | [组件只读属性](#read-组件只读属性)     |
 
 #### read 组件只读属性
 
@@ -115,6 +126,18 @@ TODO
 | ------ | :--------- | :---------------- |
 | total  | `number`   | 当前项目数        |
 | panels | `string[]` | panels 插槽名数组 |
+
+#### state 组件状态
+
+开发者可根据实际需要随时修改组件状态。
+
+同[state](#state)
+
+#### style 样式
+
+开发者可根据实际需要随时修改组件样式。
+
+同[style](#style)
 
 ## 选中项
 

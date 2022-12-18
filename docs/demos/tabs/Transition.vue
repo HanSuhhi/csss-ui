@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useCsssTabs } from "csss-ui/csss-ui.es.js";
 
-const { COMP: Tabs, state, read } = useCsssTabs({
-  state: {
+const { COMP: Tabs, style, read } = useCsssTabs({
+  style: {
     needTransition: false
   }
 });
 
 const toggleTransition = () => {
-  state.value.needTransition = !state.value.needTransition;
+  style.value.needTransition = !style.value.needTransition;
 };
 
 </script>

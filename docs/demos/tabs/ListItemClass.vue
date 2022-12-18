@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useCsssTabs } from "csss-ui/csss-ui.es.js";
 
-const { COMP: Tabs, state, read } = useCsssTabs({
-  state: {
-    listItemClassList: ["", "pointless"]
+const { COMP: Tabs, style, read } = useCsssTabs({
+  style: {
+    classList: {
+      listItem: ["", "pointless"]
+    }
   }
 });
 
 const toggle = () => {
-  state.value.listItemClassList = state.value.listItemClassList.length === 1 ? ["", "pointless"] : ["pointless"];
+  style.value.classList.listItem = style.value.classList.listItem.length === 1 ? ["", "pointless"] : ["pointless"];
 };
 
 </script>
