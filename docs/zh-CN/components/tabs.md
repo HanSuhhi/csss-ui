@@ -8,7 +8,7 @@
 
 <tabs-demo />
 
-<demo src="../../demos/tabs/demo.vue" raw />
+<demo title="" desc="" src="../../demos/tabs/demo.vue" raw />
 
 ## 插槽
 
@@ -22,11 +22,11 @@
 
 例如：
 
-<demo src="../../demos/tabs/ListSlot.vue" />
+<demo title="" desc="" src="../../demos/tabs/ListSlot.vue" />
 
 当你想禁用某个选项时，只需要在对应的元素加上 `data-disabled` 标签即可。
 
-<demo src="../../demos/tabs/ListSlotDisabled.vue" />
+<demo title="" desc="" src="../../demos/tabs/ListSlotDisabled.vue" />
 
 :::tip
 `data-disabled` 符合 [data-\*](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*) 规范。
@@ -38,13 +38,13 @@
 
 例如 list 插槽有 3 个子元素,那么对应的 3 个 panel 插槽分别为: `panel-0`, `panel-1`, `panel-2`。
 
-<demo src="../../demos/tabs/PanelSlot.vue" />
+<demo title="" desc="" src="../../demos/tabs/PanelSlot.vue" />
 
 vue 插槽支持[动态插槽名](https://cn.vuejs.org/guide/components/slots.html#dynamic-slot-names)，因此组件也提供了相关的动态名称数组。
 
 这在 panels 是统一的样式内容时很有用。
 
-<demo src="../../demos/tabs/PanelSlotDynamic.vue" />
+<demo title="" desc="" src="../../demos/tabs/PanelSlotDynamic.vue" />
 
 ::: warning
 使用 [组合式 API](#组合式-api) 需要将 `COMP` 与 组件实例进行绑定。
@@ -60,72 +60,114 @@ vue 插槽支持[动态插槽名](https://cn.vuejs.org/guide/components/slots.ht
 
 ```typescript
 const { ...返回值 } = useCsssTabs({
-  [接口名]: [接口参数],
-  ...
+  // 组件初始化状态
+  state: {
+    ...
+  },
+  // 组件初始化样式
+  style: {
+    ...
+  }
 });
 ```
 
 :::
 
-### 接口
+### 初始化
 
-`Tabs` 所有接口列表：
+函数初始化时接受一个包含 `state` 和 `style` 的对象作为参数。
 
-| name                    | param type                                              | description                                         |
-| ----------------------- | :------------------------------------------------------ | :-------------------------------------------------- |
-| `setActive`             | 1: `number`                                             | [默认选中项](#默认选中项)                           |
-| `needDefaultListStyle`  | 1: `boolean`                                            | [`list 插槽` 默认样式](#list-默认样式)              |
-| `needDefaultPanelStyle` | 1: `boolean`                                            | [`panel 插槽` 默认样式](#panel-默认样式)            |
-| `setTabsClasses`        | 1: `string[]`<br > 2: [`ClassesOption`](#classesoption) | [`设置组件根元素 class`](#设置组件根元素-class)     |
-| `setListClasses`        | 1: `string[]`<br > 2: [`ClassesOption`](#classesoption) | [`设置 list 根元素 class`](#设置-list-根元素-class) |
+#### state
 
-#### ClassesOption
+| name               | param type | description                                                                              |
+| ------------------ | :--------- | :--------------------------------------------------------------------------------------- |
+| active             | `number`   | [选中项](#选中项)                                                                        |
+| needTransition     | `boolean`  | [是否需要切换动画](#切换动画)                                                            |
+| tabsClassList      | `string[]` | 设置[根元素 class](#根元素-class)，第一个元素为 `""` 时，表示保留原 class                |
+| listClassList      | `string[]` | 设置 [list 根元素 class](#list-根元素-class)，第一个元素为 `""` 时，表示保留原 class     |
+| panelClassList     | `string[]` | 设置 [panels 根元素 class](#panel-根元素-class)，第一个元素为 `""` 时，表示保留原 class  |
+| listItemClassList  | `string[]` | 设置 [list 子元素的 class](#list-子元素-class)，第一个元素为 `""` 时，表示保留原 class   |
+| panelItemClassList | `string[]` | 设置 [panel 子元素的 class](#panel-子元素-class)，第一个元素为 `""` 时，表示保留原 class |
 
-| key       | tpye      | description             |
-| --------- | --------- | ----------------------- |
-| baseClass | `boolean` | 是否需要基本 class 样式 |
+#### style
+
+TODO
 
 ### 返回值
 
-| name     | value type | default | description                            |
-| -------- | :--------- | :-----: | :------------------------------------- |
-| `COMP`   | `Ref`      |  null   | 组件实例，需要与 template 中的组件绑定 |
-| `total`  | `number`   |    0    | 选项卡总数（包含 disabled）            |
-| `panels` | `string[]` |   []    | 选项卡内容插槽名数组，用于渲染 panels  |
-| `active` | `number`   |    0    | 返回当前选中项                         |
+| name    | description                            |
+| ------- | -------------------------------------- |
+| `COMP`  | 组件实例，需要与 template 中的组件绑定 |
+| `state` | [组件状态](#state-组件状态)            |
+| `read`  | [组件只读属性](#read-组件只读属性)     |
 
-## 默认选中项
+#### state 组件状态
 
-组件支持提供默认的选中值。
+开发者可根据实际需要随时修改组件状态。
 
-<demo src="../../demos/tabs/DefaultActive.vue" />
+同[state](#state)
 
-## `list` 默认样式
+#### read 组件只读属性
 
-如果取消默认样式，则 `list 插槽` 样式将完全由开发者提供的元素组件提供，组件仅提供相关逻辑能力。
+提供一些只读但无法修改的属性。
 
-<demo src="../../demos/tabs/NoDefaultListStyle.vue" />
+| name   | param type | description       |
+| ------ | :--------- | :---------------- |
+| total  | `number`   | 当前项目数        |
+| panels | `string[]` | panels 插槽名数组 |
 
-## `panel` 默认样式
+## 选中项
 
-如果取消默认样式，则 `panel 插槽` 样式将完全由开发者提供的元素组件提供，组件仅提供相关逻辑能力。
+组件支持提供默认的选中值。以及提供修改的 state。
 
-<demo src="../../demos/tabs/NoDefaultPanelStyle.vue" />
+<demo title="" desc="" src="../../demos/tabs/DefaultActive.vue" />
 
-## 设置组件根元素 class
+## 切换动画
 
-用来设置根元素的 class，这在想要实现自己的组件布局时或者提供一些组件全局的 css 变量时很有用。
+如果你不需要切换动画，你可以手动关闭它。
 
-<demo src="../../demos/tabs/RootClass.vue" />
+<demo title="" desc="" src="../../demos/tabs/Transition.vue" />
 
-## 设置 `list` 根元素 class
+## 根元素 class
 
-用来设置 `list 插槽` 的根元素 class，用来设置 `list 插槽` 的布局时效果不错。
+通过一个 `string[]` 来设置根元素的 class。
 
-<demo src="../../demos/tabs/ListClass.vue" />
+当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
 
-## 设置 `panel` 根元素 class
+<demo title="" desc="" src="../../demos/tabs/RootClass.vue" />
 
-用来设置 `panel 插槽` 的根元素 class，用来设置 `panel 插槽` 的布局时效果也不错。
+::: warning
+所有 css 变量都存放于根元素当中，当默认根元素 class 失效后，将失去组件下所有 css 变量。
+:::
 
-<demo src="../../demos/tabs/PanelClass.vue" />
+## list 根元素 class
+
+通过一个 `string[]` 来设置 list 根元素的 class。
+
+当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/tabs/ListClass.vue" />
+
+## panel 根元素 class
+
+通过一个 `string[]` 来设置 panel 根元素的 class。
+
+当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/tabs/PanelClass.vue" />
+
+## list 子元素 class
+
+通过一个 `string[]` 来设置 list 子元素的 class。
+
+当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/tabs/ListItemClass.vue" />
+
+## panel 子元素 class
+
+通过一个 `string[]` 来设置 panel 子元素的 class。
+
+当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/tabs/PanelItemClass.vue"/>

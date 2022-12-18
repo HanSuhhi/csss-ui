@@ -8,7 +8,7 @@ import { computed, ref, watch, reactive } from 'vue';
 export const useCsssTabs = (props?: UseCsssTabsProps) => {
   const COMP = ref<CTabsApi>();
   const state = computed(() => COMP.value?.state);
-  const readonly = computed(() => COMP.value?.readonly);
+  const read = computed(() => COMP.value?.read);
 
   /**
    * @description init function
@@ -23,5 +23,5 @@ export const useCsssTabs = (props?: UseCsssTabsProps) => {
     init();
   });
 
-  return { COMP, state, readonly };
+  return { COMP, state, read };
 };

@@ -26,14 +26,14 @@ export default defineComponent({
     } = useTabsList();
     const {
       classList: panelClassList,
-      panelClassList: panelItemClassList,
+      panelItemClassList,
       panels,
     } = useTabsPanel(total, active);
 
     const { transitionName, needTransition, setPanel } = useNeedToggleTransition(active);
 
     const exposeVals: CTabsApi = {
-      readonly: reactive({
+      read: reactive({
         total: readonly(total),
         panels: readonly(panels),
       }),

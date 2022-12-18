@@ -14,18 +14,19 @@ const { COMP: Layout } = useCsssLayout({
 const {
   COMP: Tabs,
   state,
-  readonly
+  read
 } = useCsssTabs({
   state: {
     active: 1,
     listClassList: ["", "a"],
     panelClassList: ["as", "b"],
+    panelItemClassList: ["", "ok"],
     needTransition: true,
   }
 });
 
 setTimeout(() => {
-  console.log(readonly.value?.total);
+  console.log(read.value?.total);
   state.value!.active = 0;
 }, 1000);
 
@@ -37,12 +38,12 @@ setTimeout(() => {
       <template #list>
         <span v-for="index in 3" :key="index" class="tab">tab{{ index }}</span>
       </template>
-      <template v-for="panel in readonly?.panels" :key="panel" #[panel]>
+      <template v-for="panel in read?.panels" :key="panel" #[panel]>
         <p>{{ panel }}</p>
       </template>
     </CTabs>
     <template #header>
-      {{ readonly?.total }}
+      {{ read?.total }}
     </template>
 
     <template #aside />

@@ -12,11 +12,11 @@ export const useTabsPanel = (total: Ref<number>, active: Ref<number>) => {
   /**
    * @description style
    */
-  const { classList: panelClassList } = useTemplateClasses(["csss-tabs__panel"]);
+  const { classList: panelItemClassList } = useTemplateClasses(["csss-tabs__panel"]);
 
 
   return {
-    panels, panelClassList,
+    panels, panelItemClassList,
     ...useTemplateClasses(["csss-tabs__panels"]),
   };
 };

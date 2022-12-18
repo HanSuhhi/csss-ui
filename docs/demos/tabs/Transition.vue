@@ -3,22 +3,18 @@ import { useCsssTabs } from "csss-ui/csss-ui.es.js";
 
 const { COMP: Tabs, state, read } = useCsssTabs({
   state: {
-    active: 1
+    needTransition: false
   }
 });
 
-const changeActive = () => {
-  if (state.value.active === read.value.total - 1) {
-    state.value.active = 0;
-  } else {
-    state.value.active++;
-  }
+const toggleTransition = () => {
+  state.value.needTransition = !state.value.needTransition;
 };
 
 </script>
 
 <template>
-  <button @click="changeActive">change active</button>
+  <button @click="toggleTransition">toggle</button>
   <c-tabs ref="Tabs">
     <template #list>
       <span v-for="index in 3" :key="index"> tab {{ index }} </span>

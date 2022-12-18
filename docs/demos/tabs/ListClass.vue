@@ -1,31 +1,24 @@
 <script setup lang="ts">
 import { useCsssTabs } from "csss-ui/csss-ui.es.js";
 
-const { COMP: Tabs, panels } = useCsssTabs({
-  setTabsClasses: [["layout"]],
-  setListClasses: [["list-layout"]],
+const { COMP: Tabs, state, read } = useCsssTabs({
+  state: {
+    listClassList: ["", "pointless"]
+  }
 });
+
+const toggle = () => {
+  state.value.listClassList = state.value.listClassList.length === 1 ? ["", "pointless"] : ["pointless"];
+};
+
 </script>
 
 <template>
+  <button @click="toggle">toggle root class</button>
   <c-tabs ref="Tabs">
     <template #list>
-      <span v-for="index in 3" :key="index" class="list"> tab {{ index }} </span>
-      <span data-disabled class="list">tab 4</span>
+      <span v-for="index in 3" :key="index"> tab {{ index }} </span>
     </template>
-    <template v-for="panel in panels" :key="panel" #[panel]>
-      <p :class="panel">this is the {{ panel }}</p>
-    </template>
+    <template v-for="panel in read?.panels" :key="panel" #[panel]> this is the {{ panel }} </template>
   </c-tabs>
 </template>
-
-<style scoped>
-.layout {
-  flex-direction: row;
-}
-
-.layout :deep(.list-layout) {
-  display: flex;
-  flex-direction: column;
-}
-</style>

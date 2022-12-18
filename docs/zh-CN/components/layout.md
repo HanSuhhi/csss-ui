@@ -16,7 +16,7 @@
 
 <layout-demo />
 
-<demo src="../../demos/layout/demo.vue" raw />
+<demo title="" desc="" src="../../demos/layout/demo.vue" raw />
 
 ## 组合式 API
 
@@ -61,7 +61,7 @@ const { ...返回值 } = useCsssLayout({
 
 如果对于 `header插槽` 高度有具体要求，可使用 [setStyleValue](#setstylevalue) 来设置详细高度。
 
-<demo src="../../demos/layout/HeaderHeightSize.vue" />
+<demo title="" desc="" src="../../demos/layout/HeaderHeightSize.vue" />
 
 ## aside 宽度
 
@@ -69,7 +69,7 @@ const { ...返回值 } = useCsssLayout({
 
 如果对于 `aside插槽` 宽度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细宽度。
 
-<demo src="../../demos/layout/AsideWidthSize.vue" />
+<demo title="" desc="" src="../../demos/layout/AsideWidthSize.vue" />
 
 :::warning
 由于宽度实现是通过 `grid-template-columns: minmax(min-content, var(--aside-width))` 实现。`aside插槽` 的设定宽度只是最小宽度值，实际宽度会随子元素宽度的增加而增加。
@@ -85,7 +85,7 @@ const { ...返回值 } = useCsssLayout({
 
 如果对于 `footer插槽` 高度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细高度。
 
-<demo src="../../demos/layout/FooterHeightSize.vue" />
+<demo title="" desc="" src="../../demos/layout/FooterHeightSize.vue" />
 
 ## 布局类型
 
@@ -99,17 +99,17 @@ const { ...返回值 } = useCsssLayout({
 
 依赖于 `default` 和 `aside` 插槽。
 
-<demo src="../../demos/layout/LeftRight.vue" />
+<demo title="" desc="" src="../../demos/layout/LeftRight.vue" />
 
 ### 上下布局
 
 依赖于 `default` 和 `header` 插槽。
 
-<demo src="../../demos/layout/UpDown.vue" />
+<demo title="" desc="" src="../../demos/layout/UpDown.vue" />
 
 依赖于 `default` 和 `footer` 插槽。
 
-<demo src="../../demos/layout/UpDown2.vue" />
+<demo title="" desc="" src="../../demos/layout/UpDown2.vue" />
 
 ### 首尾布局
 
@@ -119,7 +119,7 @@ const { ...返回值 } = useCsssLayout({
 首尾布局表示 `header 插槽` 优先占领对应视图空间，其次 `footer 插槽` 将占领对应视图空间，剩余插槽再依次占领对应视图空间。
 :::
 
-<demo src="../../demos/layout/HeaderFooter.vue" />
+<demo title="" desc="" src="../../demos/layout/HeaderFooter.vue" />
 
 ### 首侧布局
 
@@ -129,7 +129,7 @@ const { ...返回值 } = useCsssLayout({
 首尾布局表示 `header 插槽` 优先占领对应视图空间，其次 `aside 插槽` 将占领对应视图空间，剩余插槽再依次占领对应视图空间。
 :::
 
-<demo src="../../demos/layout/HeaderAside.vue" />
+<demo title="" desc="" src="../../demos/layout/HeaderAside.vue" />
 
 ### 尾侧布局
 
@@ -139,7 +139,7 @@ const { ...返回值 } = useCsssLayout({
 首尾布局表示 `footer 插槽` 优先占领对应视图空间，其次 `aside 插槽` 将占领对应视图空间，剩余插槽再依次占领对应视图空间。
 :::
 
-<demo src="../../demos/layout/FooterAside.vue" />
+<demo title="" desc="" src="../../demos/layout/FooterAside.vue" />
 
 ### 侧布局
 
@@ -149,7 +149,7 @@ const { ...返回值 } = useCsssLayout({
 首尾布局表示 `aside 插槽` 优先占领对应视图空间，剩余插槽再依次占领对应视图空间。
 :::
 
-<demo src="../../demos/layout/Aside.vue" />
+<demo title="" desc="" src="../../demos/layout/Aside.vue" />
 
 ## 设置 css 变量
 

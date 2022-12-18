@@ -7,7 +7,7 @@ interface CTabsCustomProperties { }
  * @description API
  */
 interface CTabsApi {
-  readonly: import("vue").UnwrapNestedRefs<{
+  read: import("vue").UnwrapNestedRefs<{
     total: Readonly<import("vue").Ref<number>>;
     panels: Readonly<import("vue").Ref<readonly string[]>>;
   }>;
