@@ -1,4 +1,4 @@
-import { useTemplateClasses } from "@/packages/composables/templateClasses";
+import { useTemplateClassList } from "@/packages/composables/templateClassList";
 import { forEach, isUndefined } from "lodash-es";
 import { computed, ref, unref, watchEffect } from "vue";
 import { haveAttribute } from "../../../tool/elementAttribute.tool";
@@ -74,7 +74,7 @@ export const useTabsList = () => {
   /**
    * @description list item list style
    */
-  const { classList: itemClassList } = useTemplateClasses(["csss-tabs__list__item", "csss-tabs__list__item__hover"]);
+  const { classList: listItemClassList } = useTemplateClassList(["csss-tabs__list__item", "csss-tabs__list__item__hover"]);
 
 
   watchEffect(() => {
@@ -86,7 +86,7 @@ export const useTabsList = () => {
   });
 
   return {
-    total, active, TabsList, isActive, setActive, itemClassList,
-    ...useTemplateClasses(["csss-tabs__list"])
+    total, active, TabsList, isActive, setActive, listItemClassList,
+    ...useTemplateClassList(["csss-tabs__list"])
   };
 };

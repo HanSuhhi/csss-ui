@@ -1,9 +1,9 @@
 import { union } from "lodash-es";
 import { computed, ref } from "vue";
 
-export const useTemplateClasses = (defaultClasses: Classes) => {
+export const useTemplateClassList = (defaultClasses?: Classes) => {
   // private
-  const baseClasses = ref<Classes>(defaultClasses);
+  const baseClasses = ref<Classes>(defaultClasses || []);
   const extraClasses = ref<Classes>([]);
 
   // public
@@ -13,7 +13,7 @@ export const useTemplateClasses = (defaultClasses: Classes) => {
       const needBaseClass = Boolean(_extraClasses[0]);
       // default class
       if (!needBaseClass) {
-        baseClasses.value = defaultClasses;
+        baseClasses.value = defaultClasses || [];
         extraClasses.value = _extraClasses.splice(_extraClasses.length - 1);
       }
       else {

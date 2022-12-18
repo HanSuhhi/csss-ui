@@ -2,8 +2,7 @@ import "./tabs.css";
 
 import { lintAttribute } from "@/tool/elementAttribute.tool";
 import type { VNodeNormalizedChildren } from 'vue';
-import { ref } from 'vue';
-import { defineComponent, readonly, Transition, reactive } from 'vue';
+import { defineComponent, reactive, readonly, Transition } from 'vue';
 import { useElement } from "../composables/element";
 import { useTabs } from "./composables/tabs";
 import { useTabsList } from "./composables/tabsList";
@@ -17,7 +16,7 @@ export default defineComponent({
     const { classList: tabsClassList } = useTabs(styleSetter);
     const {
       classList: listClassList,
-      itemClassList: listItemClassList,
+      listItemClassList,
       TabsList,
       total,
       active,
@@ -55,32 +54,32 @@ export default defineComponent({
         <article ref={element} class={tabsClassList.value}>
           {slots.default?.()}
           {
-            slots.list &&
             <section class={listClassList.value} ref={TabsList}>
-              {slots.list?.({
-                listTotal: readonly(total),
-                active: readonly(active)
-              })
-                // filter comment vnode
-                .filter((el) => el.type.toString() !== 'Symbol(Comment)')
-                .map(el => el.type.toString() === 'Symbol(Fragment)' ? el.children : [el])
-                .map((el, index, arr) => {
-                  const indexBase = getVnodeIndex(index, arr as VNodeNormalizedChildren[][]);
-                  return (el as VNodeNormalizedChildren[]).map((e, i) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          const _index = indexBase + i;
-                          setPanel.call(this, _index);
-                          setActive.call(this, _index);
-                        }}
-                        data-active={lintAttribute(isActive(indexBase + i))}
-                        class={listItemClassList.value}>
-                        {e}
-                      </div>
-                    );
-                  });
-                })}
+              {slots.list &&
+                slots.list?.({
+                  listTotal: readonly(total),
+                  active: readonly(active)
+                })
+                  // filter comment vnode
+                  .filter((el) => el.type.toString() !== 'Symbol(Comment)')
+                  .map(el => el.type.toString() === 'Symbol(Fragment)' ? el.children : [el])
+                  .map((el, index, arr) => {
+                    const indexBase = getVnodeIndex(index, arr as VNodeNormalizedChildren[][]);
+                    return (el as VNodeNormalizedChildren[]).map((e, i) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            const _index = indexBase + i;
+                            setPanel.call(this, _index);
+                            setActive.call(this, _index);
+                          }}
+                          data-active={lintAttribute(isActive(indexBase + i))}
+                          class={listItemClassList.value}>
+                          {e}
+                        </div>
+                      );
+                    });
+                  })}
             </section>
           }
           <section class={panelClassList.value}>

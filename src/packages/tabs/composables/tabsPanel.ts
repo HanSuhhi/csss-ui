@@ -1,7 +1,7 @@
 import { range } from "lodash-es";
 import type { Ref } from "vue";
 import { computed } from "vue";
-import { useTemplateClasses } from "../../composables/templateClasses";
+import { useTemplateClassList } from "../../composables/templateClassList";
 
 export const useTabsPanel = (total: Ref<number>, active: Ref<number>) => {
   /**
@@ -12,11 +12,11 @@ export const useTabsPanel = (total: Ref<number>, active: Ref<number>) => {
   /**
    * @description style
    */
-  const { classList: panelItemClassList } = useTemplateClasses(["csss-tabs__panel"]);
+  const { classList: panelItemClassList } = useTemplateClassList(["csss-tabs__panel"]);
 
 
   return {
     panels, panelItemClassList,
-    ...useTemplateClasses(["csss-tabs__panels"]),
+    ...useTemplateClassList(["csss-tabs__panels"]),
   };
 };
