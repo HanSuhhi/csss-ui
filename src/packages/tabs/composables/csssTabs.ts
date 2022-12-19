@@ -1,13 +1,5 @@
-import { forEach, isObject } from "lodash-es";
-import { computed, Ref, ref, watch } from 'vue';
-
-const useCsssProps = (obj: object, el: object) => {
-
-  forEach(obj, (v: Object, key) => {
-    if (v.constructor === Object) useCsssProps(v, (el as any)[key]);
-    else (el as any)[key] = v;
-  });
-};
+import { parseCsssProps } from "@/tool/useCsss.tool";
+import { computed, ref, watch } from 'vue';
 
 /**
  * @description use csss tabs composable
@@ -23,7 +15,7 @@ export const useCsssTabs = (props?: UseCsssTabsProps) => {
    */
   const init = watch(COMP, (el) => {
     if (!props) return;
-    useCsssProps(props, el!);
+    parseCsssProps(props, el!);
     init();
   });
 

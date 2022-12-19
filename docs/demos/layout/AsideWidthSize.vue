@@ -17,12 +17,12 @@ const { COMP: Small } = useCsssLayout({
     main
     <template #aside>large</template>
   </CLayout>
-  <hr />
+  <hr>
   <CLayout ref="Normal" class="left-right">
     main
     <template #aside>normal</template>
   </CLayout>
-  <hr />
+  <hr>
   <CLayout ref="Small" class="left-right">
     main
     <template #aside>small</template>

@@ -1,29 +1,25 @@
 <script setup lang="ts">
 import { useCsssLayout } from "../packages/layout/composables/csssLayout";
 import { useCsssTabs } from "../packages/tabs/composables/csssTabs";
-import { onMounted } from 'vue';
-import { read } from 'fs';
 
 const { COMP: Layout } = useCsssLayout({
-  setAsideWidthSize: ["small"],
-  setStyleValue: [{ "--header-height": 10 }],
-  setFooterHeightSize: ["large"],
-  setLayoutType: ["header-aside"],
+  style: {
+    headerHeightSize: "small",
+    asideWidthSize: "large",
+    layoutType: "aside",
+  },
 });
 
-const {
-  COMP: Tabs,
-  read
-} = useCsssTabs({
+const { COMP: Tabs, read } = useCsssTabs({
   state: {
     active: 1,
   },
   style: {
     needTransition: false,
     classList: {
-      tabs: ["", "hello"]
+      tabs: ["", "hello"],
     },
-  }
+  },
 });
 </script>
 

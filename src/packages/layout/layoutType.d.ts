@@ -15,34 +15,32 @@ type CLayoutFooterHeightSize = BaseSize;
  * @description 布局可供修改的 css 变量的可选值
  */
 interface CLayoutCssCustomProperties {
-  "--header-height": number;
-  "--aside-width": number;
-  "--footer-height": number;
+  "--header-height": string;
+  "--aside-width": string;
+  "--footer-height": string;
 }
 
 /**
  * @description Layout API
  */
-interface CLayoutApi extends ComponentBase {
-  setHeaderHeightSize: (size: CLayoutHeaderHeightSize = "normal") => CLayoutHeaderHeightSize;
-  setAsideWidthSize: (size: CLayoutAsideWidthSize = "normal") => CLayoutAsideWidthSize;
-  setFooterHeightSize: (size: CLayoutFooterHeightSize = "setFooterHeightSizeal") => CLayoutFooterHeightSize;
-  setLayoutType: (type: CLayoutType = "header-footer") => void;
+type CLayoutApi = import("vue").UnwrapNestedRefs<{
+  read: {
+  };
+  state: {
+  };
+  style: {
+    headerHeightSize: CLayoutHeaderHeightSize;
+    asideWidthSize: CLayoutAsideWidthSize;
+    footerHeightSize: CLayoutFooterHeightSize;
+    layoutType: CLayoutType;
 
-  setStyleValue: (value: Partial<CLayoutCssCustomProperties>) => void;
-}
+    classList?: Partial<{}>,
+    property: Partial<CLayoutCssCustomProperties>
+  };
+}>
 
-/**
- * @description useCsssLayout props
- */
-type UseCsssLayoutProps = {
-  [key in keyof CLayoutApi]?: Parameters<CLayoutApi[key]>;
-};
+type UseCsssLayoutProps = UseCsssProps<CLayoutApi>
 
-/**
- * @description css 变量设置方法
- */
-type CLayoutCssPropsResolver = { [key in keyof CLayoutCssCustomProperties]: (value: any) => void };
 
 /**
  * @description 布局类型

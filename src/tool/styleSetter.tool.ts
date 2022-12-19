@@ -1,27 +1,27 @@
 import { isNumber, isString, isUndefined } from "lodash-es";
 import { warn } from "./console.tool";
 
-/**
- * @description 用 var 将 css 包裹
- */
-export const VAR = (key: string) => `var(${key})`;
+export const VAR = (key: string) => {
+  if (key.substring(0, 2) !== "--") return `--${key}`;
+  return key;
+};
 
 /**
- * @description Style 属性设置器
+ * @description Style setter
  */
 export class StyleSetter {
   /**
    * @constructor
-   * @description 获取父元素
+   * @description get parent element
    */
-  constructor(private ele: HTMLElement, private componentName: string) {}
+  constructor(private ele: HTMLElement, private componentName: string) { }
 
   /**
    * @description 数字检验
    */
   public setRemNumber(value: number, key: string): void | null {
     if (isNumber(value)) {
-      this.ele.style.setProperty(key, `${value}rem`);
+      this.ele.style.setProperty(VAR(key), `${value}rem`);
     } else return warn(`${key}: 不是一个数值 `);
   }
   /**
@@ -29,7 +29,7 @@ export class StyleSetter {
    */
   public setString(value: string, key: string): void | null {
     if (isString(value)) {
-      this.ele.style.setProperty(key, value);
+      this.ele?.style.setProperty(VAR(key), value);
     } else return warn(`${key}: 不是可信字符串 `);
   }
 

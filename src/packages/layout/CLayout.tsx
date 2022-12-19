@@ -1,28 +1,36 @@
 import "./layout.css";
 
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import { useElement } from "../composables/element";
 import { useAside } from './composables/aside';
 import { useFooter } from './composables/footer';
 import { useHeader } from './composables/header';
 import { useLayout } from './composables/layout';
+import { useCssCustomProperty } from '../composables/cssCustomProperty';
 
 export default defineComponent({
   name: "CLayout",
   setup: (props, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-layout");
-    const { setHeaderHeightSize } = useHeader(styleSetter, slots.header);
-    const { setAsideWidthSize } = useAside(styleSetter, slots.aside);
-    const { setFooterHeightSize } = useFooter(styleSetter, slots.footer);
-    const { setStyleValue, setLayoutType } = useLayout(styleSetter);
+    const { property } = useCssCustomProperty<Partial<CLayoutCssCustomProperties>>(styleSetter);
+    const { headerHeightSize } = useHeader(styleSetter, slots.header);
+    const { asideWidthSize } = useAside(styleSetter, slots.aside);
+    const { footerHeightSize } = useFooter(styleSetter, slots.footer);
+    const { layoutType } = useLayout(styleSetter);
 
-    expose({
-      setHeaderHeightSize,
-      setAsideWidthSize,
-      setFooterHeightSize,
-      setStyleValue,
-      setLayoutType
+    const exposeVal: CLayoutApi = reactive({
+      read: {},
+      state: {},
+      style: {
+        headerHeightSize,
+        asideWidthSize,
+        footerHeightSize,
+        layoutType,
+        property
+      }
     });
+
+    expose(exposeVal);
 
     return () => {
       return (

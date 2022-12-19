@@ -1,5 +1,11 @@
 # csss-ui
 
+## 0.2.0-beta.2
+
+### Patch Changes
+
+- update tabs specification
+
 ## 0.2.0-beta.1
 
 ### Minor Changes

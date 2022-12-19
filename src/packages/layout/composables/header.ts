@@ -1,27 +1,17 @@
 import type { StyleSetter } from "@/tool/styleSetter.tool";
 import { defer } from "lodash-es";
 import type { Ref, Slot } from "vue";
-import { ref, unref, watchEffect } from "vue";
+import { unref, watchEffect } from 'vue';
+import { useSize } from '@/packages/composables/size';
 
 export function useHeader(styleSetter: StyleSetter | Ref<StyleSetter | undefined>, header?: Slot) {
-  /**
-   * @description 设置 header 高度
-   */
-  const headerHeightSize = ref<CLayoutHeaderHeightSize>("normal");
-  const setHeaderHeightSize = (size: CLayoutHeaderHeightSize = "normal") => {
-    headerHeightSize.value = size;
-    return size;
-  };
+  const { size: headerHeightSize } = useSize<CLayoutHeaderHeightSize>();
+
   watchEffect(() => {
+    // 如果没有 header，则取消其高度
+    if (!header) defer(() => unref(styleSetter)?.setRemNumber(0, "--header-height"));
     unref(styleSetter)?.setStyleSize("header-height", headerHeightSize.value);
   });
 
-  /**
-   * @description 如果没有 header，则取消其高度
-   */
-  watchEffect(() => {
-    if (!header) defer(() => unref(styleSetter)?.setRemNumber(0, "--header-height"));
-  });
-
-  return { setHeaderHeightSize };
+  return { headerHeightSize };
 }

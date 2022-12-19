@@ -1,4 +1,5 @@
-import { forEach } from "lodash-es";
+import { parseCsssProps } from '@/tool/useCsss.tool';
+import { cloneDeep } from 'lodash-es';
 import { ref, watch } from "vue";
 
 /**
@@ -6,10 +7,11 @@ import { ref, watch } from "vue";
  */
 export const useCsssLayout = (props?: UseCsssLayoutProps) => {
   const COMP = ref<CLayoutApi>();
+
   const init = watch(COMP, (el) => {
-    forEach(props, (value, fn) => {
-      if (value) (el as any)![fn].apply(null, value);
-    });
+    if (!props) return;
+    parseCsssProps(props, el!);
+
     init();
   });
 

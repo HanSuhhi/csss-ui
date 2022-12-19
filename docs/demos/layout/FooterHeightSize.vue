@@ -17,12 +17,12 @@ const { COMP: Small } = useCsssLayout({
     main
     <template #footer>large</template>
   </CLayout>
-  <hr />
+  <hr>
   <CLayout ref="Normal" class="up-down">
     main
     <template #footer>normal</template>
   </CLayout>
-  <hr />
+  <hr>
   <CLayout ref="Small" class="up-down">
     main
     <template #footer>small</template>

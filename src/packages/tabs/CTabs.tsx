@@ -31,15 +31,15 @@ export default defineComponent({
 
     const { transitionName, needTransition, setPanel } = useNeedToggleTransition(active);
 
-    const exposeVals: CTabsApi = {
-      read: reactive({
+    const exposeVals: CTabsApi = reactive({
+      read: {
         total: readonly(total),
         panels: readonly(panels),
-      }),
-      state: reactive({
+      },
+      state: {
         active,
-      }),
-      style: reactive({
+      },
+      style: {
         needTransition,
         classList: {
           tabs: tabsClassList,
@@ -48,8 +48,8 @@ export default defineComponent({
           panel: panelClassList,
           panelItem: panelItemClassList,
         }
-      })
-    };
+      }
+    });
 
     expose(exposeVals);
 

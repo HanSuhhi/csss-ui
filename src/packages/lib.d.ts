@@ -16,6 +16,12 @@ interface ComponentBase {
 }
 
 /**
+ * @description useCsssLayout props
+ */
+type UseCsssProps<T> = Omit<{ [key in keyof T]?: Partial<import("vue").UnwrapRef<Omit<T[key], "total" | "panels">>> }, "readonly">
+
+
+/**
  * @description classes
  */
 type Classes = string[];
