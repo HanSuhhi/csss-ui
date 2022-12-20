@@ -6,7 +6,7 @@ const { COMP: Tabs, read } = useCsssTabs();
 
 <template>
   <CTabs ref="Tabs">
-    <template #list="{ active }">
+    <template #list>
       <span>tab 1</span>
       <span>tab 2</span>
       <span data-disabled>disabled</span>

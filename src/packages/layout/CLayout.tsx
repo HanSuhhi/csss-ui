@@ -7,16 +7,18 @@ import { useFooter } from './composables/footer';
 import { useHeader } from './composables/header';
 import { useLayout } from './composables/layout';
 import { useCssCustomProperty } from '../composables/cssCustomProperty';
+import { useMain } from "./composables/main";
 
 export default defineComponent({
   name: "CLayout",
   setup: (props, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-layout");
     const { property } = useCssCustomProperty<Partial<CLayoutCssCustomProperties>>(styleSetter);
-    const { headerHeightSize } = useHeader(styleSetter, slots.header);
-    const { asideWidthSize } = useAside(styleSetter, slots.aside);
-    const { footerHeightSize } = useFooter(styleSetter, slots.footer);
-    const { layoutType } = useLayout(styleSetter);
+    const { layoutType, classList: layoutClassList } = useLayout(styleSetter);
+    const { headerHeightSize, classList: headerClassList } = useHeader(styleSetter, slots.header);
+    const { asideWidthSize, classList: asideClassList } = useAside(styleSetter, slots.aside);
+    const { footerHeightSize, classList: footerClassList } = useFooter(styleSetter, slots.footer);
+    const { classList: mainClassList } = useMain();
 
     const exposeVal: CLayoutApi = reactive({
       read: {},
@@ -26,6 +28,13 @@ export default defineComponent({
         asideWidthSize,
         footerHeightSize,
         layoutType,
+        classList: {
+          layout: layoutClassList,
+          header: headerClassList,
+          aside: asideClassList,
+          footer: footerClassList,
+          main: mainClassList
+        },
         property
       }
     });
@@ -34,11 +43,11 @@ export default defineComponent({
 
     return () => {
       return (
-        <article ref={element} class="csss-layout">
-          {slots.header && <header class="csss-layout__header">{slots.header?.()}</header>}
-          {slots.aside && <aside class="csss-layout__aside">{slots.aside?.()}</aside>}
-          <main class="csss-layout__main">{slots.default?.()}</main>
-          {slots.footer && <footer class="csss-layout__footer">{slots.footer?.()}</footer>}
+        <article ref={element} class={layoutClassList.value}>
+          {slots.header && <header class={headerClassList.value}>{slots.header?.()}</header>}
+          {slots.aside && <aside class={asideClassList.value}>{slots.aside?.()}</aside>}
+          <main class={mainClassList.value}>{slots.default?.()}</main>
+          {slots.footer && <footer class={footerClassList.value}>{slots.footer?.()}</footer>}
         </article>
       );
     };

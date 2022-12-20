@@ -34,7 +34,13 @@ type CLayoutApi = import("vue").UnwrapNestedRefs<{
     footerHeightSize: CLayoutFooterHeightSize;
     layoutType: CLayoutType;
 
-    classList?: Partial<{}>,
+    classList?: Partial<{
+      layout: string[];
+      header: string[];
+      aside: string[];
+      footer: string[];
+      main: string[];
+    }>,
     property: Partial<CLayoutCssCustomProperties>
   };
 }>

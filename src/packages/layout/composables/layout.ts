@@ -1,3 +1,4 @@
+import { useTemplateClassList } from "@/packages/composables/templateClassList";
 import type { StyleSetter } from "@/tool/styleSetter.tool";
 import type { Ref } from "vue";
 import { unref, watchEffect } from 'vue';
@@ -15,5 +16,6 @@ export function useLayout(styleSetter: Ref<StyleSetter | undefined>) {
 
   return {
     layoutType,
+    ...useTemplateClassList(["csss-layout"])
   };
 }

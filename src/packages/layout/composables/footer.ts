@@ -3,6 +3,7 @@ import { ref, unref, watchEffect } from "vue";
 import { defer } from "lodash-es";
 import type { StyleSetter } from "@/tool/styleSetter.tool";
 import { useSize } from '../../composables/size';
+import { useTemplateClassList } from "@/packages/composables/templateClassList";
 
 export function useFooter(styleSetter: StyleSetter | Ref<StyleSetter | undefined>, footer?: Slot) {
   const { size: footerHeightSize } = useSize<CLayoutFooterHeightSize>();
@@ -15,5 +16,8 @@ export function useFooter(styleSetter: StyleSetter | Ref<StyleSetter | undefined
     if (!footer) defer(() => unref(styleSetter)?.setRemNumber(0, "--footer-height"));
   });
 
-  return { footerHeightSize };
+  return {
+    footerHeightSize,
+    ...useTemplateClassList(['csss-layout__footer'])
+  };
 }
