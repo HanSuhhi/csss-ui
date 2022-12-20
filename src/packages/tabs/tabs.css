@@ -11,11 +11,6 @@
 .csss-tabs__list {
   position: relative;
   display: flex;
-  flex-direction: var(--list-direction);
-  justify-content: var(--list-justify-content);
-
-  /* width: var(--list-width);
-  margin-left: calc(100% - var(--list-width)); */
 }
 
 .csss-tabs__panels {

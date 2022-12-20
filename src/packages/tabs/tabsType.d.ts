@@ -1,7 +1,24 @@
+type listStatus = "normal" | "disabled" | "null";
+
+type CheckListChildrenResult = [is: listStatus, element: HTMLElement][];
+
+
 /**
- * @description 布局可供修改的 css 变量的可选值
+ * @description css custom properties
  */
-interface CTabsCustomProperties { }
+interface CTabsCssCustomProperties {
+  "--list-item-x": string;
+  "--list-item-y": string;
+  "--list-item-color": string;
+  "--list-item-bg-color": string;
+  "--list-item-tag-width": string;
+  "--list-item-tag-bg-color": string;
+  "--list-item-hover-bg-color": string;
+  "--list-item-active-bg-color": string;
+  "--list-item-active-x": string;
+  "--list-item-active-y": string;
+  "--list-item-active-tag-bg-color": string
+}
 
 /**
  * @description API
@@ -23,18 +40,9 @@ type CTabsApi = import("vue").UnwrapNestedRefs<{
       panel: string[];
       panelItem: string[];
     }>,
-    property?: {}
+    property?: Partial<CTabsCssCustomProperties>
   };
-  // setStyleValue: (value: Partial<CTabsCustomProperties>) => void;
 }>
 
 type UseCsssTabsProps = UseCsssProps<CTabsApi>
 
-/**
- * @description css 变量设置方法
- */
-type CTabsCssPropsResolver = Record<keyof CTabsCustomProperties, (value: any) => void>;
-
-type listStatus = "normal" | "disabled" | "null";
-
-type CheckListChildrenResult = [is: listStatus, element: HTMLElement][];

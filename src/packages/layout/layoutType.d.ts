@@ -17,7 +17,7 @@ type CLayoutType = "header-footer" | "header-aside" | "footer-aside" | "aside";
 
 
 /**
- * @description 布局可供修改的 css 变量的可选值
+ * @description css custom properties
  */
 interface CLayoutCssCustomProperties {
   "--header-height": string;

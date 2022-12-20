@@ -8,11 +8,13 @@ import { useTabs } from "./composables/tabs";
 import { useTabsList } from "./composables/tabsList";
 import { useTabsPanel } from './composables/tabsPanel';
 import { useNeedToggleTransition } from "./composables/transition";
+import { useCssCustomProperty } from '../composables/cssCustomProperty';
 
 export default defineComponent({
   name: "CTabs",
   setup: (props, { slots, expose }) => {
     const { element, getVnodeIndex, styleSetter } = useElement("csss-tabs");
+    const { property } = useCssCustomProperty<Partial<CTabsCssCustomProperties>>(styleSetter);
     const { classList: tabsClassList } = useTabs(styleSetter);
     const {
       classList: listClassList,
@@ -47,7 +49,8 @@ export default defineComponent({
           listItem: listItemClassList,
           panel: panelClassList,
           panelItem: panelItemClassList,
-        }
+        },
+        property
       }
     });
 

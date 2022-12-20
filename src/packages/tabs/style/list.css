@@ -1,21 +1,35 @@
 .csss-tabs__list__item {
+  position: relative;
   margin-top: var(--small);
-  padding: var(--mini) var(--normal);
-  color: var(--white);
-  text-transform: var(--list-text-transform);
-  background-color: var(--main-color-bright-2);
+  padding: var(--list-item-padding);
+  color: var(--list-item-color);
+  text-transform: uppercase;
+  background-color: var(--list-item-bg-color);
   cursor: pointer;
-  transition: all var(--moment) ease-in-out;
+  transition: all var(--ani-time) ease-in-out;
+}
+
+.csss-tabs__list__item::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--list-item-tag-width);
+  height: 100%;
+  background-color: var(--list-item-tag-bg-color);
+  content: "";
 }
 
 .csss-tabs__list__item__hover:hover {
-  background-color: var(--main-color-bright-1);
+  background-color: var(--list-item-hover-bg-color);
 }
 
 .csss-tabs__list__item[data-active] {
-  background-color: var(--main-color);
-  transform: scale(var(--list-active-scale));
-  transform-origin: 100% 100%;
+  padding: var(--list-item-active-padding);
+  background-color: var(--list-item-active-bg-color);
+}
+
+.csss-tabs__list__item[data-active]::before {
+  background-color: var(--list-item-active-tag-bg-color);
 }
 
 .csss-tabs__list__item[data-disabled] {

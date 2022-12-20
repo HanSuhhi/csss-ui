@@ -23,12 +23,12 @@ const { COMP: Self } = useCsssLayout({
     main
     <template #header>large</template>
   </CLayout>
-  <hr />
+  <hr>
   <CLayout ref="Small" class="demo-layout">
     main
     <template #header>small</template>
   </CLayout>
-  <hr />
+  <hr>
   <CLayout ref="Self" class="demo-layout">
     main
     <template #header>self</template>

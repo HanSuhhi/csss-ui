@@ -1,5 +1,3 @@
 .csss-tabs__panel {
-  padding: var(--small);
-  color: var(--white);
-  background-color: var(--main-color);
+  padding: var(--panel-padding);
 }
