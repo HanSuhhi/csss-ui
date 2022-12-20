@@ -1,5 +1,5 @@
 @import "./style/config.css";
 
-.csss-{{dashCase name}} {
+.csss-menu {
   position: inherit;
 }

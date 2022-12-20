@@ -1,5 +1,5 @@
 import "@hansuhhi-don/csss/dist/style.css";
-import "@/packages/style/index";
+import "@/packages/style/main";
 
 import type { App } from "vue";
 import * as components from "./packages/main";

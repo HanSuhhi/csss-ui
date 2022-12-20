@@ -1,5 +1,11 @@
 # csss-ui
 
+## 0.2.0-beta.3
+
+### Patch Changes
+
+- update layout specification
+
 ## 0.2.0-beta.2
 
 ### Patch Changes

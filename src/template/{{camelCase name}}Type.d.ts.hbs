@@ -1,25 +1,23 @@
 /**
-* @description 布局可供修改的 css 变量的可选值
+* @description css custom properties
 */
-interface C{{properCase name}}CustomProperties {
+interface C{{properCase name}}CssCustomProperties {
 
 }
 
 /**
 * @description API
 */
-interface C{{properCase name}}Api extends ComponentBase {
-  setStyleValue: (value: Partial<C{{properCase name}}CustomProperties>) => void;
-}
+type C{{properCase name}}Api  = import("vue").UnwrapNestedRefs<{
+  read: {
+  };
+  state: {
+  };
+  style: {
+    classList?: Partial<{
+    }>,
+    property: Partial<C{{properCase name}}CssCustomProperties>
+  };
+}>
 
-/**
-* @description useCsssLayout props
-*/
-type UseCsss{{ properCase name }}Props = {
-  [key in keyof C{{properCase name}}Api]?: Parameters<C{{properCase name}}Api[key]>;
-};
-
-/**
-* @description css 变量设置方法
-*/
-type C{{properCase name}}CssPropsResolver = { [key in keyof C{{properCase name}}CustomProperties]: (value: any) => void };
+type UseCsss{{properCase name}}Props = UseCsssProps<C{{properCase name}}Api>

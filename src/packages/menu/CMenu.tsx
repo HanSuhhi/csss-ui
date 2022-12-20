@@ -1,16 +1,16 @@
-import "./{{dashCase name}}.css";
+import "./menu.css";
 
 import { defineComponent, reactive } from 'vue';
 import { useElement } from "../composables/element";
 import { useCssCustomProperty } from '../composables/cssCustomProperty';
 
 export default defineComponent({
-  name: "C{{properCase name}}",
+  name: "CMenu",
   setup: (props, { slots, expose }) => {
-    const { element, styleSetter } = useElement("csss-{{dashCase name}}");
-    const { property } = useCssCustomProperty<Partial<C{{properCase name}}CssCustomProperties>>(styleSetter);
+    const { element, styleSetter } = useElement("csss-menu");
+    const { property } = useCssCustomProperty<Partial<CMenuCssCustomProperties>>(styleSetter);
 
-    const exposeVal: C{{properCase name}}Api = reactive({
+    const exposeVal: CMenuApi = reactive({
       read: {},
       state: {},
       style: {
@@ -19,13 +19,13 @@ export default defineComponent({
         },
         property
       }
-    })
+    });
 
     expose(exposeVal);
 
     return () => {
       return (
-        <article ref={element} class="csss-{{dashCase name}}">
+        <article ref={element} class="csss-menu">
         </article>
       );
     };

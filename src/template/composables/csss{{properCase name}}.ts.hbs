@@ -1,17 +1,10 @@
-import { ref, watch } from "vue";
-import { forEach } from "lodash-es";
+import { useComponent } from '@/packages/composables/Comp';
 
 /**
 * @description use csss {{dashCase name}} composable
 */
 export const useCsss{{properCase name}} = (props: UseCsss{{ properCase name }}Props) => {
-  const COMP = ref<C{{properCase name}}Api>();
-  const init = watch(COMP, (el) => {
-    forEach(props, (value, fn) => {
-      if (value) (el as any)![fn].apply(null, value);
-    });
-    init();
-  });
-
-  return { COMP };
+  return {
+    ...useComponent<C{{properCase name}}Api, UseCsss{{ properCase name }}Props>(props)
+  };
 };

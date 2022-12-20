@@ -1,8 +1,7 @@
+import { spawn } from "child_process";
+import fs from "fs";
 import klawSync from "klaw-sync";
 import { CWD, packagesPath } from "./constant";
-import fs from "fs";
-import { spawn } from "child_process";
-import titleize from "titleize";
 
 /**
  * @description total files

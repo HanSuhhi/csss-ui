@@ -12,6 +12,7 @@ const { COMP: Layout } = useCsssLayout({
 const {
   COMP: Tabs,
   style,
+  state,
   read,
 } = useCsssTabs({
   state: {

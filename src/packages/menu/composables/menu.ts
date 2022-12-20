@@ -1,8 +1,8 @@
 import { useTemplateClassList } from "@/packages/composables/templateClassList";
 
-export function use{{properCase name}}() {
+export function useMenu() {
 
   return {
-    ...useTemplateClassList(["csss-{{dashCase name}}"])
+    ...useTemplateClassList(["csss-menu"])
   };
 }
