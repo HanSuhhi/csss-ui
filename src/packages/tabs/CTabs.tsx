@@ -15,7 +15,7 @@ export default defineComponent({
   setup: (props, { slots, expose }) => {
     const { element, getVnodeIndex, styleSetter } = useElement("csss-tabs");
     const { property } = useCssCustomProperty<Partial<CTabsCssCustomProperties>>(styleSetter);
-    const { classList: tabsClassList } = useTabs(styleSetter);
+    const { classList: tabsClassList } = useTabs();
     const {
       classList: listClassList,
       listItemClassList,

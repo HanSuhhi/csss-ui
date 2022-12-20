@@ -1,17 +1,17 @@
 /**
- * @description header height 尺寸
+ * @description header height size
  */
 type CLayoutHeaderHeightSize = BaseSize | number;
 /**
- * @description aside width 尺寸
+ * @description aside width size
  */
 type CLayoutAsideWidthSize = BaseSize | number;
 /**
- * @description footer height 尺寸
+ * @description footer height size
  */
 type CLayoutFooterHeightSize = BaseSize | number;
 /**
- * @description 布局类型
+ * @description layout type
  */
 type CLayoutType = "header-footer" | "header-aside" | "footer-aside" | "aside";
 
@@ -51,5 +51,3 @@ type CLayoutApi = import("vue").UnwrapNestedRefs<{
 }>
 
 type UseCsssLayoutProps = UseCsssProps<CLayoutApi>
-
-

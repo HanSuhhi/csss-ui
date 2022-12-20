@@ -25,3 +25,14 @@ type UseCsssProps<T> = Omit<{ [key in keyof T]?: Partial<import("vue").UnwrapRef
  * @description classes
  */
 type Classes = string[];
+
+type CsssAPI = import("vue").UnwrapNestedRefs<{
+  read: {
+  };
+  state: {
+  };
+  style: {
+    classList?: Partial<{}>,
+    property?: Partial<Record<string, string>>
+  };
+}>

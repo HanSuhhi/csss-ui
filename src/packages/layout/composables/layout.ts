@@ -6,7 +6,7 @@ import { useGenerator } from '@/packages/composables/generator';
 
 export function useLayout(styleSetter: Ref<StyleSetter | undefined>) {
   /**
-   * @description 布局类型
+   * @description layout type
    */
   const { generator: layoutType } = useGenerator<CLayoutType>("header-footer");
 

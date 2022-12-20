@@ -1,23 +1,14 @@
-import { parseCsssProps } from "@/tool/useCsss.tool";
-import { computed, ref, watch } from 'vue';
+import { useComponent } from '../../composables/Comp';
 
 /**
  * @description use csss tabs composable
  */
 export const useCsssTabs = (props?: UseCsssTabsProps) => {
-  const COMP = ref<CTabsApi>();
-  const state = computed(() => COMP.value?.state);
-  const read = computed(() => COMP.value?.read);
-  const style = computed(() => COMP.value?.style);
 
-  /**
-   * @description init function
-   */
-  const init = watch(COMP, (el) => {
-    if (!props) return;
-    parseCsssProps(props, el!);
-    init();
-  });
+  const { read } = useComponent<CTabsApi, UseCsssTabsProps>(props);
 
-  return { COMP, state, read, style };
+
+  return {
+    ...useComponent<CTabsApi, UseCsssTabsProps>(props)
+  };
 };
