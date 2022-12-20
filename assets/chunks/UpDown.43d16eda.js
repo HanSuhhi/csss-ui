@@ -1,0 +1,1 @@
+import{_ as a,o as c,j as n,k as e,r,b as o}from"../app.17912afd.js";const s={};function _(d,f){const t=r("CLayout");return c(),n(t,{class:"demo-layout"},{header:e(()=>[o("header")]),default:e(()=>[o(" main ")]),_:1})}const m=a(s,[["render",_]]);export{m as default};

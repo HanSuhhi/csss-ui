@@ -1,1 +1,0 @@
-import{_ as a,o as c,j as n,k as o,r,b as e}from"../app.4233aa09.js";const s={};function _(f,l){const t=r("CLayout");return c(),n(t,{class:"demo-layout"},{footer:o(()=>[e("footer")]),default:o(()=>[e(" main ")]),_:1})}const p=a(s,[["render",_]]);export{p as default};
