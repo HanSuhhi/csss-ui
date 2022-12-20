@@ -10,6 +10,11 @@ type CLayoutAsideWidthSize = BaseSize | number;
  * @description footer height 尺寸
  */
 type CLayoutFooterHeightSize = BaseSize | number;
+/**
+ * @description 布局类型
+ */
+type CLayoutType = "header-footer" | "header-aside" | "footer-aside" | "aside";
+
 
 /**
  * @description 布局可供修改的 css 变量的可选值
@@ -48,7 +53,3 @@ type CLayoutApi = import("vue").UnwrapNestedRefs<{
 type UseCsssLayoutProps = UseCsssProps<CLayoutApi>
 
 
-/**
- * @description 布局类型
- */
-type CLayoutType = "header-footer" | "header-aside" | "footer-aside" | "aside";

@@ -2,13 +2,17 @@
 import { useCsssLayout } from "../packages/layout/composables/csssLayout";
 import { useCsssTabs } from "../packages/tabs/composables/csssTabs";
 
-const { COMP: Layout } = useCsssLayout({
+const { COMP: Layout, style } = useCsssLayout({
   style: {
     headerHeightSize: "small",
     asideWidthSize: "large",
     layoutType: "aside",
   },
 });
+
+setTimeout(() => {
+  style.value!.classList!.layout = ["", "Asd"];
+}, 1000);
 
 const { COMP: Tabs, read } = useCsssTabs({
   state: {

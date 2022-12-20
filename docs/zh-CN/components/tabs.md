@@ -94,20 +94,24 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 | name           | param type | description                   |
 | -------------- | :--------- | :---------------------------- |
 | needTransition | `boolean`  | [是否需要切换动画](#切换动画) |
+| `classList`    | /          | [classList](#classlist)       |
+| `property`     | /          | [property](#property)         |
 
 ##### classList
 
-| name               | param type | description                                                                              |
-| ------------------ | :--------- | :--------------------------------------------------------------------------------------- |
-| tabsClassList      | `string[]` | 设置[根元素 class](#根元素-class)，第一个元素为 `""` 时，表示保留原 class                |
-| listClassList      | `string[]` | 设置 [list 根元素 class](#list-根元素-class)，第一个元素为 `""` 时，表示保留原 class     |
-| panelClassList     | `string[]` | 设置 [panels 根元素 class](#panel-根元素-class)，第一个元素为 `""` 时，表示保留原 class  |
-| listItemClassList  | `string[]` | 设置 [list 子元素的 class](#list-子元素-class)，第一个元素为 `""` 时，表示保留原 class   |
-| panelItemClassList | `string[]` | 设置 [panel 子元素的 class](#panel-子元素-class)，第一个元素为 `""` 时，表示保留原 class |
+| name      | param type | description                                      |
+| --------- | :--------- | :----------------------------------------------- |
+| tabs      | `string[]` | 设置[根元素 class](#根元素-class)                |
+| list      | `string[]` | 设置 [list 根元素 class](#list-根元素-class)     |
+| panel     | `string[]` | 设置 [panels 根元素 class](#panel-根元素-class)  |
+| listItem  | `string[]` | 设置 [list 子元素的 class](#list-子元素-class)   |
+| panelItem | `string[]` | 设置 [panel 子元素的 class](#panel-子元素-class) |
 
 ##### property
 
-TODO
+| name | param type | description |
+| ---- | :--------- | :---------- |
+| /    | /          | /           |
 
 ### 返回值
 

@@ -1,0 +1,19 @@
+.demo-layout > main {
+  background-color: goldenrod;
+}
+
+.demo-layout > header {
+  background-color: seagreen;
+}
+
+.demo-layout > aside {
+  background-color: sandybrown;
+}
+
+.demo-layout > footer {
+  background-color: brown;
+}
+
+.no-element {
+  display: none;
+}

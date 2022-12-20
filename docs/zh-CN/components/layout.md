@@ -26,33 +26,25 @@
 
 `header 插槽` 用于定义布局的顶部区域。
 
-开发者们仅需关注插槽内容，header 布局交给组件本身。
+开发者们仅需关注插槽内容，布局交给组件本身。
 
-:::tip
-`data-disabled` 符合 [data-\*](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*) 规范。
-:::
+### aside 插槽
 
-### panel-[*] 插槽
+`aside 插槽` 用于定义布局的顶部区域。
 
-`panel 插槽`会根据 [`list 插槽`](#list-插槽)生成，默认的插槽名称为"panel-index"。
+开发者们仅需关注插槽内容，布局交给组件本身。
 
-例如 list 插槽有 3 个子元素,那么对应的 3 个 panel 插槽分别为: `panel-0`, `panel-1`, `panel-2`。
+### footer 插槽
 
-<demo title="" desc="" src="../../demos/tabs/PanelSlot.vue" />
+`footer 插槽` 用于定义布局的顶部区域。
 
-vue 插槽支持[动态插槽名](https://cn.vuejs.org/guide/components/slots.html#dynamic-slot-names)，因此组件也提供了相关的动态名称数组。
-
-这在 panels 是统一的样式内容时很有用。
-
-<demo title="" desc="" src="../../demos/tabs/PanelSlotDynamic.vue" />
-
-::: warning
-使用 [组合式 API](#组合式-api) 需要将 `COMP` 与 组件实例进行绑定。
-:::
+开发者们仅需关注插槽内容，布局交给组件本身。
 
 ### default 插槽
 
-考虑到特殊场景下会有更多的元素参与到 tabs 布局，因此 tabs 布局也会显示 `default 插槽内容`。
+用于定义布局的核心区域。
+
+开发者们仅需关注插槽内容，布局交给组件本身。
 
 ## 组合式 API
 
@@ -77,57 +69,79 @@ const { ...返回值 } = useCsssLayout({
 
 :::
 
-### 接口
+### 初始化
 
-`Layout` 所有接口列表：
+函数初始化时接受一个包含 `state` 、 `style` 的对象作为参数。
 
-| name                  | param type                                                          |     default     | description                     |
-| --------------------- | :------------------------------------------------------------------ | :-------------: | :------------------------------ |
-| `setHeaderHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | [header 高度](#header-高度)     |
-| `setAsideWidthSize`   | `small` \| `normal` \| `large`                                      |    `normal`     | [aside 宽度](#aside-宽度)       |
-| `setFooterHeightSize` | `small` \| `normal` \| `large`                                      |    `normal`     | [footer 高度](#footer-高度)     |
-| `setLayoutType`       | `header-footer`<br> `header-aside` <br> `footer-aside` <br> `aside` | `header-footer` | [布局类型](#布局类型)           |
-| `setStyleValue`       | `Object`                                                            |      `{}`       | [设置 css 变量](#设置-css-变量) |
+#### state
+
+| name | param type | description |
+| ---- | :--------- | :---------- |
+| /    | /          | /           |
+
+#### style
+
+style 除了一些基础状态，还包括两个子对象，分别是代表 class 设置的 `classList` 和 定义 css 变量的 `property`。
+
+| name               | param type                                                             | description                      |
+| ------------------ | :--------------------------------------------------------------------- | :------------------------------- |
+| `headerHeightSize` | `"small"` \| `"normal"` \| `"large"` \| `number`                       | 设置 [header 高度](#header-高度) |
+| `asideWidthSize`   | `"small"` \| `"normal"` \| `"large"` \| `number`                       | 设置 [aside 宽度](#aside-宽度)   |
+| `footerHeightSize` | `"small"` \| `"normal"` \| `"large"` \| `number`                       | 设置 [footer 高度](#footer-高度) |
+| `layoutType`       | `"header-footer"` \| `"header-aside"` \| `"footer-aside"` \| `"aside"` | 设置[布局类型](#布局类型)        |
+| `classList`        | /                                                                      | [classList](#classlist)          |
+| `property`         | /                                                                      | [property](#property)            |
+
+##### classList
+
+| name   | param type | description                        |
+| ------ | :--------- | :--------------------------------- |
+| layout | `string[]` | 设置[根元素 class](#根元素-class)  |
+| header | `string[]` | 设置 [header class](#header-class) |
+| aside  | `string[]` | 设置 [aside class](#aside-class)   |
+| footer | `string[]` | 设置 [footer class](#footer-class) |
+| main   | `string[]` | 设置 [main class](#main-class)     |
+
+##### property
+
+目前 IDE 对于 css 变量的支持并不好。
+
+如果开发者想要手动修改 css 变量，此处也提供了接口。
+
+| name              | param type | description |
+| ----------------- | :--------- | :---------- |
+| `--header-height` | `string`;  | header 高度 |
+| `--aside-width`   | `string`   | aside 宽度  |
+| `--footer-height` | `string`   | footer 高度 |
 
 ### 返回值
 
-| name   | value type | default | description                            |
-| ------ | :--------- | :-----: | :------------------------------------- |
-| `COMP` | `Ref`      |  null   | 组件实例，需要与 template 中的组件绑定 |
+| name    | description                            |
+| ------- | -------------------------------------- |
+| `COMP`  | 组件实例，需要与 template 中的组件绑定 |
+| `read`  | [组件只读属性](#read-组件只读属性)     |
+| `state` | [组件状态](#state-组件状态)            |
+| `style` | [组件只读属性](#read-组件只读属性)     |
 
-以下是
+#### read 组件只读属性
 
-## header 高度
+提供一些只读但无法修改的属性。
 
-设置 `header插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
+| name | param type | description |
+| ---- | :--------- | :---------- |
+| /    | /          | /           |
 
-如果对于 `header插槽` 高度有具体要求，可使用 [setStyleValue](#setstylevalue) 来设置详细高度。
+#### state 组件状态
 
-<demo title="" desc="" src="../../demos/layout/HeaderHeightSize.vue" />
+开发者可根据实际需要随时修改组件状态。
 
-## aside 宽度
+同[state](#state)
 
-设置 `aside插槽` 宽度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
+#### style 样式
 
-如果对于 `aside插槽` 宽度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细宽度。
+开发者可根据实际需要随时修改组件样式。
 
-<demo title="" desc="" src="../../demos/layout/AsideWidthSize.vue" />
-
-:::warning
-由于宽度实现是通过 `grid-template-columns: minmax(min-content, var(--aside-width))` 实现。`aside插槽` 的设定宽度只是最小宽度值，实际宽度会随子元素宽度的增加而增加。
-
-**请注意控制子组件 / 元素的宽度。**
-
-@TODO：提供锁定模式和非锁定模式。
-:::
-
-## footer 高度
-
-设置 `footer插槽` 高度尺寸，可选值有 `small` , `normal` , `large` , 默认值为 `normal`。
-
-如果对于 `footer插槽` 高度有具体要求，可使用[setStyleValue](#setstylevalue) 来设置详细高度。
-
-<demo title="" desc="" src="../../demos/layout/FooterHeightSize.vue" />
+同[style](#style)
 
 ## 布局类型
 
@@ -193,50 +207,114 @@ const { ...返回值 } = useCsssLayout({
 
 <demo title="" desc="" src="../../demos/layout/Aside.vue" />
 
-## 设置 css 变量
+## header 高度
+
+用于设置 `header 插槽` 高度，可以通过 `small`，`normal`，`large` 三个尺寸设置。
+
+当传入的参数为 number 时，会自动转化为 rem 单位。
+
+<demo title="" desc="" src="../../demos/layout/HeaderHeight.vue" />
+
+## aside 宽度
+
+用于设置 `aside 插槽` 宽度，可以通过 `small`，`normal`，`large` 三个尺寸设置。
+
+当传入的参数为 number 时，会自动转化为 rem 单位。
+
+<demo title="" desc="" src="../../demos/layout/AsideWidth.vue" />
 
 :::warning
+由于宽度实现是通过 `grid-template-columns: minmax(min-content, var(--aside-width))` 实现。`aside插槽` 的设定宽度只是最小宽度值，实际宽度会随子元素宽度的增加而增加。
 
-某种程度上来说，凡是其他接口可以操作的组件样式，你都可以通过该接口进行相对应的实现。
+**请注意控制子组件 / 元素的宽度。**
 
-但仍建议优先使用其他接口对样式进行操作，因为其他接口可能对一些尺寸、颜色进行了封装，当需求无法被满足时再考虑本接口。
+@TODO：提供锁定模式和非锁定模式。
+:::
+
+## footer 高度
+
+用于设置 `footer 插槽` 高度，可以通过 `small`，`normal`，`large` 三个尺寸设置。
+
+当传入的参数为 number 时，会自动转化为 rem 单位。
+
+<demo title="" desc="" src="../../demos/layout/FooterHeight.vue" />
+
+## 根元素 class
+
+通过一个 `string[]` 来设置根元素的 class。
+
+当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/layout/RootClass.vue" />
+
+## header class
+
+通过一个 `string[]` 来设置 header 的 class。
+
+当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/layout/HeaderClass.vue" />
+
+:::tip no-element 样式
+
+```css
+.no-element {
+  display: none;
+}
+```
 
 :::
 
-设置 css 样式变量。这是每一个组件接口都应拥有的接口。
+## aside class
 
-我希望开发者可以很便捷的操作一些 css 变量，以达到自定义组件样式的目的，这个接口应运而生。
+通过一个 `string[]` 来设置 aside 的 class。
 
-以下是该接口提供的可供修改的 css 变量列表：
+当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
 
-| key               | value type | default | description     | unit  |
-| ----------------- | :--------: | :-----: | :-------------- | :---: |
-| `--header-height` |  `number`  |    3    | header 插槽高度 | `rem` |
-| `--aside-width`   |  `number`  |  12.5   | aside 插槽宽度  | `rem` |
-| `--footer-height` |  `number`  |    3    | footer 插槽高度 | `rem` |
+<demo title="" desc="" src="../../demos/layout/AsideClass.vue" />
 
-### css 变量汇总
+:::tip no-element 样式
 
-:::tip
-
-可能会有一些 css 变量并不在 [setStyleValue](#setstylevalue) 中被罗列，那代表这些 css 变量并不希望被开发者所修改。
-
-:::
-:::warning
-
-任何时候 `csss-ui`的 css 变量都不希望被开发者直接修改。
+```css
+.no-element {
+  display: none;
+}
+```
 
 :::
 
-`csss-ui` 组件样式完全依靠 css 变量进行驱动。当[接口](#接口)提供的能力无法解决实际需求时，才考虑直接修改对应的 css 变量。
+## footer class
 
-仅管 `csss-ui` 并不希望开发者直接修改 css 变量，但比起强制修改样式等方法，修改 css 变量又似乎是一个不错的方法。
+通过一个 `string[]` 来设置 footer 的 class。
 
-以下是所有 css 变量列表：
+当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
 
-| key                     |                   default                    | description     | remark     |
-| ----------------------- | :------------------------------------------: | :-------------- | :--------- |
-| `--header-height`       |                     3rem                     | header 插槽高度 |            |
-| `--aside-width`         |                   12.5rem                    | aside 插槽宽度  |            |
-| `--footer-height`       |                     3rem                     | footer 插槽高度 |            |
-| `--grid-template-areas` | "header header" "aside main" "footer footer" | layout 布局     | 不建议修改 |
+<demo title="" desc="" src="../../demos/layout/FooterClass.vue" />
+
+:::tip no-element 样式
+
+```css
+.no-element {
+  display: none;
+}
+```
+
+:::
+
+## main class
+
+通过一个 `string[]` 来设置 main 的 class。
+
+当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+
+<demo title="" desc="" src="../../demos/layout/MainClass.vue" />
+
+:::tip no-element 样式
+
+```css
+.no-element {
+  display: none;
+}
+```
+
+:::

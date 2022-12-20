@@ -2,37 +2,17 @@
 import { useCsssLayout } from "csss-ui/csss-ui.es.js";
 
 const { COMP: Layout } = useCsssLayout({
-  setLayoutType: ["footer-aside"],
+  style: {
+    layoutType: "footer-aside",
+  },
 });
 </script>
 
 <template>
-  <CLayout ref="Layout" class="footer-aside">
+  <CLayout ref="Layout" class="demo-layout">
     main
     <template #header>header</template>
     <template #aside>aside</template>
     <template #footer>footer</template>
   </CLayout>
 </template>
-
-<style>
-.footer-aside {
-  height: 10rem;
-}
-
-.footer-aside > main {
-  background-color: goldenrod;
-}
-
-.footer-aside > header {
-  background-color: seagreen;
-}
-
-.footer-aside > aside {
-  background-color: sandybrown;
-}
-
-.footer-aside > footer {
-  background-color: brown;
-}
-</style>

@@ -9,6 +9,11 @@ import { forEach } from "lodash-es";
 const demos = import.meta.glob("@/demos/**/demo.vue", {
   eager: true,
 });
+// @ts-ignore
+import.meta.glob("@/demos/**/*.css", {
+  eager: true,
+})
+
 
 const defineGlobDemoComponentName = (path: string) => {
   const name = path.split("/")[2];
