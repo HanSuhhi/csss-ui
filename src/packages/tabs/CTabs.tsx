@@ -23,7 +23,6 @@ export default defineComponent({
       total,
       active,
       isActive,
-      setActive,
     } = useTabsList();
     const {
       classList: panelClassList,
@@ -78,7 +77,7 @@ export default defineComponent({
                           onClick={() => {
                             const _index = indexBase + i;
                             setPanel.call(this, _index);
-                            setActive.call(this, _index);
+                            active.value = _index;
                           }}
                           data-active={lintAttribute(isActive(indexBase + i))}
                           class={listItemClassList.value}>

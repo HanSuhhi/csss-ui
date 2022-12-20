@@ -26,18 +26,23 @@ export const useTabsList = () => {
   /**
    * @description active num
    */
-  const active = ref(0);
+  const _active = ref(0);
+  const active = computed({
+    get: () => _active.value,
+    set: (index) => {
+      if (checkIftheIndexIsDisabled(index)) return;
+
+      _active.value = index;
+      forEach(TabsList.value?.children, (el, _index) => {
+        if (index === _index) el.children[0].setAttribute("data-active", "");
+        else el.children[0].removeAttribute("data-active");
+      });
+    }
+  });
   const isActive = (index: number) => {
     return index === active.value;
   };
-  const setActive = (index: number) => {
-    if (checkIftheIndexIsDisabled(index)) return;
-    active.value = index;
-    forEach(TabsList.value?.children, (el, _index) => {
-      if (index === _index) el.children[0].setAttribute("data-active", "");
-      else el.children[0].removeAttribute("data-active");
-    });
-  };
+
   const setDefaultActive = () => {
     if (!isUndefined(active.value)) return;
     if (!disabledIndexs.value.length || disabledIndexs.value[0] !== 0) return (active.value = 0);
@@ -86,7 +91,7 @@ export const useTabsList = () => {
   });
 
   return {
-    total, active, TabsList, isActive, setActive, listItemClassList,
+    total, active, TabsList, isActive, listItemClassList,
     ...useTemplateClassList(["csss-tabs__list"])
   };
 };
