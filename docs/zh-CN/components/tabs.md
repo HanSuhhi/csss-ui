@@ -109,9 +109,19 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 ##### property
 
-| name | param type | description |
-| ---- | :--------- | :---------- |
-| /    | /          | /           |
+| name                              | param type | description                      |
+| --------------------------------- | :--------- | :------------------------------- |
+| `--list-item-x`                   | `string`   | list item 水平方向 padding       |
+| `--list-item-y`                   | `string`   | list item 竖直方向 padding       |
+| `--list-item-color`               | `string`   | list item 的文字颜色             |
+| `--list-item-bg-color`            | `string`   | list item 的背景颜色             |
+| `--list-item-tag-width`           | `string`   | list item 装饰符的宽度           |
+| `--list-item-tag-bg-color`        | `string`   | list item 装饰符的背景颜色       |
+| `--list-item-hover-bg-color`      | `string`   | list item hover 时的背景颜色     |
+| `--list-item-active-bg-color`     | `string`   | list item 激活时的背景颜色       |
+| `--list-item-active-x`            | `string`   | list item 激活时水平方向 padding |
+| `--list-item-active-y`            | `string`   | list item 激活时竖直方向 padding |
+| `--list-item-active-tag-bg-color` | `string`   | list item 激活时装饰符的背景颜色 |
 
 ### 返回值
 
