@@ -1,6 +1,6 @@
 # 布局组件 Layout
 
-它可以快速帮你完成页面布局，基于[CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)实现
+它可以快速帮你完成页面布局，基于[CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)实现。
 
 它使用起来会很便捷的，如果你习惯使用[插槽](https://cn.vuejs.org/guide/components/slots.html#slots)的话。
 
@@ -18,6 +18,42 @@
 
 <demo title="" desc="" src="../../demos/layout/demo.vue" raw />
 
+## 插槽
+
+`csss-ui` 基于插槽实现了多数组件，这也是其中之一。
+
+### header 插槽
+
+`header 插槽` 用于定义布局的顶部区域。
+
+开发者们仅需关注插槽内容，header 布局交给组件本身。
+
+:::tip
+`data-disabled` 符合 [data-\*](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*) 规范。
+:::
+
+### panel-[*] 插槽
+
+`panel 插槽`会根据 [`list 插槽`](#list-插槽)生成，默认的插槽名称为"panel-index"。
+
+例如 list 插槽有 3 个子元素,那么对应的 3 个 panel 插槽分别为: `panel-0`, `panel-1`, `panel-2`。
+
+<demo title="" desc="" src="../../demos/tabs/PanelSlot.vue" />
+
+vue 插槽支持[动态插槽名](https://cn.vuejs.org/guide/components/slots.html#dynamic-slot-names)，因此组件也提供了相关的动态名称数组。
+
+这在 panels 是统一的样式内容时很有用。
+
+<demo title="" desc="" src="../../demos/tabs/PanelSlotDynamic.vue" />
+
+::: warning
+使用 [组合式 API](#组合式-api) 需要将 `COMP` 与 组件实例进行绑定。
+:::
+
+### default 插槽
+
+考虑到特殊场景下会有更多的元素参与到 tabs 布局，因此 tabs 布局也会显示 `default 插槽内容`。
+
 ## 组合式 API
 
 开发者可以使用通过 `useCsssLayout` 来初始化一个 `Layout` 组件。
@@ -28,8 +64,14 @@
 
 ```typescript
 const { ...返回值 } = useCsssLayout({
-  [接口名]: [接口参数],
-  ...
+  // 组件初始化状态
+  state: {
+    ...
+  },
+  // 组件初始化样式
+  style: {
+    ...
+  }
 });
 ```
 

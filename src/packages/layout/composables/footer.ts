@@ -5,12 +5,10 @@ import type { StyleSetter } from "@/tool/styleSetter.tool";
 import { useSize } from '../../composables/size';
 import { useTemplateClassList } from "@/packages/composables/templateClassList";
 
-export function useFooter(styleSetter: StyleSetter | Ref<StyleSetter | undefined>, footer?: Slot) {
-  const { size: footerHeightSize } = useSize<CLayoutFooterHeightSize>();
+export function useFooter(styleSetter: Ref<StyleSetter | undefined>, footer?: Slot) {
+  const key = "footer-height";
+  const { size: footerHeightSize } = useSize<CLayoutFooterHeightSize>(styleSetter, key);
 
-  watchEffect(() => {
-    unref(styleSetter)?.setStyleSize("footer-height", footerHeightSize.value);
-  });
   // 如果没有 footer，则取消其高度
   watchEffect(() => {
     if (!footer) defer(() => unref(styleSetter)?.setRemNumber(0, "--footer-height"));

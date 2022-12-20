@@ -1,15 +1,15 @@
 /**
  * @description header height 尺寸
  */
-type CLayoutHeaderHeightSize = BaseSize;
+type CLayoutHeaderHeightSize = BaseSize | number;
 /**
  * @description aside width 尺寸
  */
-type CLayoutAsideWidthSize = BaseSize;
+type CLayoutAsideWidthSize = BaseSize | number;
 /**
  * @description footer height 尺寸
  */
-type CLayoutFooterHeightSize = BaseSize;
+type CLayoutFooterHeightSize = BaseSize | number;
 
 /**
  * @description 布局可供修改的 css 变量的可选值

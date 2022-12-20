@@ -5,13 +5,13 @@ import { unref, watchEffect } from 'vue';
 import { useSize } from '@/packages/composables/size';
 import { useTemplateClassList } from "@/packages/composables/templateClassList";
 
-export function useHeader(styleSetter: StyleSetter | Ref<StyleSetter | undefined>, header?: Slot) {
-  const { size: headerHeightSize } = useSize<CLayoutHeaderHeightSize>();
+export function useHeader(styleSetter: Ref<StyleSetter | undefined>, header?: Slot) {
+  const key = "header-height";
+  const { size: headerHeightSize } = useSize<CLayoutHeaderHeightSize>(styleSetter, key);
 
   watchEffect(() => {
     // 如果没有 header，则取消其高度
     if (!header) defer(() => unref(styleSetter)?.setRemNumber(0, "--header-height"));
-    unref(styleSetter)?.setStyleSize("header-height", headerHeightSize.value);
   });
 
   return {

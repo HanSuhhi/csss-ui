@@ -47,7 +47,7 @@ describe("CLayout.tsx", () => {
         default: "main",
       },
     });
-    (wrapper.vm as unknown as CLayoutApi).setHeaderHeightSize("large");
+    (wrapper.vm as unknown as CLayoutApi).style.headerHeightSize = "large";
     defer(() => {
       expect(wrapper.classes()).toContain("csss-layout-header-height-large");
     });
@@ -59,7 +59,7 @@ describe("CLayout.tsx", () => {
         aside: "aside",
       },
     });
-    (wrapper.vm as unknown as CLayoutApi).setAsideWidthSize("small");
+    (wrapper.vm as unknown as CLayoutApi).style.asideWidthSize = "small";
     defer(() => {
       expect(wrapper.classes()).toContain("csss-layout-aside-width-small");
     });
@@ -71,7 +71,7 @@ describe("CLayout.tsx", () => {
         footer: "footer",
       },
     });
-    (wrapper.vm as unknown as CLayoutApi).setFooterHeightSize("normal");
+    (wrapper.vm as unknown as CLayoutApi).style.footerHeightSize = "normal";
     defer(() => {
       expect(wrapper.classes()).toContain("csss-layout-footer-height-normal");
     });
@@ -85,7 +85,7 @@ describe("CLayout.tsx", () => {
         footer: "footer",
       },
     });
-    (wrapper.vm as unknown as CLayoutApi).setLayoutType("footer-aside");
+    (wrapper.vm as unknown as CLayoutApi).style.layoutType = "footer-aside";
     defer(() => {
       expect(wrapper.classes()).toContain("csss-layout-footer-aside");
     });
@@ -99,11 +99,9 @@ describe("CLayout.tsx", () => {
         footer: "footer",
       },
     });
-    (wrapper.vm as unknown as CLayoutApi).setStyleValue({
-      "--aside-width": 4,
-      "--footer-height": 3,
-      "--header-height": 2,
-    });
+    (wrapper.vm as unknown as CLayoutApi).style.asideWidthSize = 4;
+    (wrapper.vm as unknown as CLayoutApi).style.footerHeightSize = 3;
+    (wrapper.vm as unknown as CLayoutApi).style.headerHeightSize = 2;
     defer(() => {
       const style = wrapper.find("article").element.style;
       const asideWidth = style.getPropertyValue("--aside-width");
