@@ -3,12 +3,14 @@ import "./{{dashCase name}}.css";
 import { defineComponent, reactive } from 'vue';
 import { useElement } from "../composables/element";
 import { useCssCustomProperty } from '../composables/cssCustomProperty';
+import { use{{properCase name}} } from './composables/{{camelCase name}}';
 
 export default defineComponent({
   name: "C{{properCase name}}",
   setup: (props, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-{{dashCase name}}");
     const { property } = useCssCustomProperty<Partial<C{{properCase name}}CssCustomProperties>>(styleSetter);
+    const { classList: {{lowerCase name}}ClassList } = use{{properCase name}}();
 
     const exposeVal: C{{properCase name}}Api = reactive({
       read: {},
@@ -25,7 +27,7 @@ export default defineComponent({
 
     return () => {
       return (
-        <article ref={element} class="csss-{{dashCase name}}">
+        <article ref={element} class={ {{lowerCase name}}ClassList.value}>
         </article>
       );
     };
