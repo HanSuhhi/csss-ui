@@ -1,26 +1,22 @@
 /**
-* @description css custom properties
-*/
-interface CButtonCssCustomProperties {
+ * @description css custom properties
+ */
+type CButtonCssCustomProperties = CssCustomProperty<>;
 
-}
-
-type CButtonPropColor = "green" | "red" | "blue" | "yellow"
+type CButtonPropColor = "green" | "red" | "blue" | "yellow";
 
 /**
-* @description API
-*/
+ * @description API
+ */
 type CButtonApi = import("vue").UnwrapNestedRefs<{
-  read: {
-  };
-  state: {
-  };
+  read: {};
+  state: {};
   style: {
     classList?: Partial<{
       buttonClassList: string[];
-    }>,
-    property: Partial<CButtonCssCustomProperties>
+    }>;
+    property: Partial<CButtonCssCustomProperties>;
   };
-}>
+}>;
 
-type UseCsssButtonProps = UseCsssProps<CButtonApi>
+type UseCsssButtonProps = UseCsssProps<CButtonApi>;
