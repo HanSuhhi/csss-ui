@@ -1,0 +1,12 @@
+.csss-button[disabled] {
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.csss-button[disabled]:hover {
+  opacity: 1;
+}
+
+.csss-button[disabled]:active {
+  transform: none;
+}

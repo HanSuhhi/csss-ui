@@ -1,26 +1,31 @@
 import { union } from "lodash-es";
 import { computed, ref } from "vue";
+import { warn } from "../../tool/console.tool";
 
-export const useTemplateClassList = (defaultClasses?: Classes) => {
+export const useTemplateClassList = (defaultClasses?: Classes, fixed?: Classes) => {
   // private
+  const fixedClasses = ref<Classes>(fixed || []);
   const baseClasses = ref<Classes>(defaultClasses || []);
   const extraClasses = ref<Classes>([]);
 
   // public
   const classList = computed({
-    get: () => union(baseClasses.value, extraClasses.value),
+    get: () => union(baseClasses.value, extraClasses.value, fixedClasses.value),
     set: (_extraClasses) => {
-      const needBaseClass = Boolean(_extraClasses[0]);
+      const firstName = _extraClasses[0];
+      const needBaseClass = Boolean(firstName);
       // default class
       if (!needBaseClass) {
+        if (_extraClasses.length === 0) warn("it should not give an empty class list");
         baseClasses.value = defaultClasses || [];
         extraClasses.value = _extraClasses.splice(_extraClasses.length - 1);
-      }
-      else {
+      } else {
         baseClasses.value = [];
-        extraClasses.value = _extraClasses;
+        // if extra class name is "_", means don't add plus name
+        if (firstName === "_" && _extraClasses.length === 1) extraClasses.value = [];
+        else extraClasses.value = _extraClasses;
       }
-    }
+    },
   });
 
   return { classList };

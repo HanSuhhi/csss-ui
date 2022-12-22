@@ -1,0 +1,18 @@
+.csss-button {
+  --font-size: var(--font-normal);
+  --padding-y: var(--small);
+  --padding-x: calc(var(--normal) * 3);
+  --transition-time: var(--moment);
+  --cursor: pointer;
+  --active-transform-y: var(--tiny);
+  --color: var(--white);
+  --border-radius: var(--mini);
+  --hover-opacity: 0.8;
+  --active-opacity: 1;
+  --bg-color-main: var(--green-bright-2);
+  --bg-color-sub: var(--blue-bright-2);
+
+  /* disabled */
+  --padding: var(--padding-y) var(--padding-x);
+  --active-transform: translateY(var(--active-transform-y));
+}

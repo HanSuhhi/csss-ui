@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { StyleSetter } from "../styleSetter.tool";
+import { StyleSetter, VAR } from "../styleSetter.tool";
 
 describe("styleSetter", () => {
   it("create", () => {
@@ -40,5 +40,10 @@ describe("styleSetter", () => {
     //
     styleSetter.setStyleSize("test-prop", "normal");
     expect(ele.className).toContain("test-ele-test-prop-normal");
+  });
+
+  it("test function 'VAR'", () => {
+    expect(VAR("test")).toBe("--test");
+    expect(VAR("--test")).toBe("--test");
   });
 });

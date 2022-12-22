@@ -29,6 +29,15 @@ const defineSideBarItem = (language: Language): DefaultTheme.Sidebar => {
         text: (<LanguageStruct>["common components", "通用组件"])[language],
         items: [
           {
+            text: (<LanguageStruct>["Button", "按钮 Button"])[language],
+            link: definePath(language, "/components/button"),
+          },
+        ],
+      },
+      {
+        text: (<LanguageStruct>["Structure Components", "结构组件"])[language],
+        items: [
+          {
             text: (<LanguageStruct>["Layout", "布局 Layout"])[language],
             link: definePath(language, "/components/layout"),
           },
