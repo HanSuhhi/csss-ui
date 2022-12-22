@@ -1,6 +1,7 @@
 import "./button.css";
 
-import { defineComponent, PropType, reactive } from "vue";
+import type { PropType} from "vue";
+import { defineComponent, reactive } from "vue";
 import { useElement } from "../composables/element";
 import { useCssCustomProperty } from "../composables/cssCustomProperty";
 import { useButton } from "./composables/button";

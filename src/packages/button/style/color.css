@@ -7,10 +7,12 @@
   --bg-color-main: var(--blue-bright-2);
   --bg-color-sub: var(--green-bright-2);
 }
+
 .csss-button-color__yellow {
   --bg-color-main: var(--yellow-bright-2);
   --bg-color-sub: var(--red-bright-2);
 }
+
 .csss-button-color__red {
   --bg-color-main: var(--red-bright-2);
   --bg-color-sub: var(--yellow-bright-2);

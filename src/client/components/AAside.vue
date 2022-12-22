@@ -16,9 +16,7 @@ const { COMP: Tabs } = useCsssTabs({
 
 const { COMP: Button } = useCsssButton({
   style: {
-    classList: {
-      buttonClassList: ["_"],
-    },
+    classList: {},
   },
 });
 </script>

@@ -11,14 +11,17 @@ export const useTemplateClassList = (defaultClasses?: Classes, fixed?: Classes) 
   const classList = computed({
     get: () => union(baseClasses.value, extraClasses.value, fixedClasses.value),
     set: (_extraClasses) => {
-      const needBaseClass = Boolean(_extraClasses[0]);
+      const firstName = _extraClasses[0];
+      const needBaseClass = Boolean(firstName);
       // default class
       if (!needBaseClass) {
         baseClasses.value = defaultClasses || [];
         extraClasses.value = _extraClasses.splice(_extraClasses.length - 1);
       } else {
         baseClasses.value = [];
-        extraClasses.value = _extraClasses;
+        // if extra class name is "_", means don't add plus name
+        if (firstName === "_" && _extraClasses.length === 1) extraClasses.value = [];
+        else extraClasses.value = _extraClasses;
       }
     },
   });
