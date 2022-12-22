@@ -1,0 +1,32 @@
+@import "./style/config.css";
+
+.csss-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding);
+  color: var(--color);
+  font-size: var(--font-size);
+  background-image: linear-gradient(315deg, var(--blue-bright-2) 0%, var(--green-bright-2) 75%);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-bubble);
+  cursor: var(--cursor);
+  transition: all var(--transition-time) ease;
+}
+
+button:hover {
+  opacity: var(--hover-opacity);
+}
+
+button:active {
+  transform: var(--active-transform);
+  opacity: var(--active-opacity);
+}
+
+/**
+  * @description reset button style
+  */
+.csss-button[data-clean] {
+  border: none;
+  outline: none;
+}

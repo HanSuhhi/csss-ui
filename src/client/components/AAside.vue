@@ -18,16 +18,14 @@ const { COMP: Tabs } = useCsssTabs({
 <template>
   <CTabs ref="Tabs">
     <template #list>
-      <button class="list-item">1</button>
-      <button class="list-item">2</button>
+      <c-button class="list-item">1</c-button>
+      <!-- <c-button class="list-item">2</c-button>
+      <c-button class="list-item">3</c-button> -->
     </template>
 
     <template #panel-0> 111 </template>
     <template #panel-1> 222 </template>
-
-    <!-- <template v-for="panel in read?.panels" :key="panel" #[panel]>
-      <p>{{ panel }}</p>
-    </template> -->
+    <template #panel-2> 333 </template>
   </CTabs>
 </template>
 
@@ -43,7 +41,7 @@ const { COMP: Tabs } = useCsssTabs({
   border-right: 1px solid red;
 }
 
-.list-item {
+/* .list-item {
   padding: var(--large);
-}
+} */
 </style>

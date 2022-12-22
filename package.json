@@ -36,7 +36,7 @@
     "node": ">=16.17.0"
   },
   "dependencies": {
-    "@hansuhhi-don/csss": "0.0.1-beta.2",
+    "@hansuhhi-don/csss": "0.0.1-beta.3",
     "lodash-es": "^4.17.21",
     "titleize": "^3.0.0",
     "vue": "^3.2.41"
