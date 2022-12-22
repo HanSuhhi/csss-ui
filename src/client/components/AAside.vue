@@ -11,12 +11,16 @@ const { COMP: Tabs } = useCsssTabs({
       list: ["", "column"],
       listItem: ["list-item"],
     },
+    property: {},
   },
 });
 
 const { COMP: Button } = useCsssButton({
   style: {
     classList: {},
+    property: {
+      "--font-size": "12rem",
+    },
   },
 });
 </script>

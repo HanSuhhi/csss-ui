@@ -1,7 +1,7 @@
 /**
  * @description css custom properties
  */
-type CButtonCssCustomProperties = CssCustomProperty<>;
+type CButtonCssCustomProperties = CssCustomProperty<"--font-size" | "--padding-y" | "--padding-x" | "--transition-time" | "--cursor" | "--active-transform-y" | "--color" | "   --border-radius" | " --hover-opacity" | " --active-opacity" | " --bg-color-main" | " --bg-color-sub">;
 
 type CButtonPropColor = "green" | "red" | "blue" | "yellow";
 
