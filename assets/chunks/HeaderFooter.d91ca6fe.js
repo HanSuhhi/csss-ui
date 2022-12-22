@@ -1,1 +1,0 @@
-import{_ as a,o as r,j as s,k as e,r as c,b as o}from"../app.6f3f8214.js";const n={};function _(d,f){const t=c("CLayout");return r(),s(t,{class:"demo-layout"},{header:e(()=>[o("header")]),aside:e(()=>[o("aside")]),footer:e(()=>[o("footer")]),default:e(()=>[o(" main ")]),_:1})}const l=a(n,[["render",_]]);export{l as default};
