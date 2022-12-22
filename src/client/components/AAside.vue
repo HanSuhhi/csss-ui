@@ -11,12 +11,16 @@ const { COMP: Tabs } = useCsssTabs({
       list: ["", "column"],
       listItem: ["list-item"],
     },
+    property: {},
   },
 });
 
 const { COMP: Button } = useCsssButton({
   style: {
     classList: {},
+    property: {
+      "--font-size": "12rem",
+    },
   },
 });
 </script>
@@ -25,6 +29,9 @@ const { COMP: Button } = useCsssButton({
   <CTabs ref="Tabs">
     <template #list>
       <c-button ref="Button" color="green" class="list-item">1</c-button>
+      <c-button color="blue">click me!</c-button>
+      <c-button color="yellow">click me!</c-button>
+      <c-button color="red">click me!</c-button>
     </template>
 
     <template #panel-0> 111 </template>

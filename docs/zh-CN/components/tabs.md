@@ -169,7 +169,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置根元素的 class。
 
-当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，根元素保留组件 class。
+
+当有且只有一个元素值为 `_` 时，根元素会失去所有 class。
+
+当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/tabs/RootClass.vue" />
 
@@ -181,7 +185,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 list 根元素的 class。
 
-当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，list 根元素保留组件 class。
+
+当有且只有一个元素值为 `_` 时，list 根元素会失去所有 class。
+
+当第一个元素值不为 `""` 时，list 根元素会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/tabs/ListClass.vue" />
 
@@ -189,7 +197,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 panel 根元素的 class。
 
-当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，panel 根元素保留组件 class。
+
+当有且只有一个元素值为 `_` 时，panel 根元素会失去所有 class。
+
+当第一个元素值不为 `""` 时，panel 根元素会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/tabs/PanelClass.vue" />
 
@@ -197,14 +209,21 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 list 子元素的 class。
 
-当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，list 子元素保留组件 class。
 
+当有且只有一个元素值为 `_` 时，list 子元素会失去所有 class。
+
+当第一个元素值不为 `""` 时，list 子元素会失去所有默认 class，样式将由开发者进行完成。
 <demo title="" desc="" src="../../demos/tabs/ListItemClass.vue" />
 
 ## panel 子元素 class
 
 通过一个 `string[]` 来设置 panel 子元素的 class。
 
-当第一个元素值不为""时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，panel 子元素保留组件 class。
+
+当有且只有一个元素值为 `_` 时，panel 子元素会失去所有 class。
+
+当第一个元素值不为 `""` 时，panel 子元素会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/tabs/PanelItemClass.vue"/>

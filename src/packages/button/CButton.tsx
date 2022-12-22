@@ -1,6 +1,6 @@
 import "./button.css";
 
-import type { PropType} from "vue";
+import type { PropType } from "vue";
 import { defineComponent, reactive } from "vue";
 import { useElement } from "../composables/element";
 import { useCssCustomProperty } from "../composables/cssCustomProperty";
@@ -27,7 +27,7 @@ export default defineComponent({
       state: {},
       style: {
         classList: {
-          buttonClassList,
+          button: buttonClassList,
         },
         property,
       },
