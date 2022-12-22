@@ -12,12 +12,10 @@ const demos = import.meta.glob("@/demos/**/demo.vue", {
 // @ts-ignore
 import.meta.glob("@/demos/**/*.css", {
   eager: true,
-})
-
+});
 
 const defineGlobDemoComponentName = (path: string) => {
   const name = path.split("/")[2];
-  console.log("name: ", name);
   return `${name}-demo`;
 };
 

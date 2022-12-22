@@ -78,7 +78,7 @@ declare module '@vue/runtime-core' {
     .filter((dir) => !(dir.endsWith("tool") || dir.endsWith("composables")))
     .forEach((dir) => {
       const componentName = titleize(dir.split("\\").pop() || "");
-      const order = `C${componentName}: typeof import("csss-ui")["${componentName}"]`;
+      const order = `C${componentName}: typeof import("csss-ui")["C${componentName}"]`;
       template += `\n${order}`;
       apis.push(`\nimport "./packages/${componentName.toLowerCase()}/${componentName.toLocaleLowerCase()}Type"`);
     });

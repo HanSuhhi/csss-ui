@@ -1,6 +1,7 @@
 import { isNull, isUndefined } from "lodash-es";
 
 export function haveAttribute(ele: Element, name: string): HavaAttribute {
+  if (!ele) return [false, null];
   const result = ele.getAttribute(name);
   return checkAttribute(result);
 }

@@ -6,7 +6,7 @@ type BaseSize = "large" | "normal" | "small";
 /**
  * @description css custom properties
  */
-type CssCustomProperty<T> = Record<T, string>;
+type CssCustomProperty<T extends string | number | symbol> = Record<T, string>;
 
 /**
  * @description useCsssLayout props

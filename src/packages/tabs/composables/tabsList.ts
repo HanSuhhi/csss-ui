@@ -37,7 +37,7 @@ export const useTabsList = () => {
         if (index === _index) el.children[0].setAttribute("data-active", "");
         else el.children[0].removeAttribute("data-active");
       });
-    }
+    },
   });
   const isActive = (index: number) => {
     return index === active.value;
@@ -75,12 +75,10 @@ export const useTabsList = () => {
   };
   const checkIftheIndexIsDisabled = (index: number) => disabledIndexs.value.includes(index);
 
-
   /**
    * @description list item list style
    */
   const { classList: listItemClassList } = useTemplateClassList(["csss-tabs__list__item", "csss-tabs__list__item__hover"]);
-
 
   watchEffect(() => {
     if (!TabsList.value) return;
@@ -91,7 +89,11 @@ export const useTabsList = () => {
   });
 
   return {
-    total, active, TabsList, isActive, listItemClassList,
-    ...useTemplateClassList(["csss-tabs__list"])
+    total,
+    active,
+    TabsList,
+    isActive,
+    listItemClassList,
+    ...useTemplateClassList(["csss-tabs__list"]),
   };
 };

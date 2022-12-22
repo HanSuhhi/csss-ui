@@ -1,5 +1,11 @@
 # csss-ui
 
+## 0.2.0-beta.4
+
+### Minor Changes
+
+- add button component
+
 ## 0.2.0-beta.3
 
 ### Patch Changes
