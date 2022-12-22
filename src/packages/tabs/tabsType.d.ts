@@ -2,23 +2,10 @@ type listStatus = "normal" | "disabled" | "null";
 
 type CheckListChildrenResult = [is: listStatus, element: HTMLElement][];
 
-
 /**
  * @description css custom properties
  */
-interface CTabsCssCustomProperties {
-  "--list-item-x": string;
-  "--list-item-y": string;
-  "--list-item-color": string;
-  "--list-item-bg-color": string;
-  "--list-item-tag-width": string;
-  "--list-item-tag-bg-color": string;
-  "--list-item-hover-bg-color": string;
-  "--list-item-active-bg-color": string;
-  "--list-item-active-x": string;
-  "--list-item-active-y": string;
-  "--list-item-active-tag-bg-color": string
-}
+type CTabsCssCustomProperties = CssCustomProperty<"--list-item-x" | "--list-item-y" | "--list-item-color" | "--list-item-bg-color" | "--list-item-tag-width" | "--list-item-tag-bg-color" | "--list-item-hover-bg-color" | "--list-item-active-bg-color" | "--list-item-active-x" | "--list-item-active-y" | "--list-item-active-tag-bg-color">;
 
 /**
  * @description API
@@ -39,10 +26,9 @@ type CTabsApi = import("vue").UnwrapNestedRefs<{
       listItem: string[];
       panel: string[];
       panelItem: string[];
-    }>,
-    property?: Partial<CTabsCssCustomProperties>
+    }>;
+    property?: Partial<CTabsCssCustomProperties>;
   };
-}>
+}>;
 
-type UseCsssTabsProps = UseCsssProps<CTabsApi>
-
+type UseCsssTabsProps = UseCsssProps<CTabsApi>;

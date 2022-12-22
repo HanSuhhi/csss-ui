@@ -15,24 +15,17 @@ type CLayoutFooterHeightSize = BaseSize | number;
  */
 type CLayoutType = "header-footer" | "header-aside" | "footer-aside" | "aside";
 
-
 /**
  * @description css custom properties
  */
-interface CLayoutCssCustomProperties {
-  "--header-height": string;
-  "--aside-width": string;
-  "--footer-height": string;
-}
+type CLayoutCssCustomProperties = CssCustomProperty<"--header-height" | "--aside-width" | "--footer-height">;
 
 /**
  * @description Layout API
  */
 type CLayoutApi = import("vue").UnwrapNestedRefs<{
-  read: {
-  };
-  state: {
-  };
+  read: {};
+  state: {};
   style: {
     headerHeightSize: CLayoutHeaderHeightSize;
     asideWidthSize: CLayoutAsideWidthSize;
@@ -45,9 +38,9 @@ type CLayoutApi = import("vue").UnwrapNestedRefs<{
       aside: string[];
       footer: string[];
       main: string[];
-    }>,
-    property: Partial<CLayoutCssCustomProperties>
+    }>;
+    property: Partial<CLayoutCssCustomProperties>;
   };
-}>
+}>;
 
-type UseCsssLayoutProps = UseCsssProps<CLayoutApi>
+type UseCsssLayoutProps = UseCsssProps<CLayoutApi>;
