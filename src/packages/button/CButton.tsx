@@ -27,7 +27,7 @@ export default defineComponent({
       state: {},
       style: {
         classList: {
-          buttonClassList,
+          button: buttonClassList,
         },
         property,
       },

@@ -243,6 +243,10 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置根元素的 class。
 
+当第一个元素值为 `""` 时，根元素保留组件 class。
+
+当有且只有一个元素值为 `_` 时，根元素会失去所有 class。
+
 当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/layout/RootClass.vue" />
@@ -251,7 +255,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 header 的 class。
 
-当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，header 保留组件 class。
+
+当有且只有一个元素值为 `_` 时，header 会失去所有 class。
+
+当第一个元素值不为 `""` 时，header 会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/layout/HeaderClass.vue" />
 
@@ -269,7 +277,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 aside 的 class。
 
-当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，aside 保留组件 class。
+
+当有且只有一个元素值为 `_` 时，aside 会失去所有 class。
+
+当第一个元素值不为 `""` 时，aside 会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/layout/AsideClass.vue" />
 
@@ -287,7 +299,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 footer 的 class。
 
-当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，footer 保留组件 class。
+
+当有且只有一个元素值为 `_` 时，footer 会失去所有 class。
+
+当第一个元素值不为 `""` 时，footer 会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/layout/FooterClass.vue" />
 
@@ -305,7 +321,11 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 通过一个 `string[]` 来设置 main 的 class。
 
-当第一个元素值不为 `""` 时，根元素会失去所有默认 class，样式将由开发者进行完成。
+当第一个元素值为 `""` 时，main 保留组件 class。
+
+当有且只有一个元素值为 `_` 时，main 会失去所有 class。
+
+当第一个元素值不为 `""` 时，main 会失去所有默认 class，样式将由开发者进行完成。
 
 <demo title="" desc="" src="../../demos/layout/MainClass.vue" />
 
