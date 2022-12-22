@@ -7,4 +7,14 @@ describe("CButton.tsx", () => {
     const wrapper = shallowMount(CButton);
     expect(wrapper.classes()).toContain("csss-button");
   });
+
+  it("render deafault slot", () => {
+    const wrapper = shallowMount(CButton, {
+      slots: {
+        default: "<span class='test-class'>hello world</span>",
+      },
+    });
+    expect(wrapper.find(".test-class").exists()).toBeTruthy();
+    expect(wrapper.find(".test-class").text()).toBe("hello world");
+  });
 });

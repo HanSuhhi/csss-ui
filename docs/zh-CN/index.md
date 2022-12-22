@@ -7,7 +7,7 @@ titleTemplate: A vue3.0 headless components library /
 hero:
   name: csss-ui
   text: A vue3.0 headless components library /
-  tagline: 依赖于 csss 的 vue3.0 组件库
+  tagline:  一个 headless 的 vue3.0 组件库
   actions:
     - theme: brand
       text: 开始使用

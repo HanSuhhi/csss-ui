@@ -1,5 +1,6 @@
 import { union } from "lodash-es";
 import { computed, ref } from "vue";
+import { warn } from "../../tool/console.tool";
 
 export const useTemplateClassList = (defaultClasses?: Classes, fixed?: Classes) => {
   // private
@@ -15,6 +16,7 @@ export const useTemplateClassList = (defaultClasses?: Classes, fixed?: Classes) 
       const needBaseClass = Boolean(firstName);
       // default class
       if (!needBaseClass) {
+        if (_extraClasses.length === 0) warn("it should not give an empty class list");
         baseClasses.value = defaultClasses || [];
         extraClasses.value = _extraClasses.splice(_extraClasses.length - 1);
       } else {
