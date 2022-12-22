@@ -1,33 +1,42 @@
 import "./button.css";
 
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, PropType, reactive } from "vue";
 import { useElement } from "../composables/element";
-import { useCssCustomProperty } from '../composables/cssCustomProperty';
-import { useButton } from './composables/button';
+import { useCssCustomProperty } from "../composables/cssCustomProperty";
+import { useButton } from "./composables/button";
 
 export default defineComponent({
   name: "CButton",
+  props: {
+    color: {
+      type: String as PropType<CButtonPropColor>,
+      default: "green",
+      validator(value: string) {
+        return ["green", "blue", "yellow", "red"].includes(value);
+      },
+    },
+  },
   setup: (props, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-button");
     const { property } = useCssCustomProperty<Partial<CButtonCssCustomProperties>>(styleSetter);
-    const { classList: buttonClassList } = useButton();
+    const { classList: buttonClassList } = useButton(props.color, styleSetter);
 
     const exposeVal: CButtonApi = reactive({
       read: {},
       state: {},
       style: {
         classList: {
-
+          buttonClassList,
         },
-        property
-      }
+        property,
+      },
     });
 
     expose(exposeVal);
 
     return () => {
       return (
-        <button data-clean ref={element} class={buttonClassList.value}>
+        <button ref={element} class={buttonClassList.value}>
           {slots.default?.()}
         </button>
       );

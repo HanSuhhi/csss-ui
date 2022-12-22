@@ -9,6 +9,8 @@
   --border-radius: var(--mini);
   --hover-opacity: 0.8;
   --active-opacity: 1;
+  --bg-color-main: var(--green-bright-2);
+  --bg-color-sub: var(--blue-bright-2);
 
   /* disabled */
   --padding: var(--padding-y) var(--padding-x);

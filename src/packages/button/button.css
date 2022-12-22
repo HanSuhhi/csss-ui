@@ -1,4 +1,7 @@
 @import "./style/config.css";
+@import "./style/disabled.css";
+@import "./style/color.css";
+@import "./style/clean.css";
 
 .csss-button {
   display: inline-flex;
@@ -7,26 +10,18 @@
   padding: var(--padding);
   color: var(--color);
   font-size: var(--font-size);
-  background-image: linear-gradient(315deg, var(--blue-bright-2) 0%, var(--green-bright-2) 75%);
+  background-image: linear-gradient(315deg, var(--bg-color-sub) 0%, var(--bg-color-main) 75%);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-bubble);
   cursor: var(--cursor);
   transition: all var(--transition-time) ease;
 }
 
-button:hover {
+.csss-button:hover {
   opacity: var(--hover-opacity);
 }
 
-button:active {
+.csss-button:active {
   transform: var(--active-transform);
   opacity: var(--active-opacity);
-}
-
-/**
-  * @description reset button style
-  */
-.csss-button[data-clean] {
-  border: none;
-  outline: none;
 }

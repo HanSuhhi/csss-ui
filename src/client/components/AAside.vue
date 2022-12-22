@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCsssTabs } from "@/index";
+import { useCsssButton, useCsssTabs } from "@/index";
 
 const { COMP: Tabs } = useCsssTabs({
   state: {
@@ -13,14 +13,20 @@ const { COMP: Tabs } = useCsssTabs({
     },
   },
 });
+
+const { COMP: Button } = useCsssButton({
+  style: {
+    classList: {
+      buttonClassList: ["_"],
+    },
+  },
+});
 </script>
 
 <template>
   <CTabs ref="Tabs">
     <template #list>
-      <c-button class="list-item">1</c-button>
-      <!-- <c-button class="list-item">2</c-button>
-      <c-button class="list-item">3</c-button> -->
+      <c-button ref="Button" color="green" class="list-item">1</c-button>
     </template>
 
     <template #panel-0> 111 </template>
