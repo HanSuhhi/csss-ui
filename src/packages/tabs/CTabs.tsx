@@ -58,12 +58,16 @@ export default defineComponent({
                 })
                 // filter comment vnode
                 .filter((el) => el.type.toString() !== "Symbol(Comment)")
-                .map((el) => (el.type.toString() === "Symbol(Fragment)" || el.type.toString() === "Symbol()" ? el.children : [el]))
+                .map((el) => {
+                  return el.type.toString() === "Symbol(Fragment)" || el.type.toString() === "Symbol()" ? el.children : [el];
+                })
                 .map((el, index, arr) => {
                   const indexBase = getVnodeIndex(index, arr as VNodeNormalizedChildren[][]);
                   return (el as VNodeNormalizedChildren[]).map((e, i) => (
                     <div
                       onClick={() => {
+                        console.log(e);
+
                         const _index = indexBase + i;
                         setPanel.call(this, _index);
                         active.value = _index;
