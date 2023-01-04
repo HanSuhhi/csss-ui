@@ -13,9 +13,8 @@ function loop(val: UnwrapRef<CMenuList>, disabled?: boolean): void {
       if (!v.disabled) isOpen.value = !isOpen.value;
     };
     v["key"] = _index++;
-    v["isOpen"] = isOpen;
+    v["isOpen"] = isOpen as any;
     v["toggle"] = toggle;
-    v["_ref"] = ref();
     if (v?.children?.length) {
       loop(v.children, v.disabled);
     }

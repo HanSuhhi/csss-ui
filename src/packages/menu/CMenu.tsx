@@ -67,9 +67,11 @@ export default defineComponent({
                               return v;
                             })}
                           </div>
-                          <Transition name="slide-up" mode="out-in">
-                            {renderJsxArr(item.children || [], index + 1, item)}
-                          </Transition>
+                          {!item.disabled && (
+                            <Transition name="slide-up" mode="out-in">
+                              {renderJsxArr(item.children || [], index + 1, item)}
+                            </Transition>
+                          )}
                         </li>
                       )
                     );
@@ -87,11 +89,11 @@ export default defineComponent({
                       return t;
                     })}
                   </div>
-                  <div>
+                  {!item.disabled && (
                     <Transition name="slide-up" mode="out-in">
                       {renderJsxArr(item.children || [], 1, item)}
                     </Transition>
-                  </div>
+                  )}
                 </li>
               )
             );

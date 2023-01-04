@@ -2,10 +2,15 @@
  * @description menu list
  */
 type CMenuList = Array<
-  Record<string, any> & {
-    children?: CMenuList;
-    isOpen?: boolean;
-  }
+  | Record<string, any>
+  | {
+      children?: CMenuList;
+      isOpen?: boolean;
+      toggle?: () => void;
+      key: number;
+      disabled: boolean;
+      hide: boolean;
+    }
 >;
 
 /**
@@ -19,7 +24,7 @@ type CMenuCssCustomProperties = CssCustomProperty<>;
 type CMenuApi = import("vue").UnwrapNestedRefs<{
   read: {};
   state: {
-    menuList;
+    menuList?: CMenuList;
   };
   style: {
     classList?: Partial<{

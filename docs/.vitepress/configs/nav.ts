@@ -45,6 +45,10 @@ const defineSideBarItem = (language: Language): DefaultTheme.Sidebar => {
             text: (<LanguageStruct>["Tabs", "选项卡 Tabs"])[language],
             link: definePath(language, "/components/tabs"),
           },
+          {
+            text: (<LanguageStruct>["Menu", "菜单 Menu"])[language],
+            link: definePath(language, "/components/menu"),
+          },
         ],
       },
     ],

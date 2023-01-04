@@ -3,7 +3,10 @@
   --ani-opacity-none: 0;
   --ani-opacity-little: 0.2;
   --ani-opacity-full: 1;
-  --box-shadow-bubble: inset var(--tiny) var(--tiny) var(--tiny) 0 rgb(255 255 255 / 50%), var(--mini) var(--mini) var(--normal) rgb(0 0 0 / 10%), var(--mini) var(--mini) var(--mini) rgb(0 0 0 / 10%);
+  --box-shadow-bubble:
+    inset var(--tiny) var(--tiny) var(--tiny) 0 rgb(255 255 255 / 50%),
+    var(--mini) var(--mini) var(--normal) rgb(0 0 0 / 10%),
+    var(--mini) var(--mini) var(--mini) rgb(0 0 0 / 10%);
 }
 
 :root {
