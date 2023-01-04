@@ -38,6 +38,7 @@
   "dependencies": {
     "@hansuhhi-don/csss": "0.0.1-beta.3",
     "lodash-es": "^4.17.21",
+    "nanoid": "^4.0.0",
     "titleize": "^3.0.0",
     "vue": "^3.2.41"
   },

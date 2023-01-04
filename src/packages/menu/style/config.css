@@ -1,0 +1,12 @@
+.csss-menu {
+  --padding-y: var(--mini);
+  --padding-x: var(--normal);
+  --padding-left: var(--normal);
+  --padding-scale: 0.8;
+  --border-radius: var(--mini);
+  --hover-background-color: var(--main-color);
+  --ani-time: var(--moment);
+
+  /* disabled */
+  --padding: var(--padding-y) var(--padding-x);
+}

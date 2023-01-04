@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
-import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import path, { resolve } from "path";
+import path from "path";
 import Delete from "rollup-plugin-delete";
+import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({

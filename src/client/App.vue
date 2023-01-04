@@ -13,7 +13,6 @@ const { COMP: Layout } = useCsssLayout({
 
 <template>
   <CLayout ref="Layout">
-    main
     <template #header> header </template>
 
     <template #aside>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCsssButton, useCsssTabs } from "@/index";
+import { useCsssMenu } from "../../packages/menu/composables/csssMenu";
 
 const { COMP: Tabs } = useCsssTabs({
   state: {
@@ -19,8 +20,34 @@ const { COMP: Button } = useCsssButton({
   style: {
     classList: {},
     property: {
-      "--font-size": "12rem",
+      "--font-size": "2rem",
     },
+  },
+});
+
+const { COMP: Menu } = useCsssMenu({
+  state: {
+    menuList: [
+      {
+        name: "hello",
+        children: [
+          {
+            name: "item1",
+            children: [
+              {
+                need: "cool",
+              },
+            ],
+          },
+          {
+            name: "item2",
+          },
+        ],
+      },
+      {
+        name: "bye",
+      },
+    ],
   },
 });
 </script>
@@ -29,14 +56,25 @@ const { COMP: Button } = useCsssButton({
   <CTabs ref="Tabs">
     <template #list>
       <c-button ref="Button" color="green" class="list-item">1</c-button>
-      <c-button color="blue">click me!</c-button>
-      <c-button color="yellow">click me!</c-button>
-      <c-button color="red">click me!</c-button>
     </template>
-
-    <template #panel-0> 111 </template>
-    <template #panel-1> 222 </template>
-    <template #panel-2> 333 </template>
+    <template #panel-0>
+      <c-menu ref="Menu" class="a">
+        <template #item-0="{ name, toggle, isOpen }">
+          <div class="asd" @click="toggle">
+            😀 click me !
+            <span v-if="isOpen">v</span>
+            <span v-else>Λ</span>
+          </div>
+        </template>
+        <template #item-1="{ name, isOpen, toggle }">
+          <span>:</span>
+          <span @click="toggle">{{ name }}{{ isOpen }}</span>
+        </template>
+        <template #item-2="{ need }">
+          <span>: {{ need }}</span>
+        </template>
+      </c-menu>
+    </template>
   </CTabs>
 </template>
 
@@ -52,7 +90,7 @@ const { COMP: Button } = useCsssButton({
   border-right: 1px solid red;
 }
 
-/* .list-item {
-  padding: var(--large);
-} */
+.asd {
+  width: 100px;
+}
 </style>
