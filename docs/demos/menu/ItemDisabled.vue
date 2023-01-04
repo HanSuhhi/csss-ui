@@ -50,11 +50,11 @@ const { COMP: Menu } = useCsssMenu({
   background-color: rgb(0 0 0 / 0%);
 }
 
-.disabled[data-disabled]:hover {
-  background-color: none;
-}
-
 .disabled[data-disabled] {
   background-color: grey;
+}
+
+.disabled[data-disabled]:hover {
+  background-color: none;
 }
 </style>
