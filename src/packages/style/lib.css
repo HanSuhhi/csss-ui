@@ -12,3 +12,7 @@
 :root {
   --main-color: var(--yellow);
 }
+
+ol {
+  padding-inline-start: 0;
+}

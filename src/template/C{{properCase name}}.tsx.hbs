@@ -10,14 +10,14 @@ export default defineComponent({
   setup: (props, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-{{dashCase name}}");
     const { property } = useCssCustomProperty<Partial<C{{properCase name}}CssCustomProperties>>(styleSetter);
-    const { classList: {{lowerCase name}}ClassList } = use{{properCase name}}();
+    const { classList: {{camelCase name}}ClassList } = use{{properCase name}}();
 
     const exposeVal: C{{properCase name}}Api = reactive({
       read: {},
       state: {},
       style: {
         classList: {
-
+          {{camelCase name}}: {{camelCase name}}ClassList
         },
         property
       }

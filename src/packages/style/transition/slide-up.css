@@ -1,14 +1,18 @@
 .slide-up-enter-active,
 .slide-up-leave-active {
-  transition: all var(--ani-time) ease-out;
+  /* transition: all 2s ease-in-out; */
+
+  transition: all var(--ani-time) ease-in-out;
 }
 
-.slide-up-enter-from {
-  transform: translateY(30px);
-  opacity: 0;
-}
-
+.slide-up-enter-from,
 .slide-up-leave-to {
-  transform: translateY(-30px);
+  height: 0;
   opacity: 0;
+}
+
+.slide-up-enter-to,
+.slide-up-leave-from {
+  height: var(--transition-height);
+  opacity: 1;
 }

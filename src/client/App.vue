@@ -13,8 +13,7 @@ const { COMP: Layout } = useCsssLayout({
 
 const { COMP } = useCsssTabs({
   style: {
-    classList: {
-    },
+    classList: {},
   },
 });
 </script>
@@ -31,6 +30,9 @@ const { COMP } = useCsssTabs({
       </template>
     </c-tabs>
     <template #header> header </template>
+    <template #aside>
+      <a-aside />
+    </template>
   </CLayout>
 </template>
 

@@ -7,5 +7,5 @@
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "stylelint.validate": ["vue", "css"],
-  "window.zoomLevel": 2
+  "window.zoomLevel": 1
 }
