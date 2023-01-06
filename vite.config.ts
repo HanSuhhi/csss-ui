@@ -23,25 +23,25 @@ export default defineConfig({
       web: [/.[tj]sx$/],
     },
   },
-  // build: {
-  //   lib: {
-  //     entry: path.resolve(__dirname, "src/index.ts"),
-  //     name: "csss-ui",
-  //     fileName: (format) => `csss-ui.${format}.js`,
-  //   },
-  //   rollupOptions: {
-  //     external: ["vue"],
-  //     output: {
-  //       globals: {
-  //         vue: "Vue",
-  //       },
-  //     },
-  //     plugins: [
-  //       Delete({
-  //         targets: ["dist/types/client/App.vue.d.ts"],
-  //         hook: "generateBundle",
-  //       }),
-  //     ],
-  //   },
-  // },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "csss-ui",
+      fileName: (format) => `csss-ui.${format}.js`,
+    },
+    rollupOptions: {
+      external: ["vue"],
+      output: {
+        globals: {
+          vue: "Vue",
+        },
+      },
+      plugins: [
+        Delete({
+          targets: ["dist/types/client/App.vue.d.ts"],
+          hook: "generateBundle",
+        }),
+      ],
+    },
+  },
 });
