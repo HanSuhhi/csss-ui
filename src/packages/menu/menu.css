@@ -2,22 +2,10 @@
 
 .csss-menu {
   position: inherit;
-  padding: var(--padding);
 }
 
 .menu-item {
-  --padding-left: calc(var(--normal) * (1 + var(--base-index) * var(--padding-scale)));
-
-  display: flex;
-  padding: var(--padding);
-  padding-left: var(--padding-left);
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: background var(--ani-time);
-}
-
-.menu-item:hover {
-  background-color: var(--hover-background-color);
+  position: inherit;
 }
 
 ol {

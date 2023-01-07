@@ -66,8 +66,6 @@ export default defineComponent({
                   return (el as VNodeNormalizedChildren[]).map((e, i) => (
                     <div
                       onClick={() => {
-                        console.log(e);
-
                         const _index = indexBase + i;
                         setPanel.call(this, _index);
                         active.value = _index;

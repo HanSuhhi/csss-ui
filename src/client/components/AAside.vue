@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useCsssButton, useCsssTabs } from "@/index";
+import { setUncaughtExceptionCaptureCallback } from "process";
 import { useCsssMenu } from "../../packages/menu/composables/csssMenu";
+import { watchEffect } from "vue";
+import { loadConfigFromFile } from "vite";
 
 const { COMP: Tabs } = useCsssTabs({
   state: {
@@ -25,7 +28,7 @@ const { COMP: Button } = useCsssButton({
   },
 });
 
-const { COMP: Menu } = useCsssMenu({
+const { COMP: Menu, style } = useCsssMenu({
   state: {
     menuList: [
       {
@@ -49,6 +52,13 @@ const { COMP: Menu } = useCsssMenu({
       },
     ],
   },
+  style: {
+    classList: {
+      items: {
+        1: ["as"],
+      },
+    },
+  },
 });
 </script>
 
@@ -58,7 +68,7 @@ const { COMP: Menu } = useCsssMenu({
       <c-button ref="Button" color="green" class="list-item">1</c-button>
     </template>
     <template #panel-0>
-      <c-menu ref="Menu" class="a">
+      <c-menu ref="Menu">
         <template #item-0="{ toggle }">
           <div class="asd" @click="toggle">😀 click me !</div>
         </template>

@@ -1,4 +1,4 @@
-import { forEach } from 'lodash-es';
+import { defer, forEach } from "lodash-es";
 
 /**
  * @description parse csss methods parameters
@@ -9,7 +9,6 @@ export const parseCsssProps = (obj: object, el: object) => {
       parseCsssProps(v, (el as any)[key]);
     } else {
       (el as any)[key] = v;
-    };
+    }
   });
-
 };

@@ -29,6 +29,7 @@ type CMenuApi = import("vue").UnwrapNestedRefs<{
   style: {
     classList?: Partial<{
       menu: string[];
+      items: Record<number, string[]>;
     }>;
     property: Partial<CMenuCssCustomProperties>;
   };

@@ -1,6 +1,6 @@
-import { parseCsssProps } from '@/tool/useCsss.tool';
-import { ref, watch } from 'vue';
-import { useDeconstructComponent } from '@/packages/composables/deconstructComponent';
+import { parseCsssProps } from "@/tool/useCsss.tool";
+import { ref, watch } from "vue";
+import { useDeconstructComponent } from "@/packages/composables/deconstructComponent";
 
 export const useComponent = <T, E>(props?: E) => {
   const COMP = ref<T>();
@@ -12,10 +12,9 @@ export const useComponent = <T, E>(props?: E) => {
     init();
   });
 
-
   return {
     COMP,
     // @ts-ignore
-    ...useDeconstructComponent<T>(COMP)
+    ...useDeconstructComponent<T>(COMP),
   };
 };

@@ -1,8 +1,9 @@
 import { useGenerator } from "@/packages/composables/generator";
 import { useTemplateClassList } from "@/packages/composables/templateClassList";
-import { forEach, range } from "lodash-es";
+import { forEach } from "lodash-es";
 import type { UnwrapRef } from "vue";
-import { computed, ref } from "vue";
+import { computed } from "vue";
+import { ref, watchEffect } from "vue";
 
 function loop(val: UnwrapRef<CMenuList>, disabled?: boolean): void {
   let _index = 0;
@@ -39,7 +40,21 @@ export function useMenu() {
   /**
    * @description list depth
    */
-  const depths = computed(() => range(getDepth(menuList.value)).map((index) => `menu-item-${index}`));
+  const _classLists = ref<Record<string, string[]>>({});
+  const classLists = computed({
+    get: () => _classLists.value,
+    set: (val) => {
+      for (const key in val) {
+        _classLists.value[key] = val[key];
+      }
+    },
+  });
+  watchEffect(() => {
+    for (let i = 0; i < getDepth(menuList.value); i++) {
+      const { classList } = useTemplateClassList([`menu-item-${i}`, "menu-item"]);
+      classLists.value = { [i]: classList } as any;
+    }
+  });
 
   /**
    * @description active
@@ -49,7 +64,7 @@ export function useMenu() {
   return {
     ...useTemplateClassList(["csss-menu"]),
     menuList,
-    depths,
+    classLists,
     active,
   };
 }
