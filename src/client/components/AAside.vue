@@ -33,7 +33,6 @@ const { COMP: Menu } = useCsssMenu({
         children: [
           {
             name: "item1",
-            disabled: true,
             children: [
               {
                 need: "cool",
@@ -60,12 +59,8 @@ const { COMP: Menu } = useCsssMenu({
     </template>
     <template #panel-0>
       <c-menu ref="Menu" class="a">
-        <template #item-0="{ toggle, isOpen }">
-          <div class="asd" @click="toggle">
-            😀 click me !
-            <span v-if="isOpen">v</span>
-            <span v-else>Λ</span>
-          </div>
+        <template #item-0="{ toggle }">
+          <div class="asd" @click="toggle">😀 click me !</div>
         </template>
         <template #item-1="{ name, isOpen, toggle }">
           <span>:</span>

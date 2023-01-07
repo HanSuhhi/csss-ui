@@ -41,9 +41,15 @@ export function useMenu() {
    */
   const depths = computed(() => range(getDepth(menuList.value)).map((index) => `menu-item-${index}`));
 
+  /**
+   * @description active
+   */
+  const active = ref(-1);
+
   return {
     ...useTemplateClassList(["csss-menu"]),
     menuList,
     depths,
+    active,
   };
 }

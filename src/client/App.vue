@@ -22,7 +22,6 @@ const { COMP } = useCsssTabs({
   <CLayout ref="Layout">
     <c-tabs ref="COMP">
       <template #list>
-        <!-- <p></p> -->
         <span v-if="true">1</span>
         <span v-show="true">1</span>
         <span v-for="index in 2" :key="index"> tab {{ index }} </span>

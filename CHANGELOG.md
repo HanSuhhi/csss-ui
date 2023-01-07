@@ -1,5 +1,11 @@
 # csss-ui
 
+## 0.2.0-beta.7
+
+### Minor Changes
+
+- add menu component
+
 ## 0.2.0-beta.6
 
 ### Minor Changes
