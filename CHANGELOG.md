@@ -1,5 +1,13 @@
 # csss-ui
 
+## 0.2.0-beta.8
+
+### Patch Changes
+
+- 422c2a3: menu template class
+- 4f80f29: add menu active attribute
+- 422c2a3: menu active rule change
+
 ## 0.2.0-beta.7
 
 ### Minor Changes

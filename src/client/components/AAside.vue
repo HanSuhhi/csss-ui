@@ -51,6 +51,7 @@ const { COMP: Menu } = useCsssMenu({
         ],
       },
     ],
+    active: [0, 1],
   },
   style: {
     classList: {

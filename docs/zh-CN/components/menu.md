@@ -59,9 +59,10 @@ const { ...返回值 } = useCsssMenu({
 
 #### state
 
-| name     | param type | description       |
-| -------- | :--------- | :---------------- |
-| menuList | `array`    | [菜单项](#菜单项) |
+| name     | param type | description               |
+| -------- | :--------- | :------------------------ |
+| menuList | `array`    | [菜单项](#菜单项)         |
+| active   | `number[]` | [默认选中项](#默认选中项) |
 
 当 menu 列表中包含 `disabled: true` 时，该菜单项会被禁用。
 
@@ -183,3 +184,11 @@ const { COMP: Menu, style } = useCsssMenu({
 如果需要自定义点击事件，可以通过在模板层自定义实现。
 
 <demo title="" desc="" src="../../demos/menu/Active.vue" />
+
+## 默认选中项
+
+通过 state 中的 `active` 来设置默认选中项。
+
+`active` 类型为 `number[]`，需根据实际层级进行设置，可参考以下示例：
+
+<demo title="" desc="" src="../../demos/menu/DefaultActive.vue" />

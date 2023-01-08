@@ -22,6 +22,7 @@ export default defineComponent({
       read: {},
       state: {
         menuList,
+        active,
       },
       style: {
         classList: {

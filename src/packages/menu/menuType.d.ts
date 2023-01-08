@@ -25,6 +25,7 @@ type CMenuApi = import("vue").UnwrapNestedRefs<{
   read: {};
   state: {
     menuList?: CMenuList;
+    active?: number[];
   };
   style: {
     classList?: Partial<{
