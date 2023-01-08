@@ -63,6 +63,10 @@ const { ...返回值 } = useCsssMenu({
 | -------- | :--------- | :---------------- |
 | menuList | `array`    | [菜单项](#菜单项) |
 
+当 menu 列表中包含 `disabled: true` 时，该菜单项会被禁用。
+
+当 menu 列表中包含 `hide: true` 时，该菜单项会被隐藏。
+
 #### style
 
 style 除了一些基础状态，还包括两个子对象，分别是代表 class 设置的 `classList` 和 定义 css 变量的 `property`。
@@ -74,13 +78,10 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 
 ##### classList
 
-| name | param type | description                       |
-| ---- | :--------- | :-------------------------------- |
-| menu | `string[]` | 设置[根元素 class](#根元素-class) |
-
-当 menu 列表中包含 `disabled: true` 时，该菜单项会被禁用。
-
-当 menu 列表中包含 `hide: true` 时，该菜单项会被隐藏。
+| name  | param type                 | description                       |
+| ----- | :------------------------- | :-------------------------------- |
+| menu  | `string[]`                 | 设置[根元素 class](#根元素-class) |
+| items | `Record<number, string[]>` | 设置每一[层级 class](#层级-class) |
 
 ##### property
 
@@ -96,12 +97,13 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 | `state` | [组件状态](#state-组件状态)            |
 | `style` | [组件只读属性](#read-组件只读属性)     |
 
+<!--
 #### read 组件只读属性
 
 提供一些只读但无法修改的属性。
 
 | name | param type | description |
-| ---- | :--------- | :---------- |
+| ---- | :--------- | :---------- | -->
 
 #### state 组件状态
 
@@ -136,3 +138,48 @@ style 除了一些基础状态，还包括两个子对象，分别是代表 clas
 ::: warning
 所有 css 变量都存放于根元素当中，当默认根元素 class 失效后，将失去组件下所有 css 变量。
 :::
+
+## 层级 class
+
+items 是一个内置的 `Record<number, string[]>` 对象。如果需要修改层级 class, 需要手动设置。
+
+例如：
+
+```javascript
+const { COMP: Menu, style } = useCsssMenu({
+  state: {
+    menuList: [
+      {
+        name: "fruits",
+        children: [
+          {
+            name: "apple",
+          },
+          {
+            name: "banana",
+          },
+        ],
+      },
+    ],
+  },
+  style: {
+    classList: {
+      items: {
+        1: ["fruit-item"],
+      },
+    },
+  },
+});
+```
+
+实际可参考该示例组件：
+
+<demo title="" desc="" src="../../demos/menu/ItemClass.vue" />
+
+## 选中项
+
+组件会为选中的层级自动添加 `data-active` 属性，一般用于自定义样式。
+
+如果需要自定义点击事件，可以通过在模板层自定义实现。
+
+<demo title="" desc="" src="../../demos/menu/Active.vue" />
