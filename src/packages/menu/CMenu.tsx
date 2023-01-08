@@ -2,13 +2,11 @@ import "./menu.css";
 
 import { debounce, defer } from "lodash-es";
 import type { StyleValue } from "vue";
-import { computed, watchEffect } from "vue";
-import { defineComponent, reactive, ref, Transition } from "vue";
+import { defineComponent, reactive, ref, Transition, watchEffect } from "vue";
 import { lintAttribute } from "../../tool/elementAttribute.tool";
 import { useCssCustomProperty } from "../composables/cssCustomProperty";
 import { useElement } from "../composables/element";
 import { useMenu } from "./composables/menu";
-type RenderMenu = Array<JSX.Element[] | JSX.Element>;
 
 export default defineComponent({
   name: "CMenu",
@@ -16,6 +14,9 @@ export default defineComponent({
     const { element, styleSetter } = useElement("csss-menu");
     const { property } = useCssCustomProperty<Partial<CMenuCssCustomProperties>>(styleSetter);
     const { classList: menuClassList, menuList, active, classLists } = useMenu();
+    watchEffect(() => {
+      console.log("menuList: ", menuList);
+    });
 
     const exposeVal: CMenuApi = reactive({
       read: {},
@@ -55,8 +56,10 @@ export default defineComponent({
                     return (
                       !item.hide && (
                         <li data-disabled={lintAttribute(item.disabled)}>
-                          <div class={classLists.value[index]} data-active={lintAttribute(active.value === item.key)} style={baseIndex} onClick={() => (active.value = item.key)}>
+                          <div class={classLists.value[index]} data-active={lintAttribute(active.value.slice(0, index + 1).toString() === item.key.slice(0, index + 1).toString())} style={baseIndex} onClick={() => (active.value = item.key)}>
                             {slots?.[`item-${index}`]?.(item).map((v) => {
+                              console.log(active.value, item.key, index);
+
                               if (!v.props) v.props = {};
                               v.props!["data-disabled"] = lintAttribute(item.disabled);
                               return v;
@@ -77,7 +80,7 @@ export default defineComponent({
             return (
               !item.hide && (
                 <li data-disabled={lintAttribute(item.disabled)}>
-                  <div class={classLists.value[0]} data-active={lintAttribute(active.value === item.key)} onClick={() => (active.value = item.key)}>
+                  <div class={classLists.value[0]} data-active={lintAttribute(active.value[0] === item.key[0])} onClick={() => (active.value = item.key)}>
                     {slots?.["item-0"]?.(item).map((t) => {
                       t.props!["data-disabled"] = lintAttribute(item.disabled);
                       return t;

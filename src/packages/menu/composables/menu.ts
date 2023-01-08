@@ -5,19 +5,21 @@ import type { UnwrapRef } from "vue";
 import { computed } from "vue";
 import { ref, watchEffect } from "vue";
 
-function loop(val: UnwrapRef<CMenuList>, disabled?: boolean): void {
+function loop(val: UnwrapRef<CMenuList>, disabled?: boolean, index: number[] = []): void {
   let _index = 0;
   forEach(val, (v) => {
+    const indexs = [...index];
+    indexs.push(_index++);
     const isOpen = ref(true);
     if (disabled) v.disabled = true;
     const toggle = () => {
       if (!v.disabled) isOpen.value = !isOpen.value;
     };
-    v["key"] = _index++;
+    v["key"] = indexs;
     v["isOpen"] = isOpen as any;
     v["toggle"] = toggle;
     if (v?.children?.length) {
-      loop(v.children, v.disabled);
+      loop(v.children, v.disabled, indexs);
     }
   });
 }
@@ -51,7 +53,7 @@ export function useMenu() {
   });
   watchEffect(() => {
     for (let i = 0; i < getDepth(menuList.value); i++) {
-      const { classList } = useTemplateClassList([`menu-item-${i}`, "menu-item"]);
+      const { classList } = useTemplateClassList([`menu-item-${i}`], ["menu-item"]);
       classLists.value = { [i]: classList } as any;
     }
   });
@@ -59,7 +61,10 @@ export function useMenu() {
   /**
    * @description active
    */
-  const active = ref(-1);
+  const active = ref<number[]>([]);
+  watchEffect(() => {
+    console.log("active: ", active);
+  });
 
   return {
     ...useTemplateClassList(["csss-menu"]),

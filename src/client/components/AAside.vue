@@ -28,34 +28,36 @@ const { COMP: Button } = useCsssButton({
   },
 });
 
-const { COMP: Menu, style } = useCsssMenu({
+const { COMP: Menu } = useCsssMenu({
   state: {
     menuList: [
       {
-        name: "hello",
+        name: "plant",
         children: [
           {
-            name: "item1",
+            title: "fruit",
             children: [
               {
-                need: "cool",
+                sub: "apple 🍎",
+              },
+              {
+                sub: "orange 🍊",
+              },
+              {
+                sub: "banana 🍌",
               },
             ],
           },
-          {
-            name: "item2",
-          },
         ],
-      },
-      {
-        name: "bye",
       },
     ],
   },
   style: {
     classList: {
       items: {
-        1: ["as"],
+        0: ["details"],
+        1: ["details"],
+        2: ["details"],
       },
     },
   },
@@ -69,15 +71,16 @@ const { COMP: Menu, style } = useCsssMenu({
     </template>
     <template #panel-0>
       <c-menu ref="Menu">
-        <template #item-0="{ toggle }">
-          <div class="asd" @click="toggle">😀 click me !</div>
+        <template #item-0="{ toggle, name }">
+          <div @click="toggle">
+            {{ name }}
+          </div>
         </template>
-        <template #item-1="{ name, isOpen, toggle }">
-          <span>:</span>
-          <span @click="toggle">{{ name }}{{ isOpen }}</span>
+        <template #item-1="{ title, toggle }">
+          <div @click="toggle">{{ title }}</div>
         </template>
-        <template #item-2="{ need }">
-          <span>: {{ need }}</span>
+        <template #item-2="{ sub }">
+          <span>{{ sub }}</span>
         </template>
       </c-menu>
     </template>
@@ -96,7 +99,7 @@ const { COMP: Menu, style } = useCsssMenu({
   border-right: 1px solid red;
 }
 
-.asd {
-  width: 100px;
+.csss-menu :deep(.details[data-active]) {
+  background-color: var(--yellow);
 }
 </style>

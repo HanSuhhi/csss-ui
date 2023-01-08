@@ -7,7 +7,7 @@ type CMenuList = Array<
       children?: CMenuList;
       isOpen?: boolean;
       toggle?: () => void;
-      key: number;
+      key: number[];
       disabled: boolean;
       hide: boolean;
     }
