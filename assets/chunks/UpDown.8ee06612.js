@@ -1,1 +1,0 @@
-import{_ as a,o as c,k as n,j as e,r,b as o}from"../app.f0599eab.js";const s={};function _(d,f){const t=r("CLayout");return c(),n(t,{class:"demo-layout"},{header:e(()=>[o("header")]),default:e(()=>[o(" main ")]),_:1})}const m=a(s,[["render",_]]);export{m as default};

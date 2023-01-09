@@ -1,0 +1,1 @@
+import{_ as n,o as a,l as o,j as c,r,c as l,x as _,a as e,t as i,k as d}from"../app.384dcd20.js";const p={},m=e("span",{"data-disabled":""},"tab 4",-1);function b(f,u){const s=r("c-tabs");return a(),o(s,null,{list:c(()=>[(a(),l(d,null,_(3,t=>e("span",{key:t}," tab "+i(t),1)),64)),m]),_:1})}const x=n(p,[["render",b]]);export{x as default};
