@@ -32,6 +32,10 @@ const defineSideBarItem = (language: Language): DefaultTheme.Sidebar => {
             text: (<LanguageStruct>["Button", "按钮 Button"])[language],
             link: definePath(language, "/components/button"),
           },
+          {
+            text: (<LanguageStruct>["Input", "输入框 Input"])[language],
+            link: definePath(language, "/components/input"),
+          },
         ],
       },
       {

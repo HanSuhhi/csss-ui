@@ -3,7 +3,7 @@ import { useCsssLayout } from "../packages/layout/composables/csssLayout";
 import AAside from "./components/AAside.vue";
 import { useCsssTabs } from "@/index";
 import { useCsssInput } from "../packages/input/composables/csssInput";
-import { watchEffect, onMounted } from "vue";
+import { watchEffect, onMounted, ref } from "vue";
 
 const { COMP: Layout } = useCsssLayout({
   style: {
@@ -24,12 +24,17 @@ const { COMP: Input, state } = useCsssInput({
     model: "asd",
     active: true,
   },
+  style: {
+    property: {},
+  },
 });
 
-setInterval(() => {
-  state.value.active = !state.value.active;
-  console.log("state.value.active: ", state.value.active);
-}, 2000);
+const asd = ref();
+
+watchEffect(() => {
+  asd.value = state.value?.model;
+  console.log("asd.value : ", asd.value);
+});
 </script>
 
 <template>
