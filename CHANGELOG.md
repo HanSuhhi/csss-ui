@@ -1,5 +1,16 @@
 # csss-ui
 
+## 0.2.0-beta.9
+
+### Minor Changes
+
+- 192023a: add input component
+
+### Patch Changes
+
+- 4bffd58: add state to set menu default active value
+- fix input active error
+
 ## 0.2.0-beta.8
 
 ### Patch Changes
