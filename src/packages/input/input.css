@@ -1,0 +1,9 @@
+@import "./style/config.css";
+@import "./style/input-main.css";
+
+.csss-input {
+  display: flex;
+  width: fit-content;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}

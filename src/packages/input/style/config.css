@@ -1,0 +1,4 @@
+.csss-input {
+  --border-color: var(--gray);
+  --border-radius: var(--small);
+}
