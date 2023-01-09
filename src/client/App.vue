@@ -3,6 +3,7 @@ import { useCsssLayout } from "../packages/layout/composables/csssLayout";
 import AAside from "./components/AAside.vue";
 import { useCsssTabs } from "@/index";
 import { useCsssInput } from "../packages/input/composables/csssInput";
+import { watchEffect, onMounted } from "vue";
 
 const { COMP: Layout } = useCsssLayout({
   style: {
@@ -18,18 +19,23 @@ const { COMP } = useCsssTabs({
   },
 });
 
-const { COMP: Input } = useCsssInput({
+const { COMP: Input, state } = useCsssInput({
   state: {
     model: "asd",
     active: true,
   },
 });
+
+setInterval(() => {
+  state.value.active = !state.value.active;
+  console.log("state.value.active: ", state.value.active);
+}, 2000);
 </script>
 
 <template>
   <CLayout ref="Layout">
     <c-input ref="Input">
-      <template #footer>🍌</template>
+      <template #footer="{ active }">{{ active }}</template>
     </c-input>
 
     <!-- <c-tabs ref="COMP">

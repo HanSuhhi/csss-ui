@@ -10,8 +10,8 @@ export const useInputMain = () => {
   const active = ref(false);
 
   watchEffect(() => {
-    if (inputRef.value && active.value) {
-      inputRef.value.focus();
+    if (inputRef.value) {
+      inputRef.value[active.value ? "focus" : "blur"]();
     }
   });
 
