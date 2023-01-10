@@ -1,5 +1,12 @@
 # csss-ui
 
+## 0.2.0-beta.10
+
+### Patch Changes
+
+- update layout style setter
+- d15425d: update input placeholder and types
+
 ## 0.2.0-beta.9
 
 ### Minor Changes
