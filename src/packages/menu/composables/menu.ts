@@ -62,9 +62,6 @@ export function useMenu() {
    * @description active
    */
   const active = ref<number[]>([]);
-  watchEffect(() => {
-    console.log("active: ", active);
-  });
 
   return {
     ...useTemplateClassList(["csss-menu"]),

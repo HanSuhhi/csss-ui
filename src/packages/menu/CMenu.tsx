@@ -14,9 +14,6 @@ export default defineComponent({
     const { element, styleSetter } = useElement("csss-menu");
     const { property } = useCssCustomProperty<Partial<CMenuCssCustomProperties>>(styleSetter);
     const { classList: menuClassList, menuList, active, classLists } = useMenu();
-    watchEffect(() => {
-      console.log("menuList: ", menuList);
-    });
 
     const exposeVal: CMenuApi = reactive({
       read: {},
@@ -59,8 +56,6 @@ export default defineComponent({
                         <li data-disabled={lintAttribute(item.disabled)}>
                           <div class={classLists.value[index]} data-active={lintAttribute(active.value.slice(0, index + 1).toString() === item.key.slice(0, index + 1).toString())} style={baseIndex} onClick={() => (active.value = item.key)}>
                             {slots?.[`item-${index}`]?.(item).map((v) => {
-                              console.log(active.value, item.key, index);
-
                               if (!v.props) v.props = {};
                               v.props!["data-disabled"] = lintAttribute(item.disabled);
                               return v;

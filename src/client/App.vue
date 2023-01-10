@@ -19,21 +19,15 @@ const { COMP } = useCsssTabs({
   },
 });
 
-const { COMP: Input, state } = useCsssInput({
+const { COMP: Input } = useCsssInput({
   state: {
-    model: "asd",
+    model: "sd",
     active: true,
+    placeholder: "this is the placeholder",
   },
   style: {
     property: {},
   },
-});
-
-const asd = ref();
-
-watchEffect(() => {
-  asd.value = state.value?.model;
-  console.log("asd.value : ", asd.value);
 });
 </script>
 

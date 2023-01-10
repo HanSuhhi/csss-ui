@@ -14,7 +14,7 @@ export default defineComponent({
   setup: (props, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-input");
     const { property } = useCssCustomProperty<Partial<CInputCssCustomProperties>>(styleSetter);
-    const { classList: inputClassList, model } = useInput();
+    const { classList: inputClassList, model, placeholder } = useInput();
     const { classList: inputMainClassList, active, inputRef } = useInputMain();
     const { classList: inputHeaderClassList } = useInputHeader();
     const { classList: inputFooterClassList } = useInputFooter();
@@ -24,6 +24,7 @@ export default defineComponent({
       state: {
         model,
         active,
+        placeholder,
       },
       style: {
         classList: {
@@ -57,6 +58,7 @@ export default defineComponent({
             onBlur={() => {
               active.value = false;
             }}
+            placeholder={placeholder.value}
             class={inputMainClassList.value}
             type="text"
             v-model={model.value}
