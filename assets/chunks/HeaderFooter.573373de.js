@@ -1,1 +1,0 @@
-import{_ as a,o as r,l as s,j as e,r as c,b as o}from"../app.384dcd20.js";const n={};function _(d,f){const t=c("CLayout");return r(),s(t,{class:"demo-layout"},{header:e(()=>[o("header")]),aside:e(()=>[o("aside")]),footer:e(()=>[o("footer")]),default:e(()=>[o(" main ")]),_:1})}const i=a(n,[["render",_]]);export{i as default};
