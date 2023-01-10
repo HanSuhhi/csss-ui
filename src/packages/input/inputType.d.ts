@@ -11,10 +11,14 @@ type CInputApi = import("vue").UnwrapNestedRefs<{
   state: {
     model?: string;
     active?: boolean;
+    placeholder?: string;
   };
   style: {
     classList?: Partial<{
       input: string[];
+      inputMain: string[];
+      header: string[];
+      footer: string[];
     }>;
     property: Partial<CInputCssCustomProperties>;
   };
