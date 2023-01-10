@@ -8,9 +8,9 @@
   position: relative;
   display: grid;
   grid-template:
-    "header header" var(--header-height)
+    "header header" minmax(min-content, var(--header-height))
     "aside main" auto
-    "aside footer" var(--footer-height)
+    "aside footer" minmax(min-content, var(--footer-height))
     / minmax(min-content, var(--aside-width)) auto;
   grid-template-areas: var(--grid-template-areas);
   width: 100%;

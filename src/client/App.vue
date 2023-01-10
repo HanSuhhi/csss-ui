@@ -33,9 +33,9 @@ const { COMP: Input } = useCsssInput({
 
 <template>
   <CLayout ref="Layout">
-    <c-input ref="Input">
+    <!-- <c-input ref="Input">
       <template #footer="{ active }">{{ active }}</template>
-    </c-input>
+    </c-input> -->
 
     <!-- <c-tabs ref="COMP">
       <template #list>
@@ -45,10 +45,26 @@ const { COMP: Input } = useCsssInput({
         <b>tab 3</b>
       </template>
     </c-tabs> -->
-    <!-- <template #header> header </template>
+    <template #header>
+      <p>123</p>
+      <p>123</p>
+      <p>123</p>
+      <p>123</p>
+    </template>
     <template #aside>
-      <a-aside />
-    </template> -->
+      <!-- <a-aside /> -->
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+      <span>asd</span>
+    </template>
   </CLayout>
 </template>
 
